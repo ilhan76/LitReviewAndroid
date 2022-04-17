@@ -1,10 +1,33 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-plugins {
-    id 'com.android.application' version '7.1.1' apply false
-    id 'com.android.library' version '7.1.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.5.30' apply false
+buildscript {
+    apply from: 'config.gradle'
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:${versions.gradlePluginVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlinVersion}"
+        classpath "com.google.gms:google-services:${versions.googleServicesVersion}"
+        classpath "com.gradle:build-scan-plugin:${versions.buildScanPluginVersion}"
+        classpath lint.detektPlugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+apply from: "scripts/dependenciesModules.gradle"
+apply from: "scripts/ktFormatter.gradle"
+apply from: "lint/detekt.gradle"

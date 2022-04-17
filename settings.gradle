@@ -1,18 +1,5 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "LitReview"
-include ':app'
-include ':base'
-include ':f-splash'
+apply from: 'config.gradle'
+
+include ':app',
+        ':base',
+        ':f-splash'

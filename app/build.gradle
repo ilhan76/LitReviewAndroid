@@ -1,3 +1,4 @@
+/*
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -38,4 +39,53 @@ dependencies {
 
     implementation project(':base')
     implementation project(':f-splash')
+}*/
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply from: '../config.gradle'
+
+apply from: '../keystore/signingConfigs.gradle'
+apply from: '../buildTypes.gradle'
+apply from: '../commonAndroidDefaultConfig.gradle'
+apply from: '../androidTestConfiguration.gradle'
+
+android {
+
+    defaultConfig {
+        applicationId app.applicationId
+
+        versionCode app.versionCode
+        versionName app.versionName
+
+        setProperty("archivesBaseName", "$applicationName-$versionName-($versionCode)")
+
+        testBuildType 'qa'
+    }
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE.md'
+        pickFirst 'META-INF/LICENSE-notice.md'
+    }
+}
+
+dependencies {
+    implementation project(":f-splash")
+
+    implementation lang.kotlinStdLib
+    implementation lang.jetbrainsAnnotations
+
+    implementation di.dagger
+    kapt di.daggerKapt
+
+    implementation androidX.annotation
+    implementation androidX.appcompat
+}
+
+configurations.all {
+    resolutionStrategy.cacheDynamicVersionsFor 1, 'seconds'
+    resolutionStrategy.cacheChangingModulesFor 1, 'seconds'
+    resolutionStrategy.force 'org.objenesis:objenesis:2.6'
+    resolutionStrategy.force 'io.github.classgraph:classgraph:4.8.54'
 }

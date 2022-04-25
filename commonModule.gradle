@@ -45,4 +45,5 @@ dependencies {
     implementation lang.kotlinStdLib
     implementation lang.annimonStream
     implementation di.javaInject
+    implementation "com.google.dagger:hilt-android-gradle-plugin:2.41"
 }

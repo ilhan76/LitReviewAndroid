@@ -14,5 +14,4 @@ dependencies {
     androidTestImplementation androidTest.espressoCore
     androidTestImplementation androidTest.espressoContrib
     androidTestImplementation androidTest.espressoIntents
-    kaptAndroidTest di.daggerKapt
 }

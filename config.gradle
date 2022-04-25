@@ -61,7 +61,8 @@ ext {
             detektVersion                   : '1.17.1',             //https://bit.ly/3hZpBsp
             glideVersion                    : "4.12.0",             //http://bit.ly/2Q7Fa41
             googleMaterialVersion           : "1.4.0",              // http://bit.ly/2KAAq1y
-            splashVersion                   : "1.0.0-alpha02"       // https://bit.ly/3meXtSz
+            splashVersion                   : "1.0.0-alpha02",      // https://bit.ly/3meXtSz
+            hiltVersion                     : "2.41"
     ]
 
     lang = [
@@ -71,9 +72,9 @@ ext {
     ]
 
     di = [
-            dagger    : "com.google.dagger:dagger:${versions.daggerVersion}",
-            daggerKapt: "com.google.dagger:dagger-compiler:${versions.daggerVersion}",
-            javaInject: "javax.inject:javax.inject:${versions.javaInjectVersion}"
+            javaInject: "javax.inject:javax.inject:${versions.javaInjectVersion}",
+            hilt        : "com.google.dagger:hilt-android:${versions.hiltVersion}",
+            hiltCompiler: "com.google.dagger:hilt-compiler:${versions.hiltVersion}"
     ]
 
     androidX = [

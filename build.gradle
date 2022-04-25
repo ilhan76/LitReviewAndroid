@@ -12,6 +12,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlinVersion}"
         classpath "com.google.gms:google-services:${versions.googleServicesVersion}"
         classpath "com.gradle:build-scan-plugin:${versions.buildScanPluginVersion}"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.41"
         classpath lint.detektPlugin
     }
 }

@@ -10,6 +10,8 @@ data class AuthState(
 class AuthReducer: Reducer<AuthEvent, AuthState> {
 
     override fun reduce(state: AuthState, event: AuthEvent): AuthState {
-        TODO("Not yet implemented")
+        return when (event) {
+            else -> state
+        }
     }
 }

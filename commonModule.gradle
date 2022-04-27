@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+    //todo - навести порядок в зависимостях
     implementation lang.kotlinStdLib
     implementation lang.annimonStream
     implementation di.javaInject
@@ -61,4 +62,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
+
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.3'
 }

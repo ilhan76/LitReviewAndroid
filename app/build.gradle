@@ -71,7 +71,8 @@ android {
 }
 
 dependencies {
-    implementation project(":f-splash")
+    implementation project(':f_main')
+    implementation project(':f_auth')
 
     implementation lang.kotlinStdLib
     implementation lang.jetbrainsAnnotations

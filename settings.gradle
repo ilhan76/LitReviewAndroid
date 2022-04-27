@@ -2,5 +2,5 @@ apply from: 'config.gradle'
 
 include ':app',
         ':base',
-        ':f-splash',
+        ':f_main',
         ':f_auth'

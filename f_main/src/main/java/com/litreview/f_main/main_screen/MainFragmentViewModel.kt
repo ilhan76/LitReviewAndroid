@@ -11,7 +11,4 @@ class MainFragmentViewModel: MviStatefulViewModel<MainFragmentState, MainFragmen
     override val state: FlowState<MainFragmentState> = FlowState(MainFragmentState())
     override val middleware: DslFlowMiddleware<MainFragmentEvent> = MainFragmentMiddleware()
 
-    init {
-        bindFlow()
-    }
 }

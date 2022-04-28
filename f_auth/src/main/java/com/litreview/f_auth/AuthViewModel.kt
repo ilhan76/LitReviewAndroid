@@ -11,7 +11,4 @@ class AuthViewModel: MviStatefulViewModel<AuthState, AuthEvent>() {
     override val middleware: DslFlowMiddleware<AuthEvent> = AuthMiddleware()
     override val reducer: Reducer<AuthEvent, AuthState> = AuthReducer()
 
-    init {
-        bindFlow()
-    }
 }

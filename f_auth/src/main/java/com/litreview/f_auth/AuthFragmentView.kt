@@ -16,6 +16,7 @@ class AuthFragmentView: Fragment(R.layout.fragment_auth), MviStatefulView<AuthSt
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.bindFlow()
         initListeners()
     }
 

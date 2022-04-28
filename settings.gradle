@@ -4,3 +4,4 @@ include ':app',
         ':base',
         ':f_main',
         ':f_auth'
+include ':i_auth'

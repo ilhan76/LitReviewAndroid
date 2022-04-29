@@ -7,5 +7,17 @@ sealed class AuthEvent : Event {
 
     data class BackPressed(
         val navController: NavController?
+    ) : AuthEvent()
+
+    data class EmailChangedEvent(
+        val email: String
     ): AuthEvent()
+
+    data class PasswordChangedEvent(
+        val password: String
+    ): AuthEvent()
+
+    data class LoginClickedEvent(
+        val navController: NavController?
+    ) : AuthEvent()
 }

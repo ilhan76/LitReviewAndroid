@@ -71,8 +71,11 @@ android {
 }
 
 dependencies {
-    implementation project(':f_main')
+    implementation project(':base')
+    implementation project(':i_navigation')
+    implementation project(':f_start')
     implementation project(':f_auth')
+    implementation project(':f_book_detail')
 
     implementation lang.kotlinStdLib
     implementation lang.jetbrainsAnnotations

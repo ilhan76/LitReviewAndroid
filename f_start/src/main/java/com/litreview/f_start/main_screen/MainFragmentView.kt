@@ -9,8 +9,10 @@ import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.f_start.main_screen.MainFragmentEvent.*
 import com.litreview.f_start.R
 import com.litreview.f_start.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import ru.surfstudio.mvi.vm.android.MviStatefulView
 
+@AndroidEntryPoint
 class MainFragmentView : Fragment(R.layout.fragment_main),
     MviStatefulView<MainFragmentState, MainFragmentEvent> {
 

@@ -51,6 +51,7 @@ apply from: '../keystore/signingConfigs.gradle'
 apply from: '../buildTypes.gradle'
 apply from: '../commonAndroidDefaultConfig.gradle'
 apply from: '../androidTestConfiguration.gradle'
+apply from: '../commonKaptModule.gradle'
 
 android {
 
@@ -82,6 +83,10 @@ dependencies {
 
     implementation androidX.annotation
     implementation androidX.appcompat
+
+    // MVI
+    implementation 'ru.surfstudio.mvi:mvi-core:0.0.8'
+    implementation 'ru.surfstudio.mvi:mvi-mappers:0.0.8'
 }
 
 configurations.all {

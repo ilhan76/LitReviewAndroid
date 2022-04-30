@@ -2,9 +2,13 @@
 * Hilt & kapt.
 * Should be applied to every module with DI included.
 */
+apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 dependencies {
     implementation di.hilt
-    annotationProcessor di.hiltCompiler
+    kapt di.hiltCompiler
+
+    implementation 'com.google.dagger:dagger:2.41'
+    kapt 'com.google.dagger:dagger-compiler:2.41'
 }

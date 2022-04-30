@@ -2,15 +2,16 @@ package com.litreview.f_auth
 
 import com.litreview.i_navigation.open
 import com.litreview.i_navigation.providers.AuthNavCommandProvider
-import com.litreview.f_auth.AuthEvent.*
+import com.litreview.f_auth.AuthFragmentEvent.*
 import kotlinx.coroutines.flow.Flow
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
+import javax.inject.Inject
 
-class AuthMiddleware(
+class AuthFragmentMiddleware @Inject constructor(
     private val authNavCommandProvider: AuthNavCommandProvider
-): DslFlowMiddleware<AuthEvent> {
+): DslFlowMiddleware<AuthFragmentEvent> {
 
-    override fun transform(eventStream: Flow<AuthEvent>): Flow<AuthEvent> {
+    override fun transform(eventStream: Flow<AuthFragmentEvent>): Flow<AuthFragmentEvent> {
         return eventStream.transformations {
             addAll(
                 BackPressed::class react ::handleBackPressed,

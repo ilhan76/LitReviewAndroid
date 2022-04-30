@@ -1,9 +1,11 @@
-package com.litreview.app
+package com.litreview.app.navigation
 
+import com.litreview.R
 import com.litreview.i_navigation.NavCommand
 import com.litreview.i_navigation.providers.AuthNavCommandProvider
+import javax.inject.Inject
 
-class AuthNavCommandProviderImpl: AuthNavCommandProvider {
+class AuthNavCommandProviderImpl @Inject constructor() : AuthNavCommandProvider {
     override val toMain: NavCommand
         get() = NavCommand(R.id.action_authFragmentView_to_mainFlowFragment)
     override val toFeed: NavCommand

@@ -1,14 +1,21 @@
 package com.litreview.f_start.main_screen
 
-import ru.surfstudio.mvi.core.reducer.Reducer
+import dagger.hilt.android.lifecycle.HiltViewModel
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
 import ru.surfstudio.mvi.flow.FlowState
 import ru.surfstudio.mvi.vm.MviStatefulViewModel
+import javax.inject.Inject
 
-class MainFragmentViewModel: MviStatefulViewModel<MainFragmentState, MainFragmentEvent>() {
+@HiltViewModel
+class MainFragmentViewModel @Inject constructor() :
+    MviStatefulViewModel<MainFragmentState, MainFragmentEvent>() {
 
-    override val reducer: Reducer<MainFragmentEvent, MainFragmentState> = MainFragmentReducer()
     override val state: FlowState<MainFragmentState> = FlowState(MainFragmentState())
-    override val middleware: DslFlowMiddleware<MainFragmentEvent> = MainFragmentMiddleware()
+
+    @Inject
+    override lateinit var reducer: MainFragmentReducer
+
+    @Inject
+    override lateinit var middleware: DslFlowMiddleware<MainFragmentEvent>
 
 }

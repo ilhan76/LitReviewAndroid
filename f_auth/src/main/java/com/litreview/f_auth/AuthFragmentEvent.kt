@@ -3,21 +3,21 @@ package com.litreview.f_auth
 import androidx.navigation.NavController
 import ru.surfstudio.mvi.core.event.Event
 
-sealed class AuthEvent : Event {
+sealed class AuthFragmentEvent : Event {
 
     data class BackPressed(
         val navController: NavController?
-    ) : AuthEvent()
+    ) : AuthFragmentEvent()
 
     data class EmailChangedEvent(
         val email: String
-    ): AuthEvent()
+    ): AuthFragmentEvent()
 
     data class PasswordChangedEvent(
         val password: String
-    ): AuthEvent()
+    ): AuthFragmentEvent()
 
     data class LoginClickedEvent(
         val navController: NavController?
-    ) : AuthEvent()
+    ) : AuthFragmentEvent()
 }

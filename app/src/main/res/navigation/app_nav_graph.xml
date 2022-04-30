@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/mainFlowFragment"
         android:name="com.litreview.f_start.main_screen.MainFragmentView"
-        android:label="MainFlowFragment" >
+        android:label="MainFlowFragment">
         <action
             android:id="@+id/action_mainFlowFragment_to_authFragmentView"
             app:destination="@id/authFragmentView" />
@@ -18,20 +18,20 @@
     <fragment
         android:id="@+id/authFragmentView"
         android:name="com.litreview.f_auth.AuthFragmentView"
-        android:label="AuthFragmentView" >
+        android:label="AuthFragmentView">
         <action
             android:id="@+id/action_authFragmentView_to_mainFlowFragment"
             app:destination="@id/mainFlowFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_authFragmentView_to_mainFlowFragmentView"
-            app:destination="@id/bookDetailFragmentView" />
+            app:destination="@id/mainFlowFragmentView" />
     </fragment>
 
     <fragment
         android:id="@+id/registerFragmentView"
         android:name="com.litreview.f_auth.register.RegisterFragmentView"
-        android:label="RegisterFragmentView" >
+        android:label="RegisterFragmentView">
         <action
             android:id="@+id/action_registerFragmentView_to_mainFlowFragment"
             app:destination="@id/mainFlowFragment" />
@@ -42,13 +42,5 @@
     <fragment
         android:id="@+id/mainFlowFragmentView"
         android:name="com.litreview.f_main.MainFlowFragmentView"
-        android:label="MainFlowFragmentView" >
-        <action
-            android:id="@+id/action_mainFlowFragmentView_to_bookDetailFragmentView"
-            app:destination="@id/bookDetailFragmentView" />
-    </fragment>
-    <fragment
-        android:id="@+id/bookDetailFragmentView"
-        android:name="com.litreview.f_book_detail.BookDetailFragmentView"
-        android:label="BookDetailFragmentView" />
+        android:label="MainFlowFragmentView" />
 </navigation>

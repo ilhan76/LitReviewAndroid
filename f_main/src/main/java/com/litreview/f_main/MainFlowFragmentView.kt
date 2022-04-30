@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.f_main.databinding.FlowFragmentMainBinding
@@ -18,7 +18,8 @@ class MainFlowFragmentView : Fragment(R.layout.flow_fragment_main),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        NavigationUI.setupWithNavController(vb.bottomNavBar, findNavController())
+        val navController = (childFragmentManager.findFragmentById(R.id.main_container_view) as NavHostFragment).navController
+        NavigationUI.setupWithNavController(vb.bottomNavBar, navController)
         viewModel.bindFlow()
     }
 }

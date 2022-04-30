@@ -2,19 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/chatsFragmentView">
+    app:startDestination="@id/feedFragmentView">
     <fragment
         android:id="@+id/feedFragmentView"
         android:name="com.litreview.f_main.framents.FeedFragmentView"
         android:label="FeedFragmentView" />
     <fragment
-        android:id="@+id/chatsFragmentView"
-        android:name="com.litreview.f_main.framents.ChatsFragmentView"
-        android:label="ChatsFragmentView" />
-    <fragment
         android:id="@+id/searchFragmentView"
         android:name="com.litreview.f_main.framents.SearchFragmentView"
         android:label="SearchFragmentView" />
+    <fragment
+        android:id="@+id/chatsFragmentView"
+        android:name="com.litreview.f_main.framents.ChatsFragmentView"
+        android:label="ChatsFragmentView" />
     <fragment
         android:id="@+id/profileFragmentView"
         android:name="com.litreview.f_main.framents.ProfileFragmentView"

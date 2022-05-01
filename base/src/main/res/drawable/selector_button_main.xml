@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/pale_red">
+    android:color="@color/red_alpha_10">
     <item>
         <selector>
             <item android:state_enabled="false">
@@ -15,7 +15,7 @@
                 <inset>
                     <shape android:shape="rectangle">
                         <corners android:radius="@dimen/button_radius" />
-                        <solid android:color="@color/colorAccent" />
+                        <solid android:color="@color/colorPrimary" />
                     </shape>
                 </inset>
             </item>

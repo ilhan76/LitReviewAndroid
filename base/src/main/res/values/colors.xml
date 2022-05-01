@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/white</color>
-    <color name="colorPrimaryDark">@color/white</color>
+    <color name="colorPrimary">@color/red</color>
+    <color name="colorPrimaryVariant">@color/red_alpha_10</color>
+    <color name="colorOnPrimary">@color/white</color>
+
     <color name="colorAccent">@color/red</color>
+
+    <color name="colorSecondary">@color/steel_gray_500</color>
+    <color name="colorSecondaryVariant">@color/steel_gray_200</color>
+    <color name="colorOnSecondary">@color/black</color>
+
     <color name="colorError">@color/red_error</color>
 
-    <color name="full_transparent_color">#00000000</color>
-
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
 </resources>

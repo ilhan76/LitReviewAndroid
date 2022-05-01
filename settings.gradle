@@ -5,7 +5,7 @@ include ':app',
         ':f_start',
         ':f_auth',
         ':i_auth',
-        ':f_main'
-include ':mylibrary'
-include ':f_book_detail'
-include ':i_navigation'
+        ':f_main',
+        ':f_book_detail',
+        ':i_navigation',
+        ':f_feed'

@@ -1,6 +1,5 @@
 package com.litreview.f_main
 
-import com.litreview.f_main.MainFlowEvent
 import ru.surfstudio.mvi.core.reducer.Reducer
 
 class MainFlowState

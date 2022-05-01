@@ -1,7 +1,6 @@
-package com.litreview.f_main.framents
+package com.litreview.f_feed
 
 import androidx.fragment.app.Fragment
-import com.litreview.f_main.R
 
 class FeedFragmentView : Fragment(R.layout.fragment_feed) {
 }

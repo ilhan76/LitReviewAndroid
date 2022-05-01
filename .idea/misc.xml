@@ -17,6 +17,11 @@
         <entry key="f_auth/src/main/res/layout/fragment_register.xml" value="0.33" />
         <entry key="f_auth/src/main/res/layout/some_fragment.xml" value="0.35520833333333335" />
         <entry key="f_book_detail/src/main/res/layout/fragment_book_detail.xml" value="0.18072916666666666" />
+        <entry key="f_feed/src/main/res/layout/fragment_feed.xml" value="0.2484375" />
+        <entry key="f_feed/src/main/res/layout/item_feed_header.xml" value="0.33" />
+        <entry key="f_feed/src/main/res/layout/item_feed_offers.xml" value="0.26458333333333334" />
+        <entry key="f_feed/src/main/res/layout/item_search.xml" value="0.26458333333333334" />
+        <entry key="f_feed/src/main/res/layout/some.xml" value="0.26458333333333334" />
         <entry key="f_main/src/main/res/drawable/ic_bottom_menu_chat.xml" value="0.1675" />
         <entry key="f_main/src/main/res/drawable/ic_bottom_menu_feed.xml" value="0.1675" />
         <entry key="f_main/src/main/res/drawable/ic_bottom_menu_profile.xml" value="0.1675" />

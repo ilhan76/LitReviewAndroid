@@ -24,7 +24,7 @@ class MainFragmentView : Fragment(R.layout.fragment_main),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.bindFlow()
-        vb.mainBanner.setImageBitmap(BitmapFactory.decodeResource(resources, R.drawable.image_onbording))
+        vb.mainBanner.setImageBitmap(BitmapFactory.decodeResource(resources, R.drawable.image_onboarding))
         initListeners()
     }
 
@@ -38,6 +38,6 @@ class MainFragmentView : Fragment(R.layout.fragment_main),
     }
 
     fun render() = observeState { state ->
-        //todo рендер лоадстейта
+        //todo вообще, не уверен, что это нужно здесь, но пока пусть будет
     }
 }

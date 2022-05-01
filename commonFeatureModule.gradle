@@ -7,5 +7,8 @@ dependencies {
         }
     }
 
+    implementation "androidx.core:core-ktx:1.7.0"
+
     implementation project(":base")
+    implementation project(":i_navigation")
 }

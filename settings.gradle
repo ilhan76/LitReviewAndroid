@@ -2,5 +2,10 @@ apply from: 'config.gradle'
 
 include ':app',
         ':base',
-        ':f-splash',
-        ':f_auth'
+        ':f_start',
+        ':f_auth',
+        ':i_auth',
+        ':f_main'
+include ':mylibrary'
+include ':f_book_detail'
+include ':i_navigation'

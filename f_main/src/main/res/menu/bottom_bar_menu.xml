@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/feedFragmentView"
+        android:icon="@drawable/ic_bottom_menu_feed"
+        android:title="" />
+    <item android:id="@+id/searchFragmentView"
+        android:icon="@drawable/ic_bottom_menu_search"
+        android:title=""/>
+    <item android:id="@+id/chatsFragmentView"
+        android:icon="@drawable/ic_bottom_menu_chat"
+        android:title=""/>
+    <item android:id="@+id/profileFragmentView"
+        android:icon="@drawable/ic_bottom_menu_profile"
+        android:title=""/>
+</menu>

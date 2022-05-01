@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_nav_graph"
+    app:startDestination="@id/mainFlowFragment">
+
+    <fragment
+        android:id="@+id/mainFlowFragment"
+        android:name="com.litreview.f_start.main_screen.MainFragmentView"
+        android:label="MainFlowFragment">
+        <action
+            android:id="@+id/action_mainFlowFragment_to_authFragmentView"
+            app:destination="@id/authFragmentView" />
+        <action
+            android:id="@+id/action_mainFlowFragment_to_registerFragmentView"
+            app:destination="@id/registerFragmentView" />
+    </fragment>
+    <fragment
+        android:id="@+id/authFragmentView"
+        android:name="com.litreview.f_auth.AuthFragmentView"
+        android:label="AuthFragmentView">
+        <action
+            android:id="@+id/action_authFragmentView_to_mainFlowFragment"
+            app:destination="@id/mainFlowFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_authFragmentView_to_mainFlowFragmentView"
+            app:destination="@id/mainFlowFragmentView" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragmentView"
+        android:name="com.litreview.f_auth.register.RegisterFragmentView"
+        android:label="RegisterFragmentView">
+        <action
+            android:id="@+id/action_registerFragmentView_to_mainFlowFragment"
+            app:destination="@id/mainFlowFragment" />
+        <action
+            android:id="@+id/action_registerFragmentView_to_authFragmentView"
+            app:destination="@id/authFragmentView" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFlowFragmentView"
+        android:name="com.litreview.f_main.MainFlowFragmentView"
+        android:label="MainFlowFragmentView" />
+</navigation>

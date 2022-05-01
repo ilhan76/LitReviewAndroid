@@ -12,4 +12,7 @@
 
     <color name="colorError">@color/red_error</color>
 
+    <color name="searchViewColor">#26C4C4C4</color>
+    <color name="searchViewIconColor">#C4C4C4</color>
+
 </resources>

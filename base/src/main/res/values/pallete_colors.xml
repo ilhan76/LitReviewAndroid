@@ -4,6 +4,7 @@
     <!-- При использовании цветов с opacity (непрозрачностью) пользуйтесь этой таблицей
     https://bit.ly/32eftnA  -->
     <color name="red">#D45555</color>
+    <color name="pale_red">#D17474</color>
     <color name="red_error">#870A0A</color>
 
     <color name="black_alpha_35">#59000000</color>

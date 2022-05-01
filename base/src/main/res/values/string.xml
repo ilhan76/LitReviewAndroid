@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--region Common-->
+    <string name="stub_content_description">stubContentDescription</string>
+    <!--endregion-->
+
     <!--  region MainFragmentView  -->
     <string name="main_title_text">Читайте рецензии</string>
     <string name="main_description_text">Все обзоры в одном приложении, пишите\nили читайте рецензии других</string>
@@ -19,7 +23,7 @@
     <string name="register_title_text">Регистрация</string>
     <string name="register_name_hint">Имя</string>
     <string name="register_second_name_hint">Фамилия</string>
-    <string name="register_email_hint">Фамилия</string>
+    <string name="register_email_hint">E-mail</string>
     <string name="register_pass_hint">Пароль</string>
     <string name="register_pass_text_confirmation_hint">Повторите пароль</string>
     <string name="register_sign_up_btn_text">Зарегистрироваться</string>

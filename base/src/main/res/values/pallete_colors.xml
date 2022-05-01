@@ -8,6 +8,7 @@
     <color name="red_error">#870A0A</color>
 
     <color name="milk">#F7F7F7</color>
+
     <color name="black_alpha_35">#59000000</color>
     <color name="black_alpha_24">#3D000000</color>
     <color name="black_alpha_24_noop">#C2C2C2</color>
@@ -24,9 +25,10 @@
     <color name="gray_100">#E1E3E6</color>
     <color name="gray_050">#EBEDF0</color>
     <color name="gray_040">#F2F3F5</color>
-    <color name="white">#FFFFFF</color>
     <color name="white_90">#E6FFFFFF</color>
     <color name="white_80">#CCFFFFFF</color>
     <color name="white_50">#80FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
     <color name="transparent">#00FFFFFF</color>
 </resources>

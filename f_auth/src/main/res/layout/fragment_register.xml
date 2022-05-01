@@ -18,6 +18,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_til_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -33,6 +34,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_til_second_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -48,6 +50,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_til_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -63,6 +66,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -78,6 +82,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_til_password_confirmation"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -93,6 +98,7 @@
 
         <Button
             android:id="@+id/register_btn"
+            style="@style/Button.Main.Big"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="70dp"

@@ -38,6 +38,6 @@ class MainFragmentView : Fragment(R.layout.fragment_main),
     }
 
     fun render() = observeState { state ->
-        //todo рендер лоадстейта
+        //todo вообще, не уверен, что это нужно здесь, но пока пусть будет
     }
 }

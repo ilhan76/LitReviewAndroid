@@ -77,6 +77,10 @@
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
+    <style name="Base.18.Regular.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="Base.18.Medium">
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
@@ -119,6 +123,11 @@
 
     <style name="Base.14.Bold">
         <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="Base.14.Bold.White">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/white</item>
     </style>
     <!-- endregion -->
 

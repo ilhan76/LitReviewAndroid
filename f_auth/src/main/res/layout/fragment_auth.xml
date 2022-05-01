@@ -11,9 +11,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/auth_til_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintBottom_toTopOf="@+id/auth_til_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +32,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/auth_til_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -37,13 +40,15 @@
         app:layout_constraintBottom_toTopOf="@id/auth_btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auth_til_email">
+        app:layout_constraintTop_toBottomOf="@+id/auth_til_email"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/auth_tiet_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/auth_pass_hint" />
+            android:hint="@string/auth_pass_hint"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +60,6 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/auth_sign_in_btn_text"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/auth_til_password" />

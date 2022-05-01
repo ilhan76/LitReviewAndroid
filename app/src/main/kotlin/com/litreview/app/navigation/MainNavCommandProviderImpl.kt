@@ -6,8 +6,12 @@ import com.litreview.i_navigation.providers.MainNavCommandProvider
 import javax.inject.Inject
 
 class MainNavCommandProviderImpl @Inject constructor() : MainNavCommandProvider {
+
+    private val currentDestination = R.id.mainFragment
+
     override val toAuth: NavCommand
-        get() = NavCommand(R.id.action_mainFlowFragment_to_authFragmentView)
+        get() = NavCommand(R.id.action_mainFlowFragment_to_authFragmentView, currentDestination)
+
     override val toRegister: NavCommand
-        get() = NavCommand(R.id.action_mainFlowFragment_to_registerFragmentView)
+        get() = NavCommand(R.id.action_mainFlowFragment_to_registerFragmentView, currentDestination)
 }

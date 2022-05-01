@@ -5,11 +5,13 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 
 fun NavController.open(navCommand: NavCommand) {
-    navigate(
-        navCommand.action,
-        navCommand.args,
-        navCommand.navOptions
-    )
+    if (currentDestination?.id == navCommand.currentDestination){
+        navigate(
+            navCommand.action,
+            navCommand.args,
+            navCommand.navOptions
+        )
+    }
 }
 
 fun Fragment.findNavControllerSafely(): NavController? {

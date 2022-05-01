@@ -2,18 +2,20 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/app_nav_graph"
-    app:startDestination="@id/mainFlowFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/mainFlowFragment"
+        android:id="@+id/mainFragment"
         android:name="com.litreview.f_start.main_screen.MainFragmentView"
         android:label="MainFlowFragment">
         <action
             android:id="@+id/action_mainFlowFragment_to_authFragmentView"
-            app:destination="@id/authFragmentView" />
+            app:destination="@id/authFragmentView"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_mainFlowFragment_to_registerFragmentView"
-            app:destination="@id/registerFragmentView" />
+            app:destination="@id/registerFragmentView"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/authFragmentView"
@@ -21,11 +23,13 @@
         android:label="AuthFragmentView">
         <action
             android:id="@+id/action_authFragmentView_to_mainFlowFragment"
-            app:destination="@id/mainFlowFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/mainFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_authFragmentView_to_mainFlowFragmentView"
-            app:destination="@id/mainFlowFragmentView" />
+            app:destination="@id/mainFlowFragmentView"
+            app:popUpTo="@id/app_nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -34,7 +38,8 @@
         android:label="RegisterFragmentView">
         <action
             android:id="@+id/action_registerFragmentView_to_mainFlowFragment"
-            app:destination="@id/mainFlowFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_registerFragmentView_to_authFragmentView"
             app:destination="@id/authFragmentView" />

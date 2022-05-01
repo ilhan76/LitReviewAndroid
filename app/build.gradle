@@ -51,6 +51,7 @@ apply from: '../keystore/signingConfigs.gradle'
 apply from: '../buildTypes.gradle'
 apply from: '../commonAndroidDefaultConfig.gradle'
 apply from: '../androidTestConfiguration.gradle'
+apply from: '../commonKaptModule.gradle'
 
 android {
 
@@ -71,13 +72,22 @@ android {
 }
 
 dependencies {
-    implementation project(":f-splash")
+    implementation project(':base')
+    implementation project(':i_navigation')
+    implementation project(':f_start')
+    implementation project(':f_auth')
+    implementation project(':f_main')
+    implementation project(':f_book_detail')
 
     implementation lang.kotlinStdLib
     implementation lang.jetbrainsAnnotations
 
     implementation androidX.annotation
     implementation androidX.appcompat
+
+    // MVI
+    implementation 'ru.surfstudio.mvi:mvi-core:0.0.8'
+    implementation 'ru.surfstudio.mvi:mvi-mappers:0.0.8'
 }
 
 configurations.all {

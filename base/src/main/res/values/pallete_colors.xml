@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Палитра цветов с именами на основе UI-Kit Figma. -->
+    <!-- При использовании цветов с opacity (непрозрачностью) пользуйтесь этой таблицей
+    https://bit.ly/32eftnA  -->
+    <color name="red">#D45555</color>
+    <color name="red_error">#870A0A</color>
+
+    <color name="black_alpha_35">#59000000</color>
+    <color name="black_alpha_24">#3D000000</color>
+    <color name="black_alpha_24_noop">#C2C2C2</color>
+    <color name="black_brown">#202020</color>
+    <color name="black">#000000</color>
+
+    <color name="steel_gray_500">#6D7885</color>
+    <color name="steel_gray_400">#818C99</color>
+    <color name="steel_gray_300">#99A2AD</color>
+    <color name="steel_gray_200">#AEB7C2</color>
+    <color name="steel_gray_150">#B8C1CC</color>
+    <color name="steel_gray_100">#E1E3E6</color>
+
+    <color name="gray_100">#E1E3E6</color>
+    <color name="gray_050">#EBEDF0</color>
+    <color name="gray_040">#F2F3F5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_90">#E6FFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+</resources>

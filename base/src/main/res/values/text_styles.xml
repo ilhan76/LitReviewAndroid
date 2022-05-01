@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- region base text styles -->
+    <style name="Base.26">
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="Base.24">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Base.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Base.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Base.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Base.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Base.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- endregion -->
+
+    <!-- region 26 -->
+    <style name="Base.26.Medium">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region 24 -->
+    <style name="Base.24.Medium">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="Base.24.Bold">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="Base.24.Black">
+        <item name="android:fontFamily">@font/poppins_black</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region 20 -->
+    <style name="Base.20.Regular">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Base.20.Medium">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="Base.20.Bold">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region 18 -->
+    <style name="Base.18.Regular">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Base.18.Medium">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="Base.18.Bold">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region 16 -->
+    <style name="Base.16.Regular">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Base.16.Medium">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="Base.16.Bold">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region 14 -->
+    <style name="Base.14.Regular">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Base.14.Medium">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="Base.14.Bold">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region 12 -->
+    <style name="Base.12.Regular">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Base.12.Medium">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="Base.12.Bold">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+    <!-- endregion -->
+
+</resources>

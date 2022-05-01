@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Button" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/big_button_height</item>
+        <item name="android:paddingStart">@dimen/default_padding</item>
+        <item name="android:paddingEnd">@dimen/default_padding</item>
+    </style>
+
+<!--    <style name="Button.Main">
+        <item name="android:textColor">@color/selector_button_text_main</item>
+        <item name="android:background">@drawable/selector_button_main</item>
+    </style>
+
+    <style name="Button.Main.Medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:minWidth">@dimen/medium_button_width</item>
+        <item name="android:minHeight">@dimen/medium_button_height</item>
+    </style>
+
+    <style name="Button.Main.Small">
+        <item name="android:textSize">14sp</item>
+        <item name="android:minWidth">@dimen/small_button_width</item>
+        <item name="android:minHeight">@dimen/small_button_height</item>
+    </style>
+
+    <style name="Button.Borderless">
+        <item name="android:textColor">@color/selector_accent_color</item>
+        <item name="android:background">@drawable/selector_button_borderless</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+    </style>-->
+
+</resources>

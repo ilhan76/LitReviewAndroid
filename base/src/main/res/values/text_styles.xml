@@ -109,6 +109,10 @@
         <item name="android:textColor">@color/steel_gray_400</item>
     </style>
 
+    <style name="Base.14.Regular.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="Base.14.Medium">
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>

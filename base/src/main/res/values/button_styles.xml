@@ -10,18 +10,19 @@
     </style>
 
     <style name="Button.Main">
-        <item name="android:textColor">@color/selector_button_text_main</item>
         <item name="android:background">@drawable/selector_button_main</item>
     </style>
 
     <style name="Button.Main.Big">
         <item name="android:textSize">14sp</item>
+        <item name="android:textAppearance">@style/Base.14.Regular.White</item>
         <item name="android:minWidth">@dimen/big_button_width</item>
         <item name="android:minHeight">@dimen/big_button_height</item>
     </style>
 
     <style name="Button.Main.Small">
         <item name="android:textSize">14sp</item>
+        <item name="android:textAppearance">@style/Base.14.Regular.White</item>
         <item name="android:minWidth">@dimen/small_button_width</item>
         <item name="android:minHeight">@dimen/small_button_height</item>
     </style>

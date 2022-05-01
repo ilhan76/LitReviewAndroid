@@ -1,5 +1,6 @@
 package com.litreview.f_start.main_screen
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -23,6 +24,7 @@ class MainFragmentView : Fragment(R.layout.fragment_main),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.bindFlow()
+        vb.mainBanner.setImageBitmap(BitmapFactory.decodeResource(resources, R.drawable.image_onboarding))
         initListeners()
     }
 

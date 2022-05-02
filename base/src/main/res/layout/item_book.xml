@@ -14,7 +14,7 @@
         app:cardCornerRadius="20dp">
 
         <ImageView
-            android:id="@+id/moviePoster"
+            android:id="@+id/item_bool_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/stub_content_description"
@@ -33,6 +33,7 @@
         tools:text="Cather in the Rye" />
 
     <TextView
+        android:id="@+id/item_book_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/Base.14.Regular.Steel_Gray_400"

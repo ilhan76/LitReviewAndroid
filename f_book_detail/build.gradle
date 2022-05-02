@@ -1,2 +1,2 @@
-apply from: '../commonModule.gradle'
+apply from: '../commonFeatureModule.gradle'
 apply from: '../commonKaptModule.gradle'

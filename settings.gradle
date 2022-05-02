@@ -8,4 +8,7 @@ include ':app',
         ':f_main',
         ':f_book_detail',
         ':i_navigation',
-        ':f_feed'
+        ':f_feed',
+        ':f_search',
+        ':f_profile',
+        ':f_chats'

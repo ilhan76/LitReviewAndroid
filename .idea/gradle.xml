@@ -14,8 +14,11 @@
             <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/f_auth" />
             <option value="$PROJECT_DIR$/f_book_detail" />
+            <option value="$PROJECT_DIR$/f_chats" />
             <option value="$PROJECT_DIR$/f_feed" />
             <option value="$PROJECT_DIR$/f_main" />
+            <option value="$PROJECT_DIR$/f_profile" />
+            <option value="$PROJECT_DIR$/f_search" />
             <option value="$PROJECT_DIR$/f_start" />
             <option value="$PROJECT_DIR$/i_auth" />
             <option value="$PROJECT_DIR$/i_navigation" />

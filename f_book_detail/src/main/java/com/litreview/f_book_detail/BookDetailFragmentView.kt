@@ -12,6 +12,11 @@ class BookDetailFragmentView : Fragment(R.layout.fragment_book_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vb.detailToolbar.toolbar.inflateMenu(com.litreview.base.R.menu.favorite_menu)
+        initToolbar()
+    }
+
+    private fun initToolbar() = with(vb.detailToolbar.toolbar) {
+        inflateMenu(com.litreview.base.R.menu.favorite_menu)
+        setNavigationOnClickListener { requireActivity().onBackPressed() }
     }
 }

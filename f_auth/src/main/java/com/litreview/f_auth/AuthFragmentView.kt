@@ -28,7 +28,8 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth), MviStatefulView<AuthS
     private fun initToolbar() = with(vb.authToolbar.toolbar) {
         title = getString(com.litreview.base.R.string.auth_title_text)
         setNavigationOnClickListener {
-            emit(BackPressed(findNavControllerSafely()))
+//            emit(BackPressed(findNavControllerSafely()))
+            requireActivity().onBackPressed()
         }
     }
 

@@ -11,13 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/Base.16.Regular"
-        tools:text="Добро подаловать, %s" />
+        tools:text="Добро подаловать, Иван!" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Что планируете \nпочитать сегодня?"
+        android:text="@string/feed_title_text"
         android:textAppearance="@style/Base.26.Medium" />
 
 </LinearLayout>

@@ -23,7 +23,7 @@
         <entry key="f_auth/src/main/res/layout/fragment_register.xml" value="0.33" />
         <entry key="f_auth/src/main/res/layout/some_fragment.xml" value="0.35520833333333335" />
         <entry key="f_book_detail/src/main/res/layout/fragment_book_detail.xml" value="0.25" />
-        <entry key="f_chats/src/main/res/layout/fragment_chats.xml" value="0.35520833333333335" />
+        <entry key="f_chats/src/main/res/layout/fragment_chats.xml" value="0.33" />
         <entry key="f_feed/src/main/res/layout/fragment_feed.xml" value="0.2484375" />
         <entry key="f_feed/src/main/res/layout/item_feed_header.xml" value="0.33" />
         <entry key="f_feed/src/main/res/layout/item_feed_offers.xml" value="0.26458333333333334" />

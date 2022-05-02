@@ -18,5 +18,6 @@ class BookDetailFragmentView : Fragment(R.layout.fragment_book_detail) {
     private fun initToolbar() = with(vb.detailToolbar.toolbar) {
         inflateMenu(com.litreview.base.R.menu.favorite_menu)
         setNavigationOnClickListener { requireActivity().onBackPressed() }
+        setNavigationIcon(com.litreview.base.R.drawable.ic_back)
     }
 }

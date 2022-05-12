@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <include
-            android:id="@+id/toolbar"
+            android:id="@+id/register_toolbar"
             layout="@layout/layout_toolbar" />
 
         <com.google.android.material.textfield.TextInputLayout

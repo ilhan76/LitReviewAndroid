@@ -5,18 +5,18 @@
     app:startDestination="@id/feedFragmentView">
     <fragment
         android:id="@+id/feedFragmentView"
-        android:name="com.litreview.f_main.framents.FeedFragmentView"
+        android:name="com.litreview.f_feed.FeedFragmentView"
         android:label="FeedFragmentView" />
     <fragment
         android:id="@+id/searchFragmentView"
-        android:name="com.litreview.f_main.framents.SearchFragmentView"
+        android:name="com.litreview.f_search.SearchFragmentView"
         android:label="SearchFragmentView" />
     <fragment
         android:id="@+id/chatsFragmentView"
-        android:name="com.litreview.f_main.framents.ChatsFragmentView"
+        android:name="com.litreview.f_chats.ChatsFragmentView"
         android:label="ChatsFragmentView" />
     <fragment
         android:id="@+id/profileFragmentView"
-        android:name="com.litreview.f_main.framents.ProfileFragmentView"
+        android:name="com.litreview.f_profile.ProfileFragmentView"
         android:label="ProfileFragmentView" />
 </navigation>

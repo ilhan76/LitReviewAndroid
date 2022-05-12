@@ -13,19 +13,52 @@
     <!--  endregion  -->
 
     <!-- region AuthFragmentView  -->
-    <string name="auth_title_text">Вход</string>
+    <string name="auth_toolbar_text">Вход</string>
     <string name="auth_email_hint">E-mail</string>
     <string name="auth_pass_hint">Пароль</string>
     <string name="auth_sign_in_btn_text">Войти</string>
     <!--  endregion  -->
 
     <!--  region RegisterFragmentView  -->
-    <string name="register_title_text">Регистрация</string>
+    <string name="register_toolbar_text">Регистрация</string>
     <string name="register_name_hint">Имя</string>
     <string name="register_second_name_hint">Фамилия</string>
     <string name="register_email_hint">E-mail</string>
     <string name="register_pass_hint">Пароль</string>
     <string name="register_pass_text_confirmation_hint">Повторите пароль</string>
     <string name="register_sign_up_btn_text">Зарегистрироваться</string>
+    <!--  endregion  -->
+
+    <!--  region FeedFragmentView  -->
+    <string name="feed_hello_title_text">Добро пожаловать, %s</string>
+    <string name="feed_title_text">Что планируете \nпочитать сегодня?</string>
+    <string name="feed_sv_hint_text">Поиск</string>
+    <!--  endregion  -->
+
+    <!--  region SearchFragmentView  -->
+    <string name="search_sv_hint_text">Поиск</string>
+    <!--  endregion  -->
+
+    <!--  region ChatsFragmentView  -->
+    <string name="chats_toolbar_text">Клубы</string>
+    <string name="chats_tab_all">Все</string>
+    <string name="chats_tab_my">Мои</string>
+    <!--  endregion  -->
+
+    <!--  region ProfileFragmentView  -->
+    <string name="profile_toolbar_title">Личный кабинет</string>
+    <string name="profile_item_review">Мои рецензии</string>
+    <string name="profile_item_to_reed">К прочтению</string>
+    <string name="profile_btn_logout">Выйти</string>
+    <!--  endregion  -->
+
+    <!--  region ChangePersonalData  -->
+    <string name="change_personal_data_toolbar_text">Изменить данные</string>
+    <string name="change_personal_data_name_hint">Имя</string>
+    <string name="change_personal_data_second_name_hint">Фамилия</string>
+    <string name="change_personal_data_email_hint">E-mail</string>
+    <string name="change_personal_data_pass_hint">Пароль</string>
+    <string name="change_personal_data_confirm_new_pass_hint">Подтвердите пароль</string>
+    <string name="change_personal_data_btn_save">Сохранить</string>
     <!--  endregion  -->
 </resources>

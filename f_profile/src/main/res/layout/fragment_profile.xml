@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/profile_toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile_avatar_card_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profile_toolbar">
+
+        <ImageView
+            android:id="@+id/profile_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/stub_content_description"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textAppearance="@style/Base.18.Bold"
+        app:layout_constraintEnd_toStartOf="@+id/profile_change_personal_data"
+        app:layout_constraintStart_toEndOf="@+id/profile_avatar_card_view"
+        app:layout_constraintTop_toTopOf="@+id/profile_avatar_card_view"
+        tools:text="Наталья Морозова" />
+
+    <TextView
+        android:id="@+id/profile_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:textAppearance="@style/Base.12.Regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profile_avatar_card_view"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name"
+        tools:text="Trust your feelings , be a good human beings" />
+
+    <ImageView
+        android:id="@+id/profile_change_personal_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/stub_content_description"
+        android:padding="5dp"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="20dp"
+        android:background="@color/dividerViewColor"
+        app:layout_constraintTop_toBottomOf="@+id/profile_avatar_card_view" />
+
+    <LinearLayout
+        android:id="@+id/profile_my_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_button_borderless"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/stub_content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_my_reviews"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_weight="10"
+            android:text="@string/profile_item_review"
+            android:textAppearance="@style/Base.14.Regular.Steel_Gray_400" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/stub_content_description"
+            android:src="@drawable/ic_arrow" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/profile_cv_my_review"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_my_review"
+        app:layout_constraintTop_toTopOf="@+id/profile_my_review" />
+
+    <LinearLayout
+        android:id="@+id/profile_to_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/profile_my_review">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/stub_content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_bookmark_filled"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_weight="10"
+            android:text="@string/profile_item_to_reed"
+            android:textAppearance="@style/Base.14.Regular.Steel_Gray_400" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/stub_content_description"
+            android:src="@drawable/ic_arrow" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/profile_cv_review"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/selectableItemBackground"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_to_review"
+        app:layout_constraintTop_toTopOf="@+id/profile_to_review" />
+
+    <Button
+        style="@style/Button.Main.Big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/profile_btn_logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

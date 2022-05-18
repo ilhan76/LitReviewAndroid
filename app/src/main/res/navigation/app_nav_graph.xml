@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/authFragmentView"
-        android:name="com.litreview.f_auth.AuthFragmentView"
+        android:name="com.litreview.f_auth.auth.AuthFragmentView"
         android:label="AuthFragmentView">
         <action
             android:id="@+id/action_authFragmentView_to_mainFlowFragment"

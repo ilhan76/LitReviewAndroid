@@ -71,6 +71,8 @@
         android:background="@color/dividerViewColor"
         app:layout_constraintTop_toBottomOf="@+id/profile_avatar_card_view" />
 
+    <!--todo заменить это безобразие на использование изи адаптера-->
+
     <LinearLayout
         android:id="@+id/profile_my_review"
         android:layout_width="match_parent"

@@ -1,7 +1,7 @@
 package com.litreview.app.di
 
-import com.litreview.f_auth.AuthFragmentEvent
-import com.litreview.f_auth.AuthFragmentMiddleware
+import com.litreview.f_auth.auth.AuthFragmentEvent
+import com.litreview.f_auth.auth.AuthFragmentMiddleware
 import com.litreview.f_start.main_screen.MainFragmentEvent
 import com.litreview.f_start.main_screen.MainFragmentMiddleware
 import dagger.Binds
@@ -15,12 +15,12 @@ import ru.surfstudio.mvi.flow.DslFlowMiddleware
 interface MiddlewareBindModule {
 
     @Binds
-    fun bindDslFlowMiddleware_to_AuthMeddleware(
+    fun bindDslFlowMiddlewareToAuthMiddleware(
         authFragmentMiddleware: AuthFragmentMiddleware
     ): DslFlowMiddleware<AuthFragmentEvent>
 
     @Binds
-    fun bindDslFlowMiddleware_to_MainMeddleware(
+    fun bindDslFlowMiddlewareToMainMiddleware(
         mainFragmentMiddleware: MainFragmentMiddleware
     ): DslFlowMiddleware<MainFragmentEvent>
 }

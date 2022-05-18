@@ -1,13 +1,11 @@
-package com.litreview.f_auth
+package com.litreview.f_auth.auth
 
-import androidx.navigation.NavController
 import ru.surfstudio.mvi.core.event.Event
 
 sealed class AuthFragmentEvent : Event {
 
-    data class BackPressed(
-        val navController: NavController?
-    ) : AuthFragmentEvent()
+    object BackPressed: AuthFragmentEvent()
+    object LoginClickedEvent : AuthFragmentEvent()
 
     data class EmailChangedEvent(
         val email: String
@@ -17,7 +15,8 @@ sealed class AuthFragmentEvent : Event {
         val password: String
     ): AuthFragmentEvent()
 
-    data class LoginClickedEvent(
-        val navController: NavController?
+    data class Validation(
+        val email: String,
+        val password: String
     ) : AuthFragmentEvent()
 }

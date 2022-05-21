@@ -1,6 +1,7 @@
-package com.litreview.base.storage
+package com.litreview.i_token
 
-import com.litreview.base.data.TokenInfo
+import com.litreview.base.data.domain.TokenInfo
+import com.litreview.base.storage.Storage
 
 private const val KEY_ACCESS_TOKEN = "FB2671MKN67284UH3NIS284699E161"
 

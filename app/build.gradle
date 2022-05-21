@@ -40,6 +40,7 @@ dependencies {
     implementation project(':f_book_detail')
     implementation project(':i_navigation')
     implementation project(':i_network')
+    implementation project(':i_auth')
 
     implementation lang.kotlinStdLib
     implementation lang.jetbrainsAnnotations

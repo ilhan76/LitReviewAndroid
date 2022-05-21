@@ -6,6 +6,8 @@ import com.litreview.BuildConfig
 import com.litreview.i_network.Urls
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,6 +18,7 @@ import javax.inject.Singleton
 
 private const val NETWORK_TIMEOUT = 30L // sec
 
+@InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
 

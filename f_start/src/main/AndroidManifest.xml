@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.litreview.f_start">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application android:name="com.litreview.base.App">
         <activity
             android:theme="@style/Theme.LitReview"

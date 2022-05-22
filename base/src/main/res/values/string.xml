@@ -5,6 +5,12 @@
     <string name="stub_content_description">stubContentDescription</string>
     <!--endregion-->
 
+    <!--region Validation error message-->
+    <string name="validation_failure_empty">Это поле не должно быть пустым</string>
+    <string name="validation_failure_bad_email">Некорректный формат почты</string>
+    <string name="validation_failure_bad_password">Некорректный формат пароля</string>
+    <!--endregion-->
+
     <!--  region MainFragmentView  -->
     <string name="main_title_text">Читайте рецензии</string>
     <string name="main_description_text">Все обзоры в одном приложении, пишите\nили читайте рецензии других</string>

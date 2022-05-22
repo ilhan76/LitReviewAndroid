@@ -39,6 +39,8 @@ dependencies {
     implementation project(':f_profile')
     implementation project(':f_book_detail')
     implementation project(':i_navigation')
+    implementation project(':i_network')
+    implementation project(':i_auth')
 
     implementation lang.kotlinStdLib
     implementation lang.jetbrainsAnnotations
@@ -49,6 +51,17 @@ dependencies {
     // MVI
     implementation 'ru.surfstudio.mvi:mvi-core:0.0.8'
     implementation 'ru.surfstudio.mvi:mvi-mappers:0.0.8'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // okhttp
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
+
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
 }
 
 configurations.all {

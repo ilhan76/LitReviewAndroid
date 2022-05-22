@@ -8,6 +8,8 @@ import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.base.ui.SimpleTextWatcher
+import com.litreview.base.validation.getErrorMessage
+import com.litreview.base.validation.isFailure
 import com.litreview.f_auth.R
 import com.litreview.f_auth.auth.AuthFragmentEvent.*
 import com.litreview.f_auth.databinding.FragmentAuthBinding
@@ -32,6 +34,17 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth),
         initToolbar()
         initListeners()
         bind()
+        observeState { render(it) }
+    }
+
+    private fun render(state: AuthState) {
+        if (state.emailValidationResult?.isFailure() == true) {
+            vb.authTilEmail.error = getString(state.emailValidationResult.getErrorMessage())
+        }
+
+        if (state.passwordValidationResult?.isFailure() == true) {
+            vb.authTilPassword.error = getString(state.passwordValidationResult.getErrorMessage())
+        }
     }
 
     private fun initToolbar() = with(vb.authToolbar.toolbar) {
@@ -58,16 +71,6 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth),
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             ch.openScreen.flow.collect {
                 findNavControllerSafely()?.open(navCommand = it)
-            }
-        }
-        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            ch.showEmailValidationError.flow.collect {
-                vb.authTilEmail.error = getString(it)
-            }
-        }
-        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            ch.showPasswordValidationError.flow.collect {
-                vb.authTilPassword.error = getString(it)
             }
         }
     }

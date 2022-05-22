@@ -1,12 +1,17 @@
 package com.litreview.base.validation
 
-sealed class ValidationResult {
+sealed class ValidationResult(
+    open val fieldType: ValidationFieldType
+) {
 
-    object Success : ValidationResult()
+    data class Success(
+        override val fieldType: ValidationFieldType
+    ) : ValidationResult(fieldType)
 
     data class Failure(
+        override val fieldType: ValidationFieldType,
         val messageRes: Int
-    ) : ValidationResult()
+    ) : ValidationResult(fieldType)
 
 }
 
@@ -15,3 +20,7 @@ fun ValidationResult.getErrorMessage(): Int {
         this.messageRes
     } else -1
 }
+
+fun ValidationResult.isSuccessful() = this is ValidationResult.Success
+
+fun ValidationResult.isFailure() = this is ValidationResult.Failure

@@ -1,6 +1,5 @@
 package com.litreview.f_auth.auth
 
-import com.litreview.base.mvi.Request
 import com.litreview.base.validation.ValidationRequest
 import com.litreview.base.validation.ValidationResult
 import com.litreview.base.validation.ValidationResultEvent

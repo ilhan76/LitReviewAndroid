@@ -1,6 +1,7 @@
 package com.litreview.app.di
 
 import com.litreview.f_auth.auth.AuthState
+import com.litreview.f_auth.register.RegisterState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +17,11 @@ class StateModule {
     @Singleton
     fun provideAuthFlowState(): FlowState<AuthState> {
         return FlowState(AuthState())
+    }
+
+    @Provides
+    @Singleton
+    fun provideRegisterFlowState(): FlowState<RegisterState> {
+        return FlowState(RegisterState())
     }
 }

@@ -10,9 +10,8 @@ import com.google.android.material.textfield.TextInputLayout
 import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.base.ui.SimpleTextWatcher
 import com.litreview.base.ui.showSnack
-import com.litreview.base.validation.getErrorMessageRes
+import com.litreview.base.util.Args
 import com.litreview.base.validation.getErrorMessageResOrNull
-import com.litreview.base.validation.isFailure
 import com.litreview.f_auth.R
 import com.litreview.f_auth.auth.AuthFragmentEvent.*
 import com.litreview.f_auth.databinding.FragmentAuthBinding
@@ -37,7 +36,12 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth),
         initToolbar()
         initListeners()
         bind()
+        initViews()
         observeState { render(it) }
+    }
+
+    private fun initViews() {
+        vb.authTietEmail.setText(arguments?.getString(Args.EXTRA_FIRST).orEmpty())
     }
 
     private fun initToolbar() = with(vb.authToolbar.toolbar) {

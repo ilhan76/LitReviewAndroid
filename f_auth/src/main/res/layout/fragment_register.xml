@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -33,7 +34,8 @@
                     android:id="@+id/register_tiet_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/register_name_hint" />
+                    android:hint="@string/register_name_hint"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +51,8 @@
                     android:id="@+id/register_tiet_second_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/register_second_name_hint" />
+                    android:hint="@string/register_second_name_hint"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,7 +68,8 @@
                     android:id="@+id/register_tiet_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/register_email_hint" />
+                    android:hint="@string/register_email_hint"
+                    android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,13 +79,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="26dp">
+                android:layout_marginTop="26dp"
+                app:errorIconDrawable="@null">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/register_pass_hint" />
+                    android:hint="@string/register_pass_hint"
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,7 +103,8 @@
                     android:id="@+id/register_tiet_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/register_phone_hint" />
+                    android:hint="@string/register_phone_hint"
+                    android:inputType="phone" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

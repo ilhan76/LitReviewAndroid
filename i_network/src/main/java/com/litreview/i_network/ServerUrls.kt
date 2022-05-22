@@ -2,7 +2,7 @@ package com.litreview.i_network
 
 object Urls {
 
-    const val LOCAL_API_URL = "http://localhost:5000/api/"
+    const val LOCAL_API_URL = "http://192.168.0.107:5000/"
     const val PROD_API_URL = "" //todo - после разворачивания на хостинге
 
     object Auth {

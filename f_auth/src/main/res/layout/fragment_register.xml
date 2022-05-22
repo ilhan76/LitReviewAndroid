@@ -80,15 +80,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="26dp"
-                app:errorIconDrawable="@null">
+                app:errorIconDrawable="@null"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/register_pass_hint"
-                    android:inputType="textPassword"
-                    app:passwordToggleEnabled="true" />
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

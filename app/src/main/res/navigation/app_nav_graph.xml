@@ -14,7 +14,7 @@
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_mainFlowFragment_to_registerFragmentView"
-            app:destination="@id/bookDetailFragmentView"
+            app:destination="@id/registerFragmentView"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -48,8 +48,4 @@
         android:id="@+id/mainFlowFragmentView"
         android:name="com.litreview.f_main.MainFlowFragmentView"
         android:label="MainFlowFragmentView" />
-    <fragment
-        android:id="@+id/bookDetailFragmentView"
-        android:name="com.litreview.f_book_detail.BookDetailFragmentView"
-        android:label="BookDetailFragmentView" />
 </navigation>

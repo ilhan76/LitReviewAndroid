@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.ui.SimpleTextWatcher
+import com.litreview.base.validation.getErrorMessageRes
+import com.litreview.base.validation.isFailure
 import com.litreview.f_auth.R
 import com.litreview.f_auth.register.RegisterFragmentEvent.*
 import com.litreview.f_auth.databinding.FragmentRegisterBinding
@@ -25,8 +27,10 @@ class RegisterFragmentView : Fragment(R.layout.fragment_register),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.bindFlow()
         initToolbar()
         initListeners()
+        observeState { render(it) }
     }
 
     private fun initToolbar() = with(vb.registerToolbar.toolbar) {
@@ -51,5 +55,36 @@ class RegisterFragmentView : Fragment(R.layout.fragment_register),
         vb.registerTietPhone.addTextChangedListener(SimpleTextWatcher {
             emit(PhoneChangedEvent(it.trim()))
         })
+        vb.registerBtn.setOnClickListener {
+            emit(RegisterBtnClickEvent)
+        }
+    }
+
+    private fun render(state: RegisterState) {
+        vb.registerTilName.error = if (state.nameValidationResult?.isFailure() == true) {
+            getString(state.nameValidationResult.getErrorMessageRes())
+        } else {
+            null
+        }
+        vb.registerTilSecondName.error = if (state.secondNameValidationResult?.isFailure() == true) {
+                getString(state.secondNameValidationResult.getErrorMessageRes())
+        } else {
+            null
+        }
+        vb.registerTilEmail.error = if (state.emailValidationResult?.isFailure() == true) {
+            getString(state.emailValidationResult.getErrorMessageRes())
+        } else {
+            null
+        }
+        vb.tilPassword.error = if (state.passwordValidationResult?.isFailure() == true) {
+            getString(state.passwordValidationResult.getErrorMessageRes())
+        } else {
+             null
+        }
+        vb.registerTilPhone.error = if (state.phoneValidationResult?.isFailure() == true) {
+            getString(state.phoneValidationResult.getErrorMessageRes())
+        } else {
+            null
+        }
     }
 }

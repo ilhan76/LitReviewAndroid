@@ -9,6 +9,7 @@
     <string name="validation_failure_empty">Это поле не должно быть пустым</string>
     <string name="validation_failure_bad_email">Некорректный формат почты</string>
     <string name="validation_failure_bad_password">Некорректный формат пароля</string>
+    <string name="validation_failure_bad_phone">Некорректный формат телефона</string>
     <!--endregion-->
 
     <!--  region MainFragmentView  -->

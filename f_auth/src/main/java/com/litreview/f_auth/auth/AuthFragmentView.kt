@@ -9,7 +9,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.base.ui.SimpleTextWatcher
 import com.litreview.base.ui.showSnack
-import com.litreview.base.validation.getErrorMessage
+import com.litreview.base.validation.getErrorMessageRes
 import com.litreview.base.validation.isFailure
 import com.litreview.f_auth.R
 import com.litreview.f_auth.auth.AuthFragmentEvent.*
@@ -40,11 +40,11 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth),
 
     private fun render(state: AuthState) {
         if (state.emailValidationResult?.isFailure() == true) {
-            vb.authTilEmail.error = getString(state.emailValidationResult.getErrorMessage())
+            vb.authTilEmail.error = getString(state.emailValidationResult.getErrorMessageRes())
         }
 
         if (state.passwordValidationResult?.isFailure() == true) {
-            vb.authTilPassword.error = getString(state.passwordValidationResult.getErrorMessage())
+            vb.authTilPassword.error = getString(state.passwordValidationResult.getErrorMessageRes())
         }
     }
 

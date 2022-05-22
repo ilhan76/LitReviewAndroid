@@ -31,7 +31,7 @@
     <string name="register_second_name_hint">Фамилия</string>
     <string name="register_email_hint">E-mail</string>
     <string name="register_pass_hint">Пароль</string>
-    <string name="register_pass_text_confirmation_hint">Повторите пароль</string>
+    <string name="register_phone_hint">Телефон</string>
     <string name="register_sign_up_btn_text">Зарегистрироваться</string>
     <!--  endregion  -->
 

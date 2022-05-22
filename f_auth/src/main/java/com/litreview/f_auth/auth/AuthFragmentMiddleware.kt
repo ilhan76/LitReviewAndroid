@@ -28,14 +28,32 @@ class AuthFragmentMiddleware @Inject constructor(
     override fun transform(eventStream: Flow<AuthFragmentEvent>): Flow<AuthFragmentEvent> {
         return eventStream.transformations {
             addAll(
-                BackPressed::class react ::handleBackPressed,
-                LoginClickedEvent::class eventToStream ::handleLoginClickedEvent,
-                ValidationEvent.Request::class eventToEvent ::validateFields,
+                LoginClickedEvent::class eventToStream { handleLoginClickedEvent() },
+                ValidationEvent.Request::class eventToEvent ::handleValidationRequest,
                 ValidationEvent.Result::class.filter {
                     it.isSuccessful
-                } react  { login() }
+                } react { login() }
             )
         }
+    }
+
+    private fun handleLoginClickedEvent(): Flow<AuthFragmentEvent> {
+        return flowOf(
+            ValidationEvent.Request(
+                listOf(
+                    ValidationRequest(currentState.email, ValidationFieldType.EMAIL),
+                    ValidationRequest(currentState.password, ValidationFieldType.PASSWORD)
+                )
+            )
+        )
+    }
+
+    private fun handleValidationRequest(event: ValidationEvent.Request): AuthFragmentEvent {
+        return ValidationEvent.Result(
+            event.requests.map {
+                validator.validate(it)
+            }
+        )
     }
 
     private fun login() {
@@ -57,28 +75,5 @@ class AuthFragmentMiddleware @Inject constructor(
                 }
             }
         }
-    }
-
-    private fun validateFields(event: ValidationEvent.Request): AuthFragmentEvent {
-        return ValidationEvent.Result(
-            event.requests.map {
-                validator.validate(it)
-            }
-        )
-    }
-
-    private fun handleLoginClickedEvent(event: LoginClickedEvent): Flow<AuthFragmentEvent> {
-        return flowOf(
-            ValidationEvent.Request(
-                listOf(
-                    ValidationRequest(currentState.email, ValidationFieldType.EMAIL),
-                    ValidationRequest(currentState.password, ValidationFieldType.PASSWORD)
-                )
-            )
-        )
-    }
-
-    private fun handleBackPressed(event: BackPressed) {
-        ch.openScreen.accept(authNavCommandProvider.toMain)
     }
 }

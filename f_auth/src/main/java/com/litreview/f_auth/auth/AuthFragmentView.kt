@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.textfield.TextInputLayout
 import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.base.ui.SimpleTextWatcher
 import com.litreview.base.ui.showSnack
 import com.litreview.base.validation.getErrorMessageRes
+import com.litreview.base.validation.getErrorMessageResOrNull
 import com.litreview.base.validation.isFailure
 import com.litreview.f_auth.R
 import com.litreview.f_auth.auth.AuthFragmentEvent.*
@@ -36,16 +38,6 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth),
         initListeners()
         bind()
         observeState { render(it) }
-    }
-
-    private fun render(state: AuthState) {
-        if (state.emailValidationResult?.isFailure() == true) {
-            vb.authTilEmail.error = getString(state.emailValidationResult.getErrorMessageRes())
-        }
-
-        if (state.passwordValidationResult?.isFailure() == true) {
-            vb.authTilPassword.error = getString(state.passwordValidationResult.getErrorMessageRes())
-        }
     }
 
     private fun initToolbar() = with(vb.authToolbar.toolbar) {
@@ -82,6 +74,19 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth),
                     vb.authToolbar.toolbar.height
                 )
             }
+        }
+    }
+
+    private fun render(state: AuthState) {
+        vb.authTilEmail.trySetError(state.emailValidationResult?.getErrorMessageResOrNull())
+        vb.authTilPassword.trySetError(state.passwordValidationResult?.getErrorMessageResOrNull())
+    }
+
+    private fun TextInputLayout.trySetError(messageRes: Int?) {
+        this.error = if (messageRes != null) {
+            getString(messageRes)
+        } else {
+            null
         }
     }
 }

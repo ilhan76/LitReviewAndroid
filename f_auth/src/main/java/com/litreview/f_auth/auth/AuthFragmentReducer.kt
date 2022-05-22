@@ -27,29 +27,11 @@ class AuthFragmentReducer @Inject constructor() : Reducer<AuthFragmentEvent, Aut
 
     override fun reduce(state: AuthState, event: AuthFragmentEvent): AuthState {
         return when (event) {
-            is EmailChangedEvent -> onEmailChangedEvent(event, state)
-            is PasswordChangedEvent -> onPasswordChangedEvent(event, state)
+            is EmailChangedEvent -> state.copy(email = event.email)
+            is PasswordChangedEvent -> state.copy(password = event.password)
             is ValidationEvent.Result -> onValidationResult(event, state)
             else -> state
         }
-    }
-
-    private fun onEmailChangedEvent(
-        event: EmailChangedEvent,
-        state: AuthState
-    ): AuthState {
-        return state.copy(
-            email = event.email
-        )
-    }
-
-    private fun onPasswordChangedEvent(
-        event: PasswordChangedEvent,
-        state: AuthState
-    ): AuthState {
-        return state.copy(
-            password = event.password
-        )
     }
 
     private fun onValidationResult(

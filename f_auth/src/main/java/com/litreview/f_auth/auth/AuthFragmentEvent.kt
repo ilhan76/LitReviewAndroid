@@ -7,7 +7,6 @@ import ru.surfstudio.mvi.core.event.Event
 
 sealed class AuthFragmentEvent : Event {
 
-    object BackPressed : AuthFragmentEvent()
     object LoginClickedEvent : AuthFragmentEvent()
 
     data class EmailChangedEvent(

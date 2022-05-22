@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.base.ui.SimpleTextWatcher
+import com.litreview.base.ui.showSnack
 import com.litreview.base.validation.getErrorMessage
 import com.litreview.base.validation.isFailure
 import com.litreview.f_auth.R
@@ -71,6 +72,15 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth),
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             ch.openScreen.flow.collect {
                 findNavControllerSafely()?.open(navCommand = it)
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+            ch.showErrorMessage.flow.collect {
+                requireActivity().showSnack(
+                    it,
+                    com.litreview.base.R.color.red_error,
+                    vb.authToolbar.toolbar.height
+                )
             }
         }
     }

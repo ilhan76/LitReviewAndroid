@@ -1,6 +1,7 @@
 package com.litreview.f_auth.auth
 
-import com.litreview.base.util.EMPTY_STRING
+import com.litreview.base.mvi.Request
+import com.litreview.base.util.DEFAULT_ERROR
 import com.litreview.base.validation.*
 import com.litreview.i_navigation.providers.AuthNavCommandProvider
 import com.litreview.f_auth.auth.AuthFragmentEvent.*
@@ -40,9 +41,20 @@ class AuthFragmentMiddleware @Inject constructor(
     private fun login() {
         GlobalScope.launch {
             authInteractor.login(currentState.email, currentState.password).catch { e ->
-                ch.showError.accept(e.message ?: EMPTY_STRING)
+                ch.showErrorMessage.accept(e.message ?: DEFAULT_ERROR)
             }.collect {
-                ch.openScreen.accept(authNavCommandProvider.toFeed)
+                //todo - придумать как здесь сделать через RequestEvent
+                when (it) {
+                    is Request.Loading -> {
+                        // todo Будет сделано, как продумаю RequestEvent
+                    }
+                    is Request.Error -> {
+                        ch.showErrorMessage.accept(it.getErrorOrNull()?.message ?: DEFAULT_ERROR)
+                    }
+                    is Request.Success -> {
+                        ch.openScreen.accept(authNavCommandProvider.toFeed)
+                    }
+                }
             }
         }
     }

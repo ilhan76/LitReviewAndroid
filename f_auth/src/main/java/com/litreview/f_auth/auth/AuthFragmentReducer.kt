@@ -20,7 +20,7 @@ data class AuthState(
 @Singleton
 class AuthCommandHolder @Inject constructor() {
     val openScreen = Command<NavCommand>()
-    val showError = Command<String>()
+    val showErrorMessage = Command<String>()
 }
 
 class AuthFragmentReducer @Inject constructor() : Reducer<AuthFragmentEvent, AuthState> {

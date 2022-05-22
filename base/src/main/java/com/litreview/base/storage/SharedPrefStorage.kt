@@ -2,7 +2,11 @@ package com.litreview.base.storage
 
 import android.content.SharedPreferences
 import com.litreview.base.util.EMPTY_STRING
+import javax.inject.Singleton
 
+const val SHARED_PREF_FILE_NAME = "shared_preference"
+
+@Singleton
 class SharedPrefStorage(
     private val sharedPreferences: SharedPreferences
 ) : Storage {

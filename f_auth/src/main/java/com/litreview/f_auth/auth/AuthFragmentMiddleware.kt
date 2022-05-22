@@ -6,6 +6,7 @@ import com.litreview.base.validation.ValidationRequest
 import com.litreview.base.validation.ValidationResult
 import com.litreview.i_navigation.providers.AuthNavCommandProvider
 import com.litreview.f_auth.auth.AuthFragmentEvent.*
+import com.litreview.i_auth.AuthInteractor
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
@@ -16,7 +17,8 @@ class AuthFragmentMiddleware @Inject constructor(
     private val authNavCommandProvider: AuthNavCommandProvider,
     private val ch: AuthCommandHolder,
     private val state: FlowState<AuthState>,
-    private val validator: FieldValidator
+    private val validator: FieldValidator,
+    private val authInteractor: AuthInteractor
 ): DslFlowMiddleware<AuthFragmentEvent> {
 
     override fun transform(eventStream: Flow<AuthFragmentEvent>): Flow<AuthFragmentEvent> {

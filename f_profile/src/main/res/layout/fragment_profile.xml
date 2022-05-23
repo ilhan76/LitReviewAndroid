@@ -71,16 +71,14 @@
         android:background="@color/dividerViewColor"
         app:layout_constraintTop_toBottomOf="@+id/profile_avatar_card_view" />
 
-    <!--todo заменить это безобразие на использование изи адаптера-->
-
     <LinearLayout
         android:id="@+id/profile_my_review"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@drawable/selector_button_borderless"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
+        android:paddingVertical="15dp"
+        android:layout_marginVertical="10dp"
         app:layout_constraintTop_toBottomOf="@+id/divider">
 
         <ImageView
@@ -114,8 +112,8 @@
         android:layout_height="0dp"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
-        android:focusable="true"
         android:elevation="10dp"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="@+id/profile_my_review"
         app:layout_constraintTop_toTopOf="@+id/profile_my_review" />
 
@@ -123,10 +121,9 @@
         android:id="@+id/profile_to_review"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
+        android:paddingVertical="15dp"
         app:layout_constraintTop_toBottomOf="@+id/profile_my_review">
 
         <ImageView
@@ -159,7 +156,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?attr/selectableItemBackground"
+        android:clickable="true"
         android:elevation="10dp"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="@+id/profile_to_review"
         app:layout_constraintTop_toTopOf="@+id/profile_to_review" />
 

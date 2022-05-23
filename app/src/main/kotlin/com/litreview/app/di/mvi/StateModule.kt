@@ -1,7 +1,8 @@
-package com.litreview.app.di
+package com.litreview.app.di.mvi
 
 import com.litreview.f_auth.auth.AuthState
 import com.litreview.f_auth.register.RegisterState
+import com.litreview.f_profile.ProfileFragmentState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,5 +24,11 @@ class StateModule {
     @Singleton
     fun provideRegisterFlowState(): FlowState<RegisterState> {
         return FlowState(RegisterState())
+    }
+
+    @Provides
+    @Singleton
+    fun provideProfileFlowState(): FlowState<ProfileFragmentState> {
+        return FlowState(ProfileFragmentState())
     }
 }

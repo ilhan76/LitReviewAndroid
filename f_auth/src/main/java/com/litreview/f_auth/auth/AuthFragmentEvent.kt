@@ -1,6 +1,5 @@
 package com.litreview.f_auth.auth
 
-import com.litreview.base.mvi.Request
 import com.litreview.base.validation.ValidationRequest
 import com.litreview.base.validation.ValidationResult
 import com.litreview.base.validation.ValidationResultEvent
@@ -8,7 +7,6 @@ import ru.surfstudio.mvi.core.event.Event
 
 sealed class AuthFragmentEvent : Event {
 
-    object BackPressed : AuthFragmentEvent()
     object LoginClickedEvent : AuthFragmentEvent()
 
     data class EmailChangedEvent(

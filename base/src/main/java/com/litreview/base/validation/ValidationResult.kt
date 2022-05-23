@@ -15,10 +15,16 @@ sealed class ValidationResult(
 
 }
 
-fun ValidationResult.getErrorMessage(): Int {
+fun ValidationResult.getErrorMessageRes(): Int {
     return if (this is ValidationResult.Failure) {
         this.messageRes
     } else -1
+}
+
+fun ValidationResult.getErrorMessageResOrNull(): Int? {
+    return if (this is ValidationResult.Failure) {
+        this.messageRes
+    } else null
 }
 
 fun ValidationResult.isSuccessful() = this is ValidationResult.Success

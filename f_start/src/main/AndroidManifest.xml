@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.litreview.f_start">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-    <application android:name="com.litreview.base.App">
+    <application
+        android:name="com.litreview.base.App"
+        android:usesCleartextTraffic="true">
         <activity
-            android:theme="@style/Theme.LitReview"
             android:name="com.litreview.f_start.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.LitReview">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

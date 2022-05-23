@@ -32,4 +32,19 @@ class AuthInteractor @Inject constructor(
             }
     }.io()
 
+    fun register(
+        name: String,
+        secondName: String,
+        email: String,
+        password: String,
+        phone: String
+    ): Flow<Request<String>> = flow {
+        emit(Loading())
+        authRepository.register(name, secondName, email, password, phone)
+            .catch { e -> emit(Error<String>(e)) }
+            .collect {
+                emit(Success(it))
+            }
+    }
+
 }

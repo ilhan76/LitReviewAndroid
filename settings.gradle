@@ -13,4 +13,5 @@ include ':app',
         ':f_profile',
         ':f_chats',
         ':i_network',
-        ':i_token'
+        ':i_token',
+        ':i_profile'

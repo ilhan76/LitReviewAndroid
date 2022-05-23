@@ -23,6 +23,7 @@
             <option value="$PROJECT_DIR$/i_auth" />
             <option value="$PROJECT_DIR$/i_navigation" />
             <option value="$PROJECT_DIR$/i_network" />
+            <option value="$PROJECT_DIR$/i_profile" />
             <option value="$PROJECT_DIR$/i_token" />
           </set>
         </option>

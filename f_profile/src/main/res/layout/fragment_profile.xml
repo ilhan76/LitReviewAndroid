@@ -51,6 +51,26 @@
         app:layout_constraintTop_toBottomOf="@+id/profile_name"
         tools:text="Trust your feelings , be a good human beings" />
 
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/profile_rating_bar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        app:layout_constraintStart_toStartOf="@+id/profile_description"
+        app:layout_constraintTop_toBottomOf="@+id/profile_description"
+        tools:rating="4" />
+
+    <TextView
+        android:id="@+id/profile_rating_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textAppearance="@style/Base.12.Regular"
+        app:layout_constraintStart_toEndOf="@+id/profile_rating_bar"
+        app:layout_constraintTop_toTopOf="@+id/profile_rating_bar"
+        tools:text="4.0" />
+
     <ImageView
         android:id="@+id/profile_change_personal_data"
         android:layout_width="wrap_content"

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
 import com.litreview.base.mvi.BaseFragment
 import com.litreview.f_profile.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,6 +38,13 @@ class ProfileFragmentView :
         state.userInfo?.let {
             vb.profileName.text =
                 getString(com.litreview.base.R.string.pattern_name, it.firstName, it.secondName)
+            vb.profileDescription.text = it.description
+            vb.profileRatingBar.rating = it.rate?.toFloat() ?: 0f
+            vb.profileRatingTv.text = it.rate.toString()
+
+            Glide.with(requireActivity())
+                .load(it.avatarUrl ?: R.drawable.avatar_stub)
+                .into(vb.profileAvatar)
         }
     }
 

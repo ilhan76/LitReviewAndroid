@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/f_auth" />
             <option value="$PROJECT_DIR$/f_book_detail" />
+            <option value="$PROJECT_DIR$/f_books_list" />
             <option value="$PROJECT_DIR$/f_chats" />
             <option value="$PROJECT_DIR$/f_feed" />
             <option value="$PROJECT_DIR$/f_main" />

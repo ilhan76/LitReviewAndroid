@@ -1,5 +1,4 @@
 apply from: 'config.gradle'
-
 include ':app',
         ':base',
         ':f_start',
@@ -14,4 +13,6 @@ include ':app',
         ':f_chats',
         ':i_network',
         ':i_token',
-        ':i_profile'
+        ':i_profile',
+        ':f_books_list'
+

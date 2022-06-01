@@ -47,5 +47,13 @@
     <fragment
         android:id="@+id/mainFlowFragmentView"
         android:name="com.litreview.f_main.MainFlowFragmentView"
-        android:label="MainFlowFragmentView" />
+        android:label="MainFlowFragmentView" >
+        <action
+            android:id="@+id/action_mainFlowFragmentView_to_booksListFragmentView"
+            app:destination="@id/booksListFragmentView" />
+    </fragment>
+    <fragment
+        android:id="@+id/booksListFragmentView"
+        android:name="com.litreview.f_books_list.BooksListFragmentView"
+        android:label="BooksListFragmentView" />
 </navigation>

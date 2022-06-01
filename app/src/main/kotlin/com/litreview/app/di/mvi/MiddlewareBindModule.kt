@@ -4,6 +4,10 @@ import com.litreview.f_auth.auth.AuthFragmentEvent
 import com.litreview.f_auth.auth.AuthFragmentMiddleware
 import com.litreview.f_auth.register.RegisterFragmentEvent
 import com.litreview.f_auth.register.RegisterFragmentMiddleware
+import com.litreview.f_books_list.BooksListFragmentEvent
+import com.litreview.f_books_list.BooksListFragmentMiddleware
+import com.litreview.f_main.MainFlowEvent
+import com.litreview.f_main.MainFlowMiddleware
 import com.litreview.f_profile.ProfileFragmentEvent
 import com.litreview.f_profile.ProfileFragmentMiddleware
 import com.litreview.f_start.main_screen.MainFragmentEvent
@@ -37,4 +41,14 @@ interface MiddlewareBindModule {
     fun bindDslFlowMiddlewareToProfileMiddleware(
         profileFragmentMiddleware: ProfileFragmentMiddleware
     ) : DslFlowMiddleware<ProfileFragmentEvent>
+
+    @Binds
+    fun bindDslFlowMiddlewareToBooksListMiddleware(
+        booksListFragmentMiddleware: BooksListFragmentMiddleware
+    ) : DslFlowMiddleware<BooksListFragmentEvent>
+
+    @Binds
+    fun bindDslFlowMiddlewareToMainFlowMiddleware(
+        mainFlowFragmentView: MainFlowMiddleware
+    ) : DslFlowMiddleware<MainFlowEvent>
 }

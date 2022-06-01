@@ -39,6 +39,9 @@ class AuthFragmentView : BaseFragment<AuthState, AuthFragmentEvent>(R.layout.fra
 
     private fun initViews() {
         vb.authTietEmail.setText(arguments?.getString(Args.EXTRA_FIRST).orEmpty())
+        // fixme - убрать заглушку, когда сделаю не АЗ
+        vb.authTietEmail.setText("user1@mail.com")
+        vb.authTietPassword.setText("qweQWE123")
     }
 
     private fun initToolbar() = with(vb.authToolbar.toolbar) {

@@ -9,6 +9,7 @@ import com.litreview.f_profile.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.litreview.f_profile.ProfileFragmentEvent.*
 import com.litreview.i_navigation.findNavControllerSafely
+import com.litreview.i_navigation.findTopNavControllerSafely
 import com.litreview.i_navigation.open
 import javax.inject.Inject
 
@@ -52,6 +53,9 @@ class ProfileFragmentView :
     private fun bind() {
         ch.openScreen.flow bindTo {
             findNavControllerSafely()?.open(it)
+        }
+        ch.openTopScreen.flow bindTo {
+            findTopNavControllerSafely()?.open(it)
         }
     }
 }

@@ -51,9 +51,16 @@
         <action
             android:id="@+id/action_mainFlowFragmentView_to_booksListFragmentView"
             app:destination="@id/booksListFragmentView" />
+        <action
+            android:id="@+id/action_mainFlowFragmentView_to_reviewsListFragmentView"
+            app:destination="@id/reviewsListFragmentView" />
     </fragment>
     <fragment
         android:id="@+id/booksListFragmentView"
         android:name="com.litreview.f_books_list.BooksListFragmentView"
         android:label="BooksListFragmentView" />
+    <fragment
+        android:id="@+id/reviewsListFragmentView"
+        android:name="com.litreview.f_reviews_list.ReviewsListFragmentView"
+        android:label="ReviewsListFragmentView" />
 </navigation>

@@ -15,6 +15,7 @@ data class ProfileFragmentState(
 @Singleton
 class ProfileFragmentCommandHolder @Inject constructor() {
     val openScreen = Command<NavCommand>()
+    val openTopScreen = Command<NavCommand>()
     val showErrorMessage = Command<String>()
 }
 

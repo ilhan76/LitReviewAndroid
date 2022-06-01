@@ -10,8 +10,8 @@ class ProfileNavCommandProviderImpl @Inject constructor(): ProfileNavCommandProv
     private val currentDestination = R.id.mainFlowFragmentView
 
     override val toMyReview: NavCommand
-        get() = NavCommand(R.id.action_mainFlowFragmentView_to_booksListFragmentView, currentDestination)
+        get() = TODO("Not yet implemented")
 
     override val toMyBooks: NavCommand
-        get() = TODO("Not yet implemented")
+        get() = NavCommand(R.id.action_mainFlowFragmentView_to_booksListFragmentView, currentDestination)
 }

@@ -8,24 +8,22 @@ import com.litreview.base.mvi.Request.Loading
 import com.litreview.base.mvi.Request.Success
 import com.litreview.base.mvi.Request.Error
 import com.litreview.base.mvi.io
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ProfileInteractor @Inject constructor(
-    val repository: ProfileRepository
+    private val repository: ProfileRepository
 ) {
 
-    fun getUserInfo(): Flow<Request<PublicUserInfo>> = flow {
-        emit(Loading<PublicUserInfo>())
-        repository.getUser()
-            .catch {
-                emit(Error<PublicUserInfo>(it))
-            }.collect {
-                emit(Success(it))
-            }
-    }.io()
+    suspend fun getUserInfo(): PublicUserInfo {
+        return withContext(Dispatchers.IO){
+            repository.getUser()
+        }
+    }
 
     fun getMyReview(): Flow<Request<List<Review>>> = flow {
         emit(Loading<List<Review>>())

@@ -86,6 +86,7 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth),
         vb.authTilPassword.trySetError(state.passwordValidationResult?.getErrorMessageResOrNull())
     }
 
+    //todo вынести в базовый фрагмент
     private fun TextInputLayout.trySetError(messageRes: Int?) {
         this.error = if (messageRes != null) {
             getString(messageRes)

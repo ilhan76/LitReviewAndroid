@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ProfileRepository {
 
-    fun getUser() : Flow<PublicUserInfo>
+    fun getUser() : PublicUserInfo
 
     fun getMyReview() : Flow<List<Review>>
 

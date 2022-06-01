@@ -7,13 +7,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class ProfileRepositoryStub @Inject constructor(): ProfileRepository {
-    override fun getUser(): Flow<PublicUserInfo> = flow {
-        emit(
-            PublicUserInfo(
-                name = "Лол",
-                secondName = "Кеков"
-            )
+class ProfileRepositoryStub @Inject constructor() : ProfileRepository {
+
+    override fun getUser(): PublicUserInfo {
+        return PublicUserInfo(
+            name = "Лол",
+            secondName = "Кеков"
         )
     }
 

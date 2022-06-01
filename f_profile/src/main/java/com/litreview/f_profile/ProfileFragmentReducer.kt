@@ -1,6 +1,6 @@
 package com.litreview.f_profile
 
-import com.litreview.base.data.domain.PublicUserInfo
+import com.litreview.base.data.domain.UserInfo
 import com.litreview.base.util.Command
 import com.litreview.i_navigation.NavCommand
 import com.litreview.f_profile.ProfileFragmentEvent.*
@@ -9,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 data class ProfileFragmentState(
-    val userInfo: PublicUserInfo? = null
+    val userInfo: UserInfo? = null
 )
 
 @Singleton

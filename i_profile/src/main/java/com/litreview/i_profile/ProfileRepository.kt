@@ -1,15 +1,14 @@
 package com.litreview.i_profile
 
-import com.litreview.base.data.domain.Book
-import com.litreview.base.data.domain.PublicUserInfo
-import com.litreview.base.data.domain.Review
-import kotlinx.coroutines.flow.Flow
+import com.litreview.base.data.domain.UserInfo
+import javax.inject.Inject
 
-interface ProfileRepository {
+class ProfileRepository @Inject constructor(
+    private val api: ProfileApi
+) {
 
-    fun getUser() : PublicUserInfo
-
-    fun getMyReview() : Flow<List<Review>>
-
-    fun getMyBooks() : Flow<List<Book>>
+    suspend fun getUser() : UserInfo {
+        val response = api.getProfile()
+        return response.body()?.transform() ?: throw Exception(response.message())
+    }
 }

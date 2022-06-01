@@ -1,17 +1,11 @@
 package com.litreview.i_profile
 
 import com.litreview.base.data.domain.Book
-import com.litreview.base.data.domain.PublicUserInfo
+import com.litreview.base.data.domain.UserInfo
 import com.litreview.base.data.domain.Review
-import com.litreview.base.mvi.Request
-import com.litreview.base.mvi.Request.Loading
-import com.litreview.base.mvi.Request.Success
-import com.litreview.base.mvi.Request.Error
-import com.litreview.base.mvi.io
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -19,29 +13,27 @@ class ProfileInteractor @Inject constructor(
     private val repository: ProfileRepository
 ) {
 
-    suspend fun getUserInfo(): PublicUserInfo {
+    private val reviewsSharedFlow = MutableSharedFlow<List<Review>>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+    private val booksSharedFlow = MutableSharedFlow<List<Book>>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+
+    suspend fun getUserInfo(): UserInfo {
         return withContext(Dispatchers.IO){
-            repository.getUser()
+            val user = repository.getUser()
+            reviewsSharedFlow.emit(user.reviews)
+            booksSharedFlow.emit(user.books)
+            user
         }
     }
 
-    fun getMyReview(): Flow<Request<List<Review>>> = flow {
-        emit(Loading<List<Review>>())
-        repository.getMyReview()
-            .catch {
-                emit(Error<List<Review>>(it))
-            }.collect {
-                emit(Success(it))
-            }
-    }.io()
+    suspend fun getMyReviews(): List<Review> {
+        return withContext(Dispatchers.IO) {
+            reviewsSharedFlow.replayCache.first()
+        }
+    }
 
-    fun getMyBooks(): Flow<Request<List<Book>>> = flow {
-        emit(Loading<List<Book>>())
-        repository.getMyBooks()
-            .catch {
-                emit(Error<List<Book>>(it))
-            }.collect {
-                emit(Success(it))
-            }
-    }.io()
+    suspend fun getMyBooks(): List<Book>{
+        return withContext(Dispatchers.IO) {
+            booksSharedFlow.replayCache.first()
+        }
+    }
 }

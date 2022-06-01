@@ -36,7 +36,7 @@ class ProfileFragmentView :
     private fun render(state: ProfileFragmentState) {
         state.userInfo?.let {
             vb.profileName.text =
-                getString(com.litreview.base.R.string.pattern_name, it.name, it.secondName)
+                getString(com.litreview.base.R.string.pattern_name, it.firstName, it.secondName)
         }
     }
 

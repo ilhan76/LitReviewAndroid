@@ -44,6 +44,7 @@ dependencies {
     implementation project(':i_network')
     implementation project(':i_auth')
     implementation project(':i_profile')
+    implementation project(':i_token')
 
     implementation lang.kotlinStdLib
     implementation lang.jetbrainsAnnotations

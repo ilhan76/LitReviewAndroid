@@ -1,2 +1,6 @@
 apply from: '../commonInteractorModule.gradle'
 apply from: '../commonKaptModule.gradle'
+
+dependencies {
+    implementation project(":i_network")
+}

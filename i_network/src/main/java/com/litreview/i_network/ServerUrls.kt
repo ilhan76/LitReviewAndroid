@@ -11,4 +11,11 @@ object Urls {
         const val LOGIN = "$AUTH/login"
         const val REGISTER = "$AUTH/register"
     }
+
+    object Profile {
+        const val PROFILE = "profile"
+
+        const val GET_BOOKS = "$PROFILE/books"
+        const val ADD_BOOK = "$PROFILE/book"
+    }
 }

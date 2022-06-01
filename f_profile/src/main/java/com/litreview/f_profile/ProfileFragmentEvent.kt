@@ -1,6 +1,6 @@
 package com.litreview.f_profile
 
-import com.litreview.base.data.domain.PublicUserInfo
+import com.litreview.base.data.domain.UserInfo
 import ru.surfstudio.mvi.core.event.Event
 
 sealed class ProfileFragmentEvent : Event {
@@ -12,6 +12,6 @@ sealed class ProfileFragmentEvent : Event {
     object LogoutEvent : ProfileFragmentEvent()
 
     data class UpdateProfileInfo(
-        val userInfo: PublicUserInfo
+        val userInfo: UserInfo
     ) : ProfileFragmentEvent()
 }

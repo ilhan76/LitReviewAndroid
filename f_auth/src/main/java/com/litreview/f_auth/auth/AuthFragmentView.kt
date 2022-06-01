@@ -2,11 +2,10 @@ package com.litreview.f_auth.auth
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.google.android.material.textfield.TextInputLayout
+import com.litreview.base.mvi.BaseFragment
 import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.base.ui.SimpleTextWatcher
 import com.litreview.base.ui.showSnack
@@ -21,7 +20,7 @@ import ru.surfstudio.mvi.vm.android.MviStatefulView
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AuthFragmentView : Fragment(R.layout.fragment_auth),
+class AuthFragmentView : BaseFragment(R.layout.fragment_auth),
     MviStatefulView<AuthState, AuthFragmentEvent> {
 
     override val viewModel by viewModels<AuthFragmentViewModel>()
@@ -65,33 +64,21 @@ class AuthFragmentView : Fragment(R.layout.fragment_auth),
     }
 
     private fun bind() {
-        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            ch.openScreen.flow.collect {
-                findNavControllerSafely()?.open(navCommand = it)
-            }
+        ch.openScreen.flow bindTo {
+            findNavControllerSafely()?.open(navCommand = it)
         }
-        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            ch.showErrorMessage.flow.collect {
-                requireActivity().showSnack(
-                    it,
-                    com.litreview.base.R.color.red_error,
-                    vb.authToolbar.toolbar.height
-                )
-            }
+        ch.showErrorMessage.flow bindTo {
+            requireActivity().showSnack(
+                it,
+                com.litreview.base.R.color.red_error,
+                vb.authToolbar.toolbar.height
+            )
         }
+
     }
 
     private fun render(state: AuthState) {
         vb.authTilEmail.trySetError(state.emailValidationResult?.getErrorMessageResOrNull())
         vb.authTilPassword.trySetError(state.passwordValidationResult?.getErrorMessageResOrNull())
-    }
-
-    //todo вынести в базовый фрагмент
-    private fun TextInputLayout.trySetError(messageRes: Int?) {
-        this.error = if (messageRes != null) {
-            getString(messageRes)
-        } else {
-            null
-        }
     }
 }

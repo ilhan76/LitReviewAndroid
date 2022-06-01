@@ -7,15 +7,14 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.mvi.BaseFragment
 import com.litreview.f_profile.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
-import ru.surfstudio.mvi.vm.android.MviStatefulView
 import com.litreview.f_profile.ProfileFragmentEvent.*
 import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.i_navigation.open
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProfileFragmentView : BaseFragment(R.layout.fragment_profile),
-    MviStatefulView<ProfileFragmentState, ProfileFragmentEvent> {
+class ProfileFragmentView :
+    BaseFragment<ProfileFragmentState, ProfileFragmentEvent>(R.layout.fragment_profile) {
 
     override val viewModel by viewModels<ProfileFragmentViewModel>()
     private val vb by viewBinding(FragmentProfileBinding::bind)
@@ -55,6 +54,4 @@ class ProfileFragmentView : BaseFragment(R.layout.fragment_profile),
             findNavControllerSafely()?.open(it)
         }
     }
-
-    private fun View.emitOnClick(event: ProfileFragmentEvent) = setOnClickListener { emit(event) }
 }

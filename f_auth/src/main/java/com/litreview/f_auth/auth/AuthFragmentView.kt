@@ -16,12 +16,10 @@ import com.litreview.f_auth.auth.AuthFragmentEvent.*
 import com.litreview.f_auth.databinding.FragmentAuthBinding
 import com.litreview.i_navigation.open
 import dagger.hilt.android.AndroidEntryPoint
-import ru.surfstudio.mvi.vm.android.MviStatefulView
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AuthFragmentView : BaseFragment(R.layout.fragment_auth),
-    MviStatefulView<AuthState, AuthFragmentEvent> {
+class AuthFragmentView : BaseFragment<AuthState, AuthFragmentEvent>(R.layout.fragment_auth) {
 
     override val viewModel by viewModels<AuthFragmentViewModel>()
     private val vb by viewBinding(FragmentAuthBinding::bind)
@@ -52,14 +50,14 @@ class AuthFragmentView : BaseFragment(R.layout.fragment_auth),
     }
 
     private fun initListeners() {
-        vb.authTietEmail.addTextChangedListener(SimpleTextWatcher {
-            emit(EmailChangedEvent(it))
-        })
-        vb.authTietPassword.addTextChangedListener(SimpleTextWatcher {
-            emit(PasswordChangedEvent(it))
-        })
-        vb.authBtnLogin.setOnClickListener {
-            emit(LoginClickedEvent)
+        with(vb){
+            authTietEmail.addTextChangedListener(SimpleTextWatcher {
+                emit(EmailChangedEvent(it))
+            })
+            authTietPassword.addTextChangedListener(SimpleTextWatcher {
+                emit(PasswordChangedEvent(it))
+            })
+            authBtnLogin.emitOnClick(LoginClickedEvent)
         }
     }
 
@@ -74,7 +72,6 @@ class AuthFragmentView : BaseFragment(R.layout.fragment_auth),
                 vb.authToolbar.toolbar.height
             )
         }
-
     }
 
     private fun render(state: AuthState) {

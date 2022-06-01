@@ -1,4 +1,4 @@
-package com.litreview.app.di
+package com.litreview.app.di.interactor
 
 import com.litreview.i_profile.ProfileRepository
 import com.litreview.i_profile.ProfileRepositoryStub

@@ -5,6 +5,7 @@ import com.litreview.f_auth.register.RegisterState
 import com.litreview.f_books_list.BooksListFragmentState
 import com.litreview.f_main.MainFlowState
 import com.litreview.f_profile.ProfileFragmentState
+import com.litreview.f_reviews_list.ReviewsListFragmentState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,5 +45,11 @@ class StateModule {
     @Singleton
     fun provideMainFLowFlowState() : FlowState<MainFlowState> {
         return FlowState(MainFlowState())
+    }
+
+    @Provides
+    @Singleton
+    fun provideReviewsListFlowState() : FlowState<ReviewsListFragmentState> {
+        return FlowState(ReviewsListFragmentState())
     }
 }

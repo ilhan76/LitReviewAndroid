@@ -9,6 +9,9 @@ import com.litreview.f_main.MainFlowState
 import com.litreview.f_profile.ProfileFragmentEvent
 import com.litreview.f_profile.ProfileFragmentReducer
 import com.litreview.f_profile.ProfileFragmentState
+import com.litreview.f_reviews_list.ReviewsListFragmentEvent
+import com.litreview.f_reviews_list.ReviewsListFragmentReducer
+import com.litreview.f_reviews_list.ReviewsListFragmentState
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -34,4 +37,9 @@ interface ReducerBindModule {
     fun bindReducerToMainFlowReducer(
         mainFlowReducer: MainFlowReducer
     ) : Reducer<MainFlowEvent, MainFlowState>
+
+    @Binds
+    fun bindReducerToReviewsListReducer(
+        reviewsListFragmentReducer: ReviewsListFragmentReducer
+    ) : Reducer<ReviewsListFragmentEvent, ReviewsListFragmentState>
 }

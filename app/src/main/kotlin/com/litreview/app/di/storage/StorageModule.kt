@@ -1,4 +1,4 @@
-package com.litreview.app.di
+package com.litreview.app.di.storage
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE

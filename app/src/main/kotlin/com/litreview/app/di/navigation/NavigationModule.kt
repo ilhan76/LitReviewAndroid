@@ -1,4 +1,4 @@
-package com.litreview.app.di
+package com.litreview.app.di.navigation
 
 import com.litreview.app.navigation.AuthNavCommandProviderImpl
 import com.litreview.app.navigation.MainNavCommandProviderImpl

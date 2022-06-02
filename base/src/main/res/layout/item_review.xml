@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/shape_review"
+    android:elevation="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/reviewer_avatar_card_view"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/reviewer_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/stub_content_description"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/reviewer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/Base.16.Regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/reviewer_avatar_card_view"
+        app:layout_constraintTop_toTopOf="@+id/reviewer_avatar_card_view"
+        tools:text="Лол Кеков" />
+
+    <TextView
+        android:id="@+id/reviewer_count_review"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textAppearance="@style/Base.16.Regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/reviewer_name"
+        app:layout_constraintTop_toBottomOf="@+id/reviewer_name"
+        tools:text="133 отзыва" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/book_rating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:numStars="5"
+        android:paddingVertical="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reviewer_count_review"
+        tools:rating="4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Оценка книги"
+        android:textAppearance="@style/Base.10.Medium.Steel_Gray_400"
+        app:layout_constraintBottom_toBottomOf="@+id/book_rating"
+        app:layout_constraintStart_toEndOf="@+id/book_rating"
+        app:layout_constraintTop_toTopOf="@+id/book_rating" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/review_rating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="16dp"
+        android:numStars="5"
+        android:paddingVertical="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/book_rating"
+        tools:rating="4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Рейтинг рецензии"
+        android:textAppearance="@style/Base.10.Medium.Steel_Gray_400"
+        app:layout_constraintBottom_toBottomOf="@+id/review_rating"
+        app:layout_constraintStart_toEndOf="@+id/review_rating"
+        app:layout_constraintTop_toTopOf="@+id/review_rating" />
+
+    <TextView
+        android:id="@+id/review_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:textAppearance="@style/Base.14.Regular"
+        app:layout_constraintTop_toBottomOf="@+id/review_rating"
+        tools:text="@string/tools_review_text" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        style="?android:attr/ratingBarStyleIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:numStars="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/review_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

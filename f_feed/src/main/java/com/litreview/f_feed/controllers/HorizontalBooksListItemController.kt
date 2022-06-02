@@ -12,32 +12,30 @@ import ru.surfstudio.android.easyadapter.controller.BindableItemController
 import ru.surfstudio.android.easyadapter.holder.BindableViewHolder
 
 class HorizontalBooksListItemController(
-    private val onBookClickAction: (Book?) -> Unit,
-    private val title: String
-) : BindableItemController<List<Book>, HorizontalBooksListItemController.Holder>() {
+    private val onBookClickAction: (Book?) -> Unit
+) : BindableItemController<Pair<String, List<Book>>, HorizontalBooksListItemController.Holder>() {
 
-    override fun createViewHolder(parent: ViewGroup) = Holder(parent, title)
+    override fun createViewHolder(parent: ViewGroup) = Holder(parent)
 
-    override fun getItemId(data: List<Book>) = data.hashCode()
+    override fun getItemId(data: Pair<String, List<Book>>) = data.hashCode()
 
     inner class Holder(
-        parent: ViewGroup,
-        title: String
-    ) : BindableViewHolder<List<Book>>(parent, R.layout.item_horizontal_books_list) {
+        parent: ViewGroup
+    ) : BindableViewHolder<Pair<String, List<Book>>>(parent, R.layout.item_horizontal_books_list) {
 
         private val binding = ItemHorizontalBooksListBinding.bind(itemView)
         private val easyAdapter = EasyAdapter()
         private val itemController = ItemController(onBookClickAction)
 
         init {
-            binding.titleTv.text = title
             binding.booksRv.adapter = easyAdapter
         }
 
-        override fun bind(data: List<Book>) {
+        override fun bind(data: Pair<String, List<Book>>) {
+            binding.titleTv.text = data.first
             easyAdapter.setItems(
                 ItemList.create()
-                    .addAll(data, itemController)
+                    .addAll(data.second, itemController)
             )
         }
 

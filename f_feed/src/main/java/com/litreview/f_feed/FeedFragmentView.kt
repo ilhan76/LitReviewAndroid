@@ -29,21 +29,11 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
         emit(SearchViewClickEvent)
     }
 
-    private val myBooksListItemController by lazy {
-        HorizontalBooksListItemController(
-            onBookClickAction = { book: Book? ->
-                emit(OpenBookDetails(book))
-            },
-            title = getString(R.string.feed_books_title_my_books)
-        )
-    }
-
     private val newBooksListItemController by lazy {
         HorizontalBooksListItemController(
             onBookClickAction = { book: Book? ->
                 emit(OpenBookDetails(book))
-            },
-            title = getString(R.string.feed_books_title_new_books)
+            }
         )
     }
 
@@ -51,8 +41,15 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
         HorizontalBooksListItemController(
             onBookClickAction = { book: Book? ->
                 emit(OpenBookDetails(book))
-            },
-            title = getString(R.string.feed_books_title_best_books)
+            }
+        )
+    }
+
+    private val myBooksListItemController by lazy {
+        HorizontalBooksListItemController(
+            onBookClickAction = { book: Book? ->
+                emit(OpenBookDetails(book))
+            }
         )
     }
 
@@ -79,9 +76,21 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
                 ItemList.create()
                     .add(headerItemController)
                     .add(searchItemController)
-                    .addIf(bestBooks.isNotEmpty(), bestBooks, bestBooksListItemController)
-                    .addIf(myBooks.isNotEmpty(), myBooks, myBooksListItemController)
-                    .addIf(newBooks.isNotEmpty(), newBooks, newBooksListItemController)
+                    .addIf(
+                        newBooks.isNotEmpty(),
+                        getString(R.string.feed_books_title_my_books) to newBooks,
+                        newBooksListItemController
+                    )
+                    .addIf(
+                        bestBooks.isNotEmpty(),
+                        getString(R.string.feed_books_title_new_books) to bestBooks,
+                        bestBooksListItemController
+                    )
+                    .addIf(
+                        myBooks.isNotEmpty(),
+                        getString(R.string.feed_books_title_best_books) to myBooks,
+                        myBooksListItemController
+                    )
             )
         }
     }

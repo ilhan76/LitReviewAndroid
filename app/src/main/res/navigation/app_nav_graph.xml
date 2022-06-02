@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_mainFlowFragmentView_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFlowFragmentView_to_bookDetailFragmentView"
+            app:destination="@id/bookDetailFragmentView" />
     </fragment>
     <fragment
         android:id="@+id/booksListFragmentView"
@@ -73,4 +76,8 @@
         android:id="@+id/changePersonalDataView"
         android:name="com.litreview.f_profile.changePersonalData.ChangePersonalDataView"
         android:label="ChangePersonalDataView" />
+    <fragment
+        android:id="@+id/bookDetailFragmentView"
+        android:name="com.litreview.f_book_detail.BookDetailFragmentView"
+        android:label="BookDetailFragmentView" />
 </navigation>

@@ -6,19 +6,26 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.data.domain.Book
 import com.litreview.base.mvi.BaseFragment
+import com.litreview.base.ui.showSnack
 import com.litreview.f_feed.controllers.HeaderItemController
 import com.litreview.f_feed.controllers.SearchItemController
 import com.litreview.f_feed.databinding.FragmentFeedBinding
 import com.litreview.f_feed.FeedEvent.*
 import com.litreview.f_feed.controllers.HorizontalBooksListItemController
+import com.litreview.i_navigation.findTopNavControllerSafely
+import com.litreview.i_navigation.open
 import dagger.hilt.android.AndroidEntryPoint
 import ru.surfstudio.android.easyadapter.EasyAdapter
 import ru.surfstudio.android.easyadapter.ItemList
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_feed) {
 
     override val viewModel by viewModels<FeedViewModel>()
+
+    @Inject
+    lateinit var ch: FeedCommandHolder
 
     private val vb by viewBinding(FragmentFeedBinding::bind)
 
@@ -28,7 +35,6 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
     private val searchItemController = SearchItemController {
         emit(SearchViewClickEvent)
     }
-
     private val newBooksListItemController by lazy {
         HorizontalBooksListItemController(
             onBookClickAction = { book: Book? ->
@@ -36,7 +42,6 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
             }
         )
     }
-
     private val bestBooksListItemController by lazy {
         HorizontalBooksListItemController(
             onBookClickAction = { book: Book? ->
@@ -44,7 +49,6 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
             }
         )
     }
-
     private val myBooksListItemController by lazy {
         HorizontalBooksListItemController(
             onBookClickAction = { book: Book? ->
@@ -57,6 +61,7 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
         super.onViewCreated(view, savedInstanceState)
         viewModel.bindFlow()
         initViews()
+        bind()
         observeState { render(it) }
         emit(LoadFeed)
     }
@@ -68,6 +73,19 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
                 .add(headerItemController)
                 .add(searchItemController)
         )
+    }
+
+    private fun bind() {
+        ch.showErrorMessage.flow bindTo {
+            requireActivity().showSnack(
+                message = it,
+                color = com.litreview.base.R.color.red_error,
+                marginTop = 50
+            )
+        }
+        ch.openTopScreen.flow bindTo {
+            findTopNavControllerSafely()?.open(it)
+        }
     }
 
     private fun render(state: FeedState) {

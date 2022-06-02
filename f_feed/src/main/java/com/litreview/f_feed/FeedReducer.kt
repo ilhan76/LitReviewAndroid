@@ -2,6 +2,7 @@ package com.litreview.f_feed
 
 import com.litreview.base.data.domain.Book
 import com.litreview.base.util.Command
+import com.litreview.i_navigation.NavCommand
 import ru.surfstudio.mvi.core.reducer.Reducer
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,6 +16,7 @@ data class FeedState(
 @Singleton
 class FeedCommandHolder @Inject constructor() {
     val showErrorMessage = Command<String>()
+    val openTopScreen = Command<NavCommand>()
 }
 
 class FeedReducer @Inject constructor() : Reducer<FeedEvent, FeedState> {

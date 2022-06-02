@@ -1,10 +1,13 @@
 package com.litreview.f_feed
 
+import android.os.Bundle
+import com.litreview.base.util.Args
 import com.litreview.base.util.DEFAULT_ERROR
 import com.litreview.i_navigation.BottomTab
 import com.litreview.i_navigation.TabsNavigationEventHub
 import com.litreview.f_feed.FeedEvent.*
 import com.litreview.i_feed.FeedInteractor
+import com.litreview.i_navigation.providers.FeedNavCommandProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
@@ -13,7 +16,8 @@ import javax.inject.Inject
 class FeedMiddleware @Inject constructor(
     private val tabsNavigationEventHub: TabsNavigationEventHub,
     private val feedIteractor: FeedInteractor,
-    private val ch: FeedCommandHolder
+    private val ch: FeedCommandHolder,
+    private val navCommandProvider: FeedNavCommandProvider
 ) : DslFlowMiddleware<FeedEvent> {
 
     override fun transform(eventStream: Flow<FeedEvent>): Flow<FeedEvent> {
@@ -23,7 +27,8 @@ class FeedMiddleware @Inject constructor(
                 LoadMyBooks::class eventToStream { loadMyBooks() },
                 LoadNewBook::class eventToStream { loadNewBooks() },
                 LoadBestBook::class eventToStream { loadBestBooks() },
-                SearchViewClickEvent::class eventToStream { selectSearchTab() }
+                SearchViewClickEvent::class eventToStream { selectSearchTab() },
+                OpenBookDetails::class eventToStream ::openBookDetails
             )
         }
     }
@@ -60,5 +65,18 @@ class FeedMiddleware @Inject constructor(
 
     private fun selectSearchTab(): Flow<FeedEvent> = flow {
         tabsNavigationEventHub.emit(BottomTab.SEARCH)
+    }
+
+    private fun openBookDetails(event: OpenBookDetails): Flow<FeedEvent> = flow {
+        ch.openTopScreen.accept(
+            navCommandProvider.toBookDetail(
+                Bundle().apply {
+                    putSerializable(
+                        Args.EXTRA_FIRST,
+                        event.book
+                    )
+                }
+            )
+        )
     }
 }

@@ -65,4 +65,6 @@ dependencies {
 
     // viewBinding
     implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.3'
+
+    implementation "ru.surfstudio.android:easyadapter:7.0.1"
 }

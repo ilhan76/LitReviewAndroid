@@ -18,4 +18,11 @@ object Urls {
         const val GET_BOOKS = "$PROFILE/books"
         const val ADD_BOOK = "$PROFILE/book"
     }
+
+    object Books {
+        const val BOOKS = "books"
+
+        const val BEST_BOOKS = "$BOOKS?rate=4"
+        const val NEW_BOOKS = "$BOOKS/news"
+    }
 }

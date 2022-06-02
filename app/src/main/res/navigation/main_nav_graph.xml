@@ -5,7 +5,7 @@
     app:startDestination="@id/feedFragmentView">
     <fragment
         android:id="@+id/feedFragmentView"
-        android:name="com.litreview.f_feed.FeedFragmentView"
+        android:name="com.litreview.f_feed.FeedView"
         android:label="FeedFragmentView" />
     <fragment
         android:id="@+id/searchFragmentView"

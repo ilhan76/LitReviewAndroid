@@ -3,6 +3,9 @@ package com.litreview.app.di.mvi
 import com.litreview.f_books_list.BooksListFragmentEvent
 import com.litreview.f_books_list.BooksListFragmentReducer
 import com.litreview.f_books_list.BooksListFragmentState
+import com.litreview.f_feed.FeedEvent
+import com.litreview.f_feed.FeedReducer
+import com.litreview.f_feed.FeedState
 import com.litreview.f_main.MainFlowEvent
 import com.litreview.f_main.MainFlowReducer
 import com.litreview.f_main.MainFlowState
@@ -42,4 +45,9 @@ interface ReducerBindModule {
     fun bindReducerToReviewsListReducer(
         reviewsListFragmentReducer: ReviewsListFragmentReducer
     ) : Reducer<ReviewsListFragmentEvent, ReviewsListFragmentState>
+
+    @Binds
+    fun bindReducerToFeedReducer(
+        feedReducer: FeedReducer
+    ) : Reducer<FeedEvent, FeedState>
 }

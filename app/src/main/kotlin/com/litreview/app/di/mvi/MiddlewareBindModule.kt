@@ -6,6 +6,8 @@ import com.litreview.f_auth.register.RegisterFragmentEvent
 import com.litreview.f_auth.register.RegisterFragmentMiddleware
 import com.litreview.f_books_list.BooksListFragmentEvent
 import com.litreview.f_books_list.BooksListFragmentMiddleware
+import com.litreview.f_feed.FeedEvent
+import com.litreview.f_feed.FeedMiddleware
 import com.litreview.f_main.MainFlowEvent
 import com.litreview.f_main.MainFlowMiddleware
 import com.litreview.f_profile.ProfileFragmentEvent
@@ -37,25 +39,30 @@ interface MiddlewareBindModule {
     @Binds
     fun bindDslFlowMiddlewareToRegisterMiddleware(
         registerFragmentMiddleware: RegisterFragmentMiddleware
-    ) : DslFlowMiddleware<RegisterFragmentEvent>
+    ): DslFlowMiddleware<RegisterFragmentEvent>
 
     @Binds
     fun bindDslFlowMiddlewareToProfileMiddleware(
         profileFragmentMiddleware: ProfileFragmentMiddleware
-    ) : DslFlowMiddleware<ProfileFragmentEvent>
+    ): DslFlowMiddleware<ProfileFragmentEvent>
 
     @Binds
     fun bindDslFlowMiddlewareToBooksListMiddleware(
         booksListFragmentMiddleware: BooksListFragmentMiddleware
-    ) : DslFlowMiddleware<BooksListFragmentEvent>
+    ): DslFlowMiddleware<BooksListFragmentEvent>
 
     @Binds
     fun bindDslFlowMiddlewareToMainFlowMiddleware(
         mainFlowFragmentView: MainFlowMiddleware
-    ) : DslFlowMiddleware<MainFlowEvent>
+    ): DslFlowMiddleware<MainFlowEvent>
 
     @Binds
     fun bindDslFlowMiddlewareToReviewsListMiddleware(
         reviewsListFragmentMiddleware: ReviewsListFragmentMiddleware
-    ) : DslFlowMiddleware<ReviewsListFragmentEvent>
+    ): DslFlowMiddleware<ReviewsListFragmentEvent>
+
+    @Binds
+    fun bindDslFlowMiddlewareToFeedMiddleware(
+        feedMiddleware: FeedMiddleware
+    ): DslFlowMiddleware<FeedEvent>
 }

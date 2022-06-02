@@ -36,6 +36,10 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="Base.10">
+        <item name="android:textSize">10sp</item>
+    </style>
+
     <!-- endregion -->
 
     <!-- region 26 -->
@@ -145,6 +149,25 @@
     </style>
 
     <style name="Base.12.Bold">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region 10 -->
+    <style name="Base.10.Regular">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Base.10.Medium">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="Base.10.Medium.Steel_Gray_400">
+        <item name="android:textColor">@color/steel_gray_400</item>
+    </style>
+
+    <style name="Base.10.Bold">
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:letterSpacing">0.03</item>
     </style>

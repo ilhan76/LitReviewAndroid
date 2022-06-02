@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.litreview.BuildConfig
 import com.litreview.i_network.Urls
+import com.litreview.i_token.TokenInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,7 +40,8 @@ class NetworkModule {
     @Provides
     @Singleton
     internal fun provideOkHttpClient(
-        httpLoggingInterceptor: HttpLoggingInterceptor
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        tokenInterceptor: TokenInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder().apply {
             connectTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
@@ -47,6 +49,7 @@ class NetworkModule {
             writeTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
 
             addInterceptor(httpLoggingInterceptor)
+            addInterceptor(tokenInterceptor)
         }.build()
     }
 

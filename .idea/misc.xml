@@ -34,6 +34,7 @@
         <entry key="f_feed/src/main/res/layout/fragment_feed.xml" value="0.2484375" />
         <entry key="f_feed/src/main/res/layout/item_feed_header.xml" value="0.33" />
         <entry key="f_feed/src/main/res/layout/item_feed_offers.xml" value="0.26458333333333334" />
+        <entry key="f_feed/src/main/res/layout/item_horizontal_books_list.xml" value="0.3541666666666667" />
         <entry key="f_feed/src/main/res/layout/item_search.xml" value="0.26458333333333334" />
         <entry key="f_feed/src/main/res/layout/some.xml" value="0.26458333333333334" />
         <entry key="f_main/src/main/res/drawable/ic_bottom_menu_chat.xml" value="0.1675" />

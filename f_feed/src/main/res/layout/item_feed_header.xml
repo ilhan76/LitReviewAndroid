@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/feed_title_text"
+        android:text="@string/title_text"
         android:textAppearance="@style/Base.26.Medium" />
 
 </LinearLayout>

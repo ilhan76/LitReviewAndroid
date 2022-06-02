@@ -20,6 +20,7 @@ data class BookDto(
 ) : Transformable<Book> {
     override fun transform(): Book {
         return Book(
+            id = id,
             title = title,
             imageUrl = imageUrl,
             description = description,

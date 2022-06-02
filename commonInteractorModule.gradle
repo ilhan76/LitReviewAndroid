@@ -2,8 +2,6 @@ apply from: '../commonModule.gradle'
 
 dependencies {
     implementation project(":base")
-    implementation project(":i_network")
-    implementation project(":i_token")
 
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

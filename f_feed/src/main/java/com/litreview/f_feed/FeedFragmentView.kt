@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.litreview.base.data.domain.Book
 import com.litreview.base.mvi.BaseFragment
 import com.litreview.f_feed.controllers.HeaderItemController
 import com.litreview.f_feed.controllers.SearchItemController
 import com.litreview.f_feed.databinding.FragmentFeedBinding
 import com.litreview.f_feed.FeedEvent.*
+import com.litreview.f_feed.controllers.HorizontalBooksListItemController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.surfstudio.android.easyadapter.EasyAdapter
 import ru.surfstudio.android.easyadapter.ItemList
@@ -27,11 +29,39 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
         emit(SearchViewClickEvent)
     }
 
+    private val myBooksListItemController by lazy {
+        HorizontalBooksListItemController(
+            onBookClickAction = { book: Book? ->
+                emit(OpenBookDetails(book))
+            },
+            title = getString(R.string.feed_books_title_my_books)
+        )
+    }
+
+    private val newBooksListItemController by lazy {
+        HorizontalBooksListItemController(
+            onBookClickAction = { book: Book? ->
+                emit(OpenBookDetails(book))
+            },
+            title = getString(R.string.feed_books_title_new_books)
+        )
+    }
+
+    private val bestBooksListItemController by lazy {
+        HorizontalBooksListItemController(
+            onBookClickAction = { book: Book? ->
+                emit(OpenBookDetails(book))
+            },
+            title = getString(R.string.feed_books_title_best_books)
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.bindFlow()
         initViews()
         observeState { render(it) }
+        emit(LoadFeed)
     }
 
     private fun initViews() {
@@ -44,6 +74,15 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
     }
 
     private fun render(state: FeedState) {
-
+        with(state) {
+            feedAdapter.setItems(
+                ItemList.create()
+                    .add(headerItemController)
+                    .add(searchItemController)
+                    .addIf(bestBooks.isNotEmpty(), bestBooks, bestBooksListItemController)
+                    .addIf(myBooks.isNotEmpty(), myBooks, myBooksListItemController)
+                    .addIf(newBooks.isNotEmpty(), newBooks, newBooksListItemController)
+            )
+        }
     }
 }

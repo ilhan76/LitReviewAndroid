@@ -11,19 +11,19 @@ class FeedInteractor @Inject constructor(
 
     suspend fun getMyBooks(): List<Book> {
         return withContext(Dispatchers.IO) {
-            feedRepository.getMyBooks()
+            feedRepository.getMyBooks().take(10)
         }
     }
 
     suspend fun getNewBooks(): List<Book> {
         return withContext(Dispatchers.IO) {
-            feedRepository.getNewBooks()
+            feedRepository.getNewBooks().take(10)
         }
     }
 
     suspend fun getBestBooks(): List<Book> {
         return withContext(Dispatchers.IO) {
-            feedRepository.getBestBooks()
+            feedRepository.getBestBooks().take(10)
         }
     }
 }

@@ -22,7 +22,8 @@ class ProfileFragmentMiddleware @Inject constructor(
                 ViewCreatedEvent::class eventToStream { loadProfileInfo() },
                 OpenChangePersonalData::class eventToStream { openChangePersonalOffer() },
                 OpenMyReviewEvent::class eventToStream { openMyReview() },
-                OpenMyBooksEvent::class eventToStream { openMyBooks() }
+                OpenMyBooksEvent::class eventToStream { openMyBooks() },
+                LogoutEvent::class eventToStream { logout() }
             )
         }
     }
@@ -45,5 +46,10 @@ class ProfileFragmentMiddleware @Inject constructor(
 
     private fun openMyBooks(): Flow<ProfileFragmentEvent> = flow {
         ch.openTopScreen.accept(navCommandProvider.toMyBooks)
+    }
+
+    private fun logout(): Flow<ProfileFragmentEvent> = flow {
+        profileInteractor.logout()
+        ch.openTopScreen.accept(navCommandProvider.toStart)
     }
 }

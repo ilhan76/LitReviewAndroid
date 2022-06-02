@@ -3,6 +3,7 @@ package com.litreview.i_profile
 import com.litreview.base.data.domain.Book
 import com.litreview.base.data.domain.UserInfo
 import com.litreview.base.data.domain.Review
+import com.litreview.i_token.TokenStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -10,7 +11,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ProfileInteractor @Inject constructor(
-    private val repository: ProfileRepository
+    private val repository: ProfileRepository,
+    private val tokenStorage: TokenStorage
 ) {
 
     private val reviewsSharedFlow = MutableSharedFlow<List<Review>>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
@@ -35,5 +37,9 @@ class ProfileInteractor @Inject constructor(
         return withContext(Dispatchers.IO) {
             booksSharedFlow.replayCache.first()
         }
+    }
+
+    fun logout() {
+        tokenStorage.clearTokens()
     }
 }

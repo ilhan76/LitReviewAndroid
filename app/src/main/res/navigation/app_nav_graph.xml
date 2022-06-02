@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_mainFlowFragmentView_to_changePersonalDataView"
             app:destination="@id/changePersonalDataView" />
+        <action
+            android:id="@+id/action_mainFlowFragmentView_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/booksListFragmentView"

@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_mainFlowFragmentView_to_reviewsListFragmentView"
             app:destination="@id/reviewsListFragmentView" />
+        <action
+            android:id="@+id/action_mainFlowFragmentView_to_changePersonalDataView"
+            app:destination="@id/changePersonalDataView" />
     </fragment>
     <fragment
         android:id="@+id/booksListFragmentView"
@@ -63,4 +66,8 @@
         android:id="@+id/reviewsListFragmentView"
         android:name="com.litreview.f_reviews_list.ReviewsListFragmentView"
         android:label="ReviewsListFragmentView" />
+    <fragment
+        android:id="@+id/changePersonalDataView"
+        android:name="com.litreview.f_profile.changePersonalData.ChangePersonalDataView"
+        android:label="ChangePersonalDataView" />
 </navigation>

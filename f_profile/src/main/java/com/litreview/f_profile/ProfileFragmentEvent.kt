@@ -9,6 +9,7 @@ sealed class ProfileFragmentEvent : Event {
 
     object OpenMyReviewEvent : ProfileFragmentEvent()
     object OpenMyBooksEvent : ProfileFragmentEvent()
+    object OpenChangePersonalData : ProfileFragmentEvent()
     object LogoutEvent : ProfileFragmentEvent()
 
     data class UpdateProfileInfo(

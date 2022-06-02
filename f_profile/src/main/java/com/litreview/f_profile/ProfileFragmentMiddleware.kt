@@ -20,6 +20,7 @@ class ProfileFragmentMiddleware @Inject constructor(
         return eventStream.transformations {
             addAll(
                 ViewCreatedEvent::class eventToStream { loadProfileInfo() },
+                OpenChangePersonalData::class eventToStream { openChangePersonalOffer() },
                 OpenMyReviewEvent::class eventToStream { openMyReview() },
                 OpenMyBooksEvent::class eventToStream { openMyBooks() }
             )
@@ -32,6 +33,10 @@ class ProfileFragmentMiddleware @Inject constructor(
         } catch (e: Throwable) {
             ch.showErrorMessage.accept(e.message ?: DEFAULT_ERROR)
         }
+    }
+
+    private fun openChangePersonalOffer(): Flow<ProfileFragmentEvent> = flow {
+        ch.openTopScreen.accept(navCommandProvider.toChangePersonalData)
     }
 
     private fun openMyReview(): Flow<ProfileFragmentEvent> = flow {

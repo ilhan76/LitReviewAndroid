@@ -9,6 +9,9 @@ class ProfileNavCommandProviderImpl @Inject constructor(): ProfileNavCommandProv
 
     private val currentDestination = R.id.mainFlowFragmentView
 
+    override val toChangePersonalData: NavCommand
+        get() = NavCommand(R.id.action_mainFlowFragmentView_to_changePersonalDataView, currentDestination)
+
     override val toMyReview: NavCommand
         get() = NavCommand(R.id.action_mainFlowFragmentView_to_reviewsListFragmentView, currentDestination)
 

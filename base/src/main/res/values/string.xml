@@ -66,7 +66,7 @@
     <string name="change_personal_data_second_name_hint">Фамилия</string>
     <string name="change_personal_data_email_hint">E-mail</string>
     <string name="change_personal_data_pass_hint">Пароль</string>
-    <string name="change_personal_data_confirm_new_pass_hint">Подтвердите пароль</string>
+    <string name="change_personal_data_phone_hint">Номер телефона</string>
     <string name="change_personal_data_btn_save">Сохранить</string>
     <!--  endregion  -->
 

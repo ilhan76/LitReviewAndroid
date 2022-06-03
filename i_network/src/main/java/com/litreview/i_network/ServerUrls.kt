@@ -15,7 +15,6 @@ object Urls {
     object Profile {
         const val PROFILE = "profile"
 
-        const val GET_BOOKS = "$PROFILE/books"
         const val ADD_BOOK = "$PROFILE/book"
     }
 

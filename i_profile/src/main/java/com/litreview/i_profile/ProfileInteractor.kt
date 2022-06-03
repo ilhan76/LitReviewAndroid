@@ -47,6 +47,12 @@ class ProfileInteractor @Inject constructor(
             booksSharedFlow.replayCache.first()
         }
     }
+    
+    suspend fun addBookToBookmarks(id: String) {
+        withContext(Dispatchers.IO) {
+            repository.addBookToBookmarks(id)
+        }
+    }
 
     fun logout() {
         tokenStorage.clearTokens()

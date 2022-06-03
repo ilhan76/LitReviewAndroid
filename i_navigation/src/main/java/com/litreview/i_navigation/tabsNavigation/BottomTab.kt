@@ -1,4 +1,4 @@
-package com.litreview.i_navigation
+package com.litreview.i_navigation.tabsNavigation
 
 enum class BottomTab {
     FEED,

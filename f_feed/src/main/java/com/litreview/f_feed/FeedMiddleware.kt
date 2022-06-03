@@ -3,8 +3,8 @@ package com.litreview.f_feed
 import android.os.Bundle
 import com.litreview.base.util.Args
 import com.litreview.base.util.DEFAULT_ERROR
-import com.litreview.i_navigation.BottomTab
-import com.litreview.i_navigation.TabsNavigationEventHub
+import com.litreview.i_navigation.tabsNavigation.BottomTab
+import com.litreview.i_navigation.tabsNavigation.TabsNavigationEventHub
 import com.litreview.f_feed.FeedEvent.*
 import com.litreview.i_feed.FeedInteractor
 import com.litreview.i_navigation.providers.FeedNavCommandProvider

@@ -15,6 +15,9 @@ import com.litreview.f_profile.ProfileFragmentState
 import com.litreview.f_reviews_list.ReviewsListFragmentEvent
 import com.litreview.f_reviews_list.ReviewsListFragmentReducer
 import com.litreview.f_reviews_list.ReviewsListFragmentState
+import com.litreview.f_start.splash.SplashEvent
+import com.litreview.f_start.splash.SplashReducer
+import com.litreview.f_start.splash.SplashState
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -50,4 +53,9 @@ interface ReducerBindModule {
     fun bindReducerToFeedReducer(
         feedReducer: FeedReducer
     ) : Reducer<FeedEvent, FeedState>
+
+    @Binds
+    fun bindReducerToSplashReducer(
+        splashReducer: SplashReducer
+    ) : Reducer<SplashEvent, SplashState>
 }

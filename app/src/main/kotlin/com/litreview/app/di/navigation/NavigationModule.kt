@@ -22,17 +22,22 @@ class NavigationModule {
     }
 
     @Provides
-    fun provideRegisterCommandProvider() : RegisterNavCommandProvider {
+    fun provideRegisterNavCommandProvider() : RegisterNavCommandProvider {
         return RegisterNavCommandProviderImpl()
     }
 
     @Provides
-    fun provideProfileCommandProvider() : ProfileNavCommandProvider {
+    fun provideProfileNavCommandProvider() : ProfileNavCommandProvider {
         return ProfileNavCommandProviderImpl()
     }
 
     @Provides
-    fun provideFeedCommandProvider() : FeedNavCommandProvider {
+    fun provideFeedNavCommandProvider() : FeedNavCommandProvider {
         return FeedNavCommandProviderImpl()
+    }
+
+    @Provides
+    fun provideSplashNavCommandProvider() : SplashNavProvider {
+        return SplashNavCommandProviderImpl()
     }
 }

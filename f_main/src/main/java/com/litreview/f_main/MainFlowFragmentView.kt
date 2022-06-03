@@ -8,8 +8,8 @@ import androidx.navigation.ui.NavigationUI
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.mvi.BaseFragment
 import com.litreview.f_main.databinding.FlowFragmentMainBinding
-import com.litreview.i_navigation.BottomTab
-import com.litreview.i_navigation.TabsNavigationEventHub
+import com.litreview.i_navigation.tabsNavigation.BottomTab
+import com.litreview.i_navigation.tabsNavigation.TabsNavigationEventHub
 import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.i_navigation.open
 import dagger.hilt.android.AndroidEntryPoint

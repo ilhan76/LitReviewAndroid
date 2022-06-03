@@ -43,6 +43,8 @@ class BookDetailFragmentView : Fragment(R.layout.fragment_book_detail) {
                 book.author?.middleName,
                 book.author?.lastName
             )
+            ratingBar.rating = book.rate.toFloat()
+            ratingTv.text = book.rate.toString()
             detailAboutAuthor.text = book.author?.description
             detailDescription.text = book.description
         }

@@ -8,7 +8,8 @@ import ru.surfstudio.mvi.vm.MviStatefulViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileFragmentViewModel @Inject constructor() : MviStatefulViewModel<ProfileFragmentState, ProfileFragmentEvent>(){
+class ProfileFragmentViewModel @Inject constructor() :
+    MviStatefulViewModel<ProfileFragmentState, ProfileFragmentEvent>() {
 
     @Inject
     override lateinit var reducer: Reducer<ProfileFragmentEvent, ProfileFragmentState>

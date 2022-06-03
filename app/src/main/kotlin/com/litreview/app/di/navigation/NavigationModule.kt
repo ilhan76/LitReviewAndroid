@@ -1,13 +1,7 @@
 package com.litreview.app.di.navigation
 
-import com.litreview.app.navigation.AuthNavCommandProviderImpl
-import com.litreview.app.navigation.MainNavCommandProviderImpl
-import com.litreview.app.navigation.ProfileNavCommandProviderImpl
-import com.litreview.app.navigation.RegisterNavCommandProviderImpl
-import com.litreview.i_navigation.providers.AuthNavCommandProvider
-import com.litreview.i_navigation.providers.MainNavCommandProvider
-import com.litreview.i_navigation.providers.ProfileNavCommandProvider
-import com.litreview.i_navigation.providers.RegisterNavCommandProvider
+import com.litreview.app.navigation.*
+import com.litreview.i_navigation.providers.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,12 +22,22 @@ class NavigationModule {
     }
 
     @Provides
-    fun provideRegisterCommandProvider() : RegisterNavCommandProvider {
+    fun provideRegisterNavCommandProvider() : RegisterNavCommandProvider {
         return RegisterNavCommandProviderImpl()
     }
 
     @Provides
-    fun provideProfileCommandProvider() : ProfileNavCommandProvider {
+    fun provideProfileNavCommandProvider() : ProfileNavCommandProvider {
         return ProfileNavCommandProviderImpl()
+    }
+
+    @Provides
+    fun provideFeedNavCommandProvider() : FeedNavCommandProvider {
+        return FeedNavCommandProviderImpl()
+    }
+
+    @Provides
+    fun provideSplashNavCommandProvider() : SplashNavProvider {
+        return SplashNavCommandProviderImpl()
     }
 }

@@ -4,6 +4,7 @@
     <!--region Common-->
     <string name="stub_content_description">stubContentDescription</string>
     <string name="pattern_name">%s %s</string>
+    <string name="pattern_author_name">%s %s %s</string>
     <!--endregion-->
 
     <!--region Validation error message-->
@@ -35,12 +36,6 @@
     <string name="register_pass_hint">Пароль</string>
     <string name="register_phone_hint">Телефон</string>
     <string name="register_sign_up_btn_text">Зарегистрироваться</string>
-    <!--  endregion  -->
-
-    <!--  region FeedFragmentView  -->
-    <string name="feed_hello_title_text">Добро пожаловать, %s</string>
-    <string name="feed_title_text">Что планируете \nпочитать сегодня?</string>
-    <string name="feed_sv_hint_text">Поиск</string>
     <!--  endregion  -->
 
     <!--  region SearchFragmentView  -->
@@ -77,5 +72,4 @@
         Прочитала я её быстро, в два захода, но не потому что она была мне сильно интересна, а отчасти от того чтобы быстрее узнать что уже будет в конце этой книги и начать читать новую (так как список того что я хочу прочесть внушающий).
     </string>
     <!-- endregion-->
-
 </resources>

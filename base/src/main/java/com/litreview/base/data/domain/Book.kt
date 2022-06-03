@@ -1,8 +1,12 @@
 package com.litreview.base.data.domain
 
+import java.io.Serializable
+
 data class Book(
-    val authorId: Int,
+    val id: Int,
     val title: String,
-    val image: String,
-    val rate: Double
-)
+    val imageUrl: String,
+    val description: String,
+    val rate: Double,
+    val author: Author?
+) : Serializable

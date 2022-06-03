@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingBottom="80dp">
+            android:paddingBottom="100dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/detail_book_card"
@@ -40,6 +40,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/book_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -54,7 +55,30 @@
                 android:textAppearance="@style/Base.16.Regular.Steel_Gray_400"
                 tools:text="J.D. Salinger" />
 
-            <!--TODO Добавить RatingBar-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/rating_bar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    tools:rating="4" />
+
+                <TextView
+                    android:id="@+id/rating_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textAppearance="@style/Base.12.Regular"
+                    tools:text="4.0" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

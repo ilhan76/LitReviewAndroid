@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingVertical="5dp"
     android:layout_marginHorizontal="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingVertical="5dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/item_book_card"
         android:layout_width="160dp"
         android:layout_height="250dp"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/item_bool_poster"
+            android:id="@+id/item_book_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/stub_content_description"
@@ -26,17 +29,23 @@
 
     <TextView
         android:id="@+id/item_book_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:maxWidth="160dp"
         android:textAppearance="@style/Base.16.Bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_book_card"
         tools:text="Cather in the Rye" />
 
     <TextView
         android:id="@+id/item_book_author"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="@style/Base.14.Regular.Steel_Gray_400"
-        tools:text="J.D. Salinger" />
-</LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_book_name"
+        tools:text="J.D. Salinger J.D. Salinger" />
+</androidx.constraintlayout.widget.ConstraintLayout>

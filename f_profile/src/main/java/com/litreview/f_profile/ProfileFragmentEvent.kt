@@ -5,8 +5,6 @@ import ru.surfstudio.mvi.core.event.Event
 
 sealed class ProfileFragmentEvent : Event {
 
-    object ViewCreatedEvent : ProfileFragmentEvent()
-
     object OpenMyReviewEvent : ProfileFragmentEvent()
     object OpenMyBooksEvent : ProfileFragmentEvent()
     object OpenChangePersonalData : ProfileFragmentEvent()

@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/app_nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/splashFragmentView">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_mainFlowFragmentView_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFlowFragmentView_to_bookDetailFragmentView"
+            app:destination="@id/bookDetailFragmentView" />
     </fragment>
     <fragment
         android:id="@+id/booksListFragmentView"
@@ -73,4 +76,19 @@
         android:id="@+id/changePersonalDataView"
         android:name="com.litreview.f_profile.changePersonalData.ChangePersonalDataView"
         android:label="ChangePersonalDataView" />
+    <fragment
+        android:id="@+id/bookDetailFragmentView"
+        android:name="com.litreview.f_book_detail.BookDetailFragmentView"
+        android:label="BookDetailFragmentView" />
+    <fragment
+        android:id="@+id/splashFragmentView"
+        android:name="com.litreview.f_start.splash.SplashFragmentView"
+        android:label="SplashFragmentView" >
+        <action
+            android:id="@+id/action_splashFragmentView_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_splashFragmentView_to_mainFlowFragmentView"
+            app:destination="@id/mainFlowFragmentView" />
+    </fragment>
 </navigation>

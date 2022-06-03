@@ -16,4 +16,5 @@ include ':app',
         ':i_profile',
         ':f_books_list',
         ':f_reviews_list',
-        ':i_feed'
+        ':i_feed',
+        ':f_write_review'

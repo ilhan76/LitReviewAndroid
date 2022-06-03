@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="review_hint_text">Начните вводить текст…</string>
+    <string name="save_btn_text">Оставить рецензию</string>
+</resources>

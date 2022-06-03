@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/write_review_toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/book_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.18.Medium"
+                tools:text="Горе от ума" />
+
+            <TextView
+                android:id="@+id/author_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.16.Regular.Steel_Gray_400"
+                tools:text="Грибоедов" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/book_rating_rb"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:numStars="5"
+                    android:paddingVertical="3dp"
+                    tools:rating="4" />
+
+                <TextView
+                    android:id="@+id/book_rating_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="4.5" />
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_search_view"
+                android:gravity="top"
+                android:hint="@string/review_hint_text"
+                android:inputType="textMultiLine"
+                android:lines="10"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.14.Regular" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                style="?android:attr/ratingBarStyleIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:numStars="5" />
+
+            <Button
+                android:id="@+id/main_btn_sign_up"
+                style="@style/Button.Main.Big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="@string/save_btn_text" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

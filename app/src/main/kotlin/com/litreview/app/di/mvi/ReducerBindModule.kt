@@ -1,5 +1,8 @@
 package com.litreview.app.di.mvi
 
+import com.litreview.f_book_detail.BookDetailEvent
+import com.litreview.f_book_detail.BookDetailReducer
+import com.litreview.f_book_detail.BookDetailState
 import com.litreview.f_books_list.BooksListFragmentEvent
 import com.litreview.f_books_list.BooksListFragmentReducer
 import com.litreview.f_books_list.BooksListFragmentState
@@ -58,4 +61,9 @@ interface ReducerBindModule {
     fun bindReducerToSplashReducer(
         splashReducer: SplashReducer
     ) : Reducer<SplashEvent, SplashState>
+
+    @Binds
+    fun bindReducerToBookDetailReducer(
+        bookDetailReducer: BookDetailReducer
+    ) : Reducer<BookDetailEvent, BookDetailState>
 }

@@ -4,6 +4,8 @@ import com.litreview.f_auth.auth.AuthFragmentEvent
 import com.litreview.f_auth.auth.AuthFragmentMiddleware
 import com.litreview.f_auth.register.RegisterFragmentEvent
 import com.litreview.f_auth.register.RegisterFragmentMiddleware
+import com.litreview.f_book_detail.BookDetailEvent
+import com.litreview.f_book_detail.BookDetailMiddleware
 import com.litreview.f_books_list.BooksListFragmentEvent
 import com.litreview.f_books_list.BooksListFragmentMiddleware
 import com.litreview.f_feed.FeedEvent
@@ -72,4 +74,9 @@ interface MiddlewareBindModule {
     fun bindDslFlowMiddlewareToSplashMiddleware(
         splashMiddleware: SplashMiddleware
     ): DslFlowMiddleware<SplashEvent>
+
+    @Binds
+    fun bindDslFlowMiddlewareToBookDetailMiddleware(
+        bookDetailMiddleware: BookDetailMiddleware
+    ): DslFlowMiddleware<BookDetailEvent>
 }

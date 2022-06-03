@@ -2,6 +2,7 @@ package com.litreview.app.di.mvi
 
 import com.litreview.f_auth.auth.AuthState
 import com.litreview.f_auth.register.RegisterState
+import com.litreview.f_book_detail.BookDetailState
 import com.litreview.f_books_list.BooksListFragmentState
 import com.litreview.f_feed.FeedState
 import com.litreview.f_main.MainFlowState
@@ -65,5 +66,11 @@ class StateModule {
     @Singleton
     fun provideSplashFlowState() : FlowState<SplashState> {
         return FlowState(SplashState())
+    }
+
+    @Provides
+    @Singleton
+    fun provideBookDetailFlowState() : FlowState<BookDetailState> {
+        return FlowState(BookDetailState())
     }
 }

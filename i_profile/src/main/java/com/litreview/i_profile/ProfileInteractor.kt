@@ -34,7 +34,7 @@ class ProfileInteractor @Inject constructor(
         }
     }
 
-    fun subscribeOnUserInfo(): SharedFlow<UserInfo> =  userSharedFlow
+    fun subscribeOnUserInfo(): SharedFlow<UserInfo> = userSharedFlow
 
     suspend fun getMyReviews(): List<Review> {
         return withContext(Dispatchers.IO) {
@@ -47,7 +47,13 @@ class ProfileInteractor @Inject constructor(
             booksSharedFlow.replayCache.first()
         }
     }
-    
+
+    fun isMyBook(id: Int): Boolean {
+        return booksSharedFlow.replayCache.first().any {
+            it.id == id
+        }
+    }
+
     suspend fun addBookToBookmarks(id: String) {
         withContext(Dispatchers.IO) {
             repository.addBookToBookmarks(id)

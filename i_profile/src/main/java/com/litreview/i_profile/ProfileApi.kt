@@ -6,13 +6,13 @@ import com.litreview.i_profile.data.ProfileResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.PUT
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface ProfileApi {
 
     @GET(PROFILE)
     suspend fun getProfile() : Response<ProfileResponse>
 
-    @PUT(ADD_BOOK)
-    suspend fun addBook(@Query("") id: String)
+    @PUT("$ADD_BOOK/{id}")
+    suspend fun addBook(@Path("id") id: String)
 }

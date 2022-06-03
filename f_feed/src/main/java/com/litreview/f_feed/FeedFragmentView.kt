@@ -95,17 +95,17 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
                     .add(searchItemController)
                     .addIf(
                         newBooks.isNotEmpty(),
-                        getString(R.string.feed_books_title_my_books) to newBooks,
+                        getString(R.string.feed_books_title_new_books) to newBooks,
                         newBooksListItemController
                     )
                     .addIf(
                         bestBooks.isNotEmpty(),
-                        getString(R.string.feed_books_title_new_books) to bestBooks,
+                        getString(R.string.feed_books_title_best_books) to bestBooks,
                         bestBooksListItemController
                     )
                     .addIf(
                         myBooks.isNotEmpty(),
-                        getString(R.string.feed_books_title_best_books) to myBooks,
+                        getString(R.string.feed_books_title_my_books) to myBooks,
                         myBooksListItemController
                     )
             )

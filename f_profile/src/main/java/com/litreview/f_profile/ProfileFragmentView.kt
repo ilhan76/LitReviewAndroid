@@ -32,7 +32,6 @@ class ProfileFragmentView :
         initListeners()
         bind()
         observeState { render(it) }
-        emit(ViewCreatedEvent)
     }
 
     private fun render(state: ProfileFragmentState) {

@@ -19,7 +19,7 @@ class ProfileFragmentMiddleware @Inject constructor(
     override fun transform(eventStream: Flow<ProfileFragmentEvent>): Flow<ProfileFragmentEvent> {
         return eventStream.transformations {
             addAll(
-                ViewCreatedEvent::class eventToStream { loadProfileInfo() },
+                subscribeOnUserInfo(),
                 OpenChangePersonalData::class eventToStream { openChangePersonalOffer() },
                 OpenMyReviewEvent::class eventToStream { openMyReview() },
                 OpenMyBooksEvent::class eventToStream { openMyBooks() },
@@ -28,11 +28,9 @@ class ProfileFragmentMiddleware @Inject constructor(
         }
     }
 
-    private fun loadProfileInfo(): Flow<ProfileFragmentEvent> = flow {
-        try {
-            emit(UpdateProfileInfo(profileInteractor.getUserInfo()))
-        } catch (e: Throwable) {
-            ch.showErrorMessage.accept(e.message ?: DEFAULT_ERROR)
+    private fun subscribeOnUserInfo() : Flow<ProfileFragmentEvent> = flow {
+        profileInteractor.subscribeOnUserInfo().collect {
+            emit(UpdateProfileInfo(it))
         }
     }
 

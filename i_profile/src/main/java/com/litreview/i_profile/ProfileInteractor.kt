@@ -6,12 +6,13 @@ import com.litreview.base.data.domain.Review
 import com.litreview.i_token.TokenStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ProfileInteractor @Inject constructor(
     private val repository: ProfileRepository,
     private val tokenStorage: TokenStorage,
@@ -24,13 +25,12 @@ class ProfileInteractor @Inject constructor(
     private val booksSharedFlow =
         MutableSharedFlow<List<Book>>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
 
-    suspend fun getUserInfo(): UserInfo {
+    suspend fun getAndSaveUserInfo() {
         return withContext(Dispatchers.IO) {
             val user = repository.getUser()
             userSharedFlow.emit(user)
             reviewsSharedFlow.emit(user.reviews)
             booksSharedFlow.emit(user.books)
-            user
         }
     }
 

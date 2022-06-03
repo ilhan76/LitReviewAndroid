@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello_title_text">Добро пожаловать, %s</string>
+    <string name="hello_title_text">Добро пожаловать, %s!</string>
     <string name="title_text">Что планируете \nпочитать сегодня?</string>
     <string name="sv_hint_text">Поиск</string>
     <string name="feed_books_title_my_books">Мои книги</string>

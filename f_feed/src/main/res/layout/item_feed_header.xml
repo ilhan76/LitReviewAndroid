@@ -8,9 +8,10 @@
     android:paddingTop="20dp">
 
     <TextView
+        android:id="@+id/title_hello_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/Base.16.Regular"
+        android:textAppearance="@style/Base.16.Regular.Steel_Gray_400"
         tools:text="Добро подаловать, Иван!" />
 
     <TextView

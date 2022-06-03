@@ -8,6 +8,7 @@ import com.litreview.i_navigation.tabsNavigation.TabsNavigationEventHub
 import com.litreview.f_feed.FeedEvent.*
 import com.litreview.i_feed.FeedInteractor
 import com.litreview.i_navigation.providers.FeedNavCommandProvider
+import com.litreview.i_profile.ProfileInteractor
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
@@ -16,6 +17,7 @@ import javax.inject.Inject
 class FeedMiddleware @Inject constructor(
     private val tabsNavigationEventHub: TabsNavigationEventHub,
     private val feedIteractor: FeedInteractor,
+    private val profileInteractor: ProfileInteractor,
     private val ch: FeedCommandHolder,
     private val navCommandProvider: FeedNavCommandProvider
 ) : DslFlowMiddleware<FeedEvent> {
@@ -23,13 +25,20 @@ class FeedMiddleware @Inject constructor(
     override fun transform(eventStream: Flow<FeedEvent>): Flow<FeedEvent> {
         return eventStream.transformations {
             addAll(
-                LoadFeed::class eventToStream { loadFeed() },
+                subscribeOnProfileInfo(),
+                OnCreateEvent::class eventToStream { loadFeed() },
                 LoadMyBooks::class eventToStream { loadMyBooks() },
                 LoadNewBook::class eventToStream { loadNewBooks() },
                 LoadBestBook::class eventToStream { loadBestBooks() },
                 SearchViewClickEvent::class eventToStream { selectSearchTab() },
                 OpenBookDetails::class eventToStream ::openBookDetails
             )
+        }
+    }
+
+    private fun subscribeOnProfileInfo(): Flow<FeedEvent> = flow {
+        profileInteractor.subscribeOnUserInfo().collect {
+            emit(UpdateProfile(it))
         }
     }
 

@@ -26,7 +26,7 @@ class SplashMiddleware @Inject constructor(
 
     private fun tryLoadProfile(): Flow<SplashEvent> = flow {
         try {
-            profileInteractor.getUserInfo()
+            profileInteractor.getAndSaveUserInfo()
             emit(OpenFeedScreenEvent)
         } catch (e: Throwable) {
             emit(OpenMainScreenEvent)

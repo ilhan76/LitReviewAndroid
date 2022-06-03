@@ -63,16 +63,11 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
         initViews()
         bind()
         observeState { render(it) }
-        emit(LoadFeed)
+        emit(OnCreateEvent)
     }
 
     private fun initViews() {
         vb.feedRv.adapter = feedAdapter
-        feedAdapter.setItems(
-            ItemList.create()
-                .add(headerItemController)
-                .add(searchItemController)
-        )
     }
 
     private fun bind() {
@@ -92,7 +87,11 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
         with(state) {
             feedAdapter.setItems(
                 ItemList.create()
-                    .add(headerItemController)
+                    .addIf(
+                        userInfo != null,
+                        userInfo?.firstName,
+                        headerItemController
+                    )
                     .add(searchItemController)
                     .addIf(
                         newBooks.isNotEmpty(),

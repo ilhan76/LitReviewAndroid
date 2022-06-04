@@ -1,5 +1,6 @@
 package com.litreview.app.navigation
 
+import android.os.Bundle
 import com.litreview.R
 import com.litreview.i_navigation.NavCommand
 import com.litreview.i_navigation.providers.ProfileNavCommandProvider
@@ -9,24 +10,25 @@ class ProfileNavCommandProviderImpl @Inject constructor() : ProfileNavCommandPro
 
     private val currentDestination = R.id.mainFlowFragmentView
 
-    override val toChangePersonalData: NavCommand
-        get() = NavCommand(
-            R.id.action_mainFlowFragmentView_to_changePersonalDataView,
+    override val toStart =
+        NavCommand(
+            R.id.action_mainFlowFragmentView_to_mainFragment,
             currentDestination
         )
 
-    override val toMyReview: NavCommand
-        get() = NavCommand(
-            R.id.action_mainFlowFragmentView_to_reviewsListFragmentView,
-            currentDestination
-        )
+    override val toChangePersonalData = NavCommand(
+        R.id.action_mainFlowFragmentView_to_changePersonalDataView,
+        currentDestination
+    )
 
-    override val toMyBooks: NavCommand
-        get() = NavCommand(
-            R.id.action_mainFlowFragmentView_to_booksListFragmentView,
-            currentDestination
-        )
+    override val toMyReview = NavCommand(
+        R.id.action_mainFlowFragmentView_to_reviewsListFragmentView,
+        currentDestination
+    )
 
-    override val toStart: NavCommand
-        get() = NavCommand(R.id.action_mainFlowFragmentView_to_mainFragment, currentDestination)
+    override fun toMyBooks(args: Bundle) = NavCommand(
+        action = R.id.action_mainFlowFragmentView_to_booksListFragmentView,
+        currentDestination = currentDestination,
+        args = args
+    )
 }

@@ -41,10 +41,9 @@ class ReviewsListFragmentView :
             }
         }
         vb.reviewsRv.adapter = easyAdapter
-        val reviews = arguments?.getParcelableArrayList<Review>(Args.EXTRA_FIRST) as List<Review>
+/*        val reviews = arguments?.getParcelableArrayList<Review>(Args.EXTRA_FIRST) as List<Review>
         easyAdapter.setItems(
             ItemList().addAll(reviews, reviewItemController)
-        )
-
+        )*/
     }
 }

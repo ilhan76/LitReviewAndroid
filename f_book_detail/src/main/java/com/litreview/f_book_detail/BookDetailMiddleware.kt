@@ -1,7 +1,6 @@
 package com.litreview.f_book_detail
 
 import android.os.Bundle
-import android.os.Parcelable
 import com.litreview.base.util.Args
 import com.litreview.base.util.DEFAULT_ERROR
 import com.litreview.i_profile.ProfileInteractor
@@ -12,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
 import ru.surfstudio.mvi.flow.FlowState
-import java.util.ArrayList
 import javax.inject.Inject
 
 class BookDetailMiddleware @Inject constructor(
@@ -61,7 +59,7 @@ class BookDetailMiddleware @Inject constructor(
         ch.openScreen.accept(
             navCommandProvider.toWriteReview(
                 Bundle().apply {
-                    putParcelable(Args.EXTRA_FIRST, event.book)
+                    putSerializable(Args.EXTRA_FIRST, event.book)
                 }
             )
         )
@@ -76,13 +74,13 @@ class BookDetailMiddleware @Inject constructor(
             ch.openScreen.accept(
                 navCommandProvider.toReviews(
                     Bundle().apply {
-                        putParcelableArrayList(Args.EXTRA_FIRST, reviews as ArrayList<out Parcelable>)
+                        //todo - исправить на буфер
+//                        putParcelableArrayList(Args.EXTRA_FIRST, reviews as ArrayList<out Parcelable>)
                     }
                 )
             )
         } catch (e: Throwable) {
             ch.showErrorMassage.accept(DEFAULT_ERROR)
         }
-
     }
 }

@@ -45,7 +45,7 @@ class BookDetailFragmentView :
             setNavigationIcon(com.litreview.base.R.drawable.ic_back)
         }
 
-        book = arguments?.getParcelable<Book>(Args.EXTRA_FIRST) as Book
+        book = arguments?.getSerializable(Args.EXTRA_FIRST) as Book
         emit(CheckIsBookAdded(book.id))
 
         with(vb) {

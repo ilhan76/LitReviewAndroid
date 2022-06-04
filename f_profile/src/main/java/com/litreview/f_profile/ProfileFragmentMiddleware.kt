@@ -1,6 +1,5 @@
 package com.litreview.f_profile
 
-import com.litreview.base.util.DEFAULT_ERROR
 import com.litreview.i_profile.ProfileInteractor
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
 import ru.surfstudio.mvi.flow.FlowState
@@ -10,11 +9,13 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class ProfileFragmentMiddleware @Inject constructor(
-    private val state: FlowState<ProfileFragmentState>,
+    private val flowState: FlowState<ProfileState>,
     private val ch: ProfileFragmentCommandHolder,
     private val profileInteractor: ProfileInteractor,
     private val navCommandProvider: ProfileNavCommandProvider
 ) : DslFlowMiddleware<ProfileFragmentEvent> {
+
+    private val state get() = flowState.currentState
 
     override fun transform(eventStream: Flow<ProfileFragmentEvent>): Flow<ProfileFragmentEvent> {
         return eventStream.transformations {

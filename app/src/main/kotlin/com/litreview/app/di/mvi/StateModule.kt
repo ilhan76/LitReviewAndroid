@@ -6,7 +6,7 @@ import com.litreview.f_book_detail.BookDetailState
 import com.litreview.f_books_list.BooksListState
 import com.litreview.f_feed.FeedState
 import com.litreview.f_main.MainFlowState
-import com.litreview.f_profile.ProfileFragmentState
+import com.litreview.f_profile.ProfileState
 import com.litreview.f_reviews_list.ReviewsListState
 import com.litreview.f_start.splash.SplashState
 import com.litreview.f_write_review.WriteReviewState
@@ -35,8 +35,8 @@ class StateModule {
 
     @Provides
     @Singleton
-    fun provideProfileFlowState(): FlowState<ProfileFragmentState> {
-        return FlowState(ProfileFragmentState())
+    fun provideProfileFlowState(): FlowState<ProfileState> {
+        return FlowState(ProfileState())
     }
 
     @Provides

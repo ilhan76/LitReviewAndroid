@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.litreview.base.mvi.BaseFragment
+import com.litreview.base.ui.showErrorSnack
 import com.litreview.base.util.EMPTY_STRING
 import com.litreview.f_profile.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,9 +18,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragmentView :
-    BaseFragment<ProfileFragmentState, ProfileFragmentEvent>(R.layout.fragment_profile) {
+    BaseFragment<ProfileState, ProfileFragmentEvent>(R.layout.fragment_profile) {
 
-    override val viewModel by viewModels<ProfileFragmentViewModel>()
+    override val viewModel by viewModels<ProfileViewModel>()
     private val vb by viewBinding(FragmentProfileBinding::bind)
 
     @Inject
@@ -34,7 +35,7 @@ class ProfileFragmentView :
         observeState { render(it) }
     }
 
-    private fun render(state: ProfileFragmentState) {
+    private fun render(state: ProfileState) {
         state.userInfo?.let {
             vb.profileName.text =
                 getString(com.litreview.base.R.string.pattern_name, it.firstName, it.secondName)
@@ -53,7 +54,7 @@ class ProfileFragmentView :
     }
 
     private fun initListeners() {
-        with(vb){
+        with(vb) {
             profileChangePersonalData.emitOnClick(OpenChangePersonalData)
             profileCvMyReview.emitOnClick(OpenMyReviewEvent)
             profileCvMyBooks.emitOnClick(OpenMyBooksEvent)
@@ -67,6 +68,9 @@ class ProfileFragmentView :
         }
         ch.openTopScreen.flow bindTo {
             findTopNavControllerSafely()?.open(it)
+        }
+        ch.showErrorMassage bindTo {
+            showErrorSnack(it)
         }
     }
 }

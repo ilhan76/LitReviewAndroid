@@ -14,7 +14,7 @@ import com.litreview.f_main.MainFlowReducer
 import com.litreview.f_main.MainFlowState
 import com.litreview.f_profile.ProfileFragmentEvent
 import com.litreview.f_profile.ProfileFragmentReducer
-import com.litreview.f_profile.ProfileFragmentState
+import com.litreview.f_profile.ProfileState
 import com.litreview.f_reviews_list.ReviewsListEvent
 import com.litreview.f_reviews_list.ReviewsListReducer
 import com.litreview.f_reviews_list.ReviewsListState
@@ -38,7 +38,7 @@ interface ReducerBindModule {
     @Binds
     fun bindReducerToProfileReducer(
         profileFragmentReducer: ProfileFragmentReducer
-    ) : Reducer<ProfileFragmentEvent, ProfileFragmentState>
+    ) : Reducer<ProfileFragmentEvent, ProfileState>
 
     @Binds
     fun bindReducerToBooksListReducer(

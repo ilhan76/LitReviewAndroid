@@ -43,10 +43,11 @@ dependencies {
     implementation project(':f_reviews_list')
     implementation project(':i_navigation')
     implementation project(':i_network')
+    implementation project(':i_token')
     implementation project(':i_auth')
     implementation project(':i_profile')
+    implementation project(':i_review')
     implementation project(':i_feed')
-    implementation project(':i_token')
 
     implementation lang.kotlinStdLib
     implementation lang.jetbrainsAnnotations

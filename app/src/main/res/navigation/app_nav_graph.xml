@@ -79,7 +79,14 @@
     <fragment
         android:id="@+id/bookDetailFragmentView"
         android:name="com.litreview.f_book_detail.BookDetailFragmentView"
-        android:label="BookDetailFragmentView" />
+        android:label="BookDetailFragmentView" >
+        <action
+            android:id="@+id/action_bookDetailFragmentView_to_writeReviewFragmentView"
+            app:destination="@id/writeReviewFragmentView" />
+        <action
+            android:id="@+id/action_bookDetailFragmentView_to_reviewsListFragmentView"
+            app:destination="@id/reviewsListFragmentView" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragmentView"
         android:name="com.litreview.f_start.splash.SplashFragmentView"
@@ -91,4 +98,8 @@
             android:id="@+id/action_splashFragmentView_to_mainFlowFragmentView"
             app:destination="@id/mainFlowFragmentView" />
     </fragment>
+    <fragment
+        android:id="@+id/writeReviewFragmentView"
+        android:name="com.litreview.f_write_review.WriteReviewFragmentView"
+        android:label="WriteReviewFragmentView" />
 </navigation>

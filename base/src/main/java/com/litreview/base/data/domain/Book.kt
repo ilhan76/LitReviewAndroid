@@ -9,4 +9,12 @@ data class Book(
     val description: String,
     val rate: Double,
     val author: Author?
-) : Serializable
+) : Serializable {
+
+    val authorName: String
+        get() {
+            return author?.firstName + if (author?.firstName.isNullOrEmpty()) " " else "" +
+                    author?.lastName + if (author?.lastName.isNullOrEmpty()) " " else "" +
+                    author?.middleName
+        }
+}

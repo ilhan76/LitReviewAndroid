@@ -1,6 +1,7 @@
 package com.litreview.f_book_detail
 
 import com.litreview.base.util.Command
+import com.litreview.i_navigation.NavCommand
 import ru.surfstudio.mvi.core.reducer.Reducer
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -12,6 +13,7 @@ data class BookDetailState(
 @Singleton
 class BookDetailCommandHolder @Inject constructor() {
     val showFailAddToBookmarksMessage = Command<Unit>()
+    val openScreen = Command<NavCommand>()
 }
 
 class BookDetailReducer @Inject constructor(): Reducer<BookDetailEvent, BookDetailState> {

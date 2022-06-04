@@ -38,6 +38,7 @@ dependencies {
     implementation project(':f_chats')
     implementation project(':f_profile')
     implementation project(':f_book_detail')
+    implementation project(':f_write_review')
     implementation project(':f_books_list')
     implementation project(':f_reviews_list')
     implementation project(':i_navigation')

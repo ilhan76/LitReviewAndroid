@@ -4,6 +4,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputLayout
+import com.litreview.base.util.Command
 import kotlinx.coroutines.flow.SharedFlow
 import ru.surfstudio.mvi.core.event.Event
 import ru.surfstudio.mvi.vm.android.MviStatefulView
@@ -11,6 +12,14 @@ import ru.surfstudio.mvi.vm.android.MviStatefulView
 abstract class BaseFragment<S : Any, E : Event>(
     id: Int
 ) : Fragment(id), MviStatefulView<S, E> {
+
+    infix fun <T> Command<T>.bindTo(action: (T) -> Unit) {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+            flow.bindTo {
+                action(it)
+            }
+        }
+    }
 
     infix fun <T> SharedFlow<T>.bindTo(action: (T) -> Unit) {
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {

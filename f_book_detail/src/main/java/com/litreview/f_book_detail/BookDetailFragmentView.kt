@@ -12,6 +12,8 @@ import com.litreview.base.ui.showSnack
 import com.litreview.base.util.Args
 import com.litreview.f_book_detail.databinding.FragmentBookDetailBinding
 import com.litreview.f_book_detail.BookDetailEvent.*
+import com.litreview.i_navigation.findNavControllerSafely
+import com.litreview.i_navigation.open
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,6 +27,8 @@ class BookDetailFragmentView :
     lateinit var ch: BookDetailCommandHolder
 
     private val vb by viewBinding<FragmentBookDetailBinding>()
+
+    private lateinit var book: Book
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,7 +45,7 @@ class BookDetailFragmentView :
             setNavigationIcon(com.litreview.base.R.drawable.ic_back)
         }
 
-        val book = arguments?.getSerializable(Args.EXTRA_FIRST) as Book
+        book = arguments?.getSerializable(Args.EXTRA_FIRST) as Book
         emit(CheckIsBookAdded(book.id))
 
         with(vb) {
@@ -67,20 +71,21 @@ class BookDetailFragmentView :
     }
 
     private fun initListeners() {
-        vb.bookmarkBtn.emitOnClick(
-            BookmarkClickEvent(
-                (arguments?.getSerializable(Args.EXTRA_FIRST) as Book).id.toString()
-            )
-        )
+        vb.bookmarkBtn.emitOnClick(BookmarkClickEvent(book.id.toString()))
+        vb.detailReadReviewBtn.emitOnClick(OpenReviewsScreen(book))
+        vb.detailWriteReviewBtn.emitOnClick(OpenWriteReviewScreen(book))
     }
 
     private fun bind() {
-        ch.showFailAddToBookmarksMessage.flow bindTo {
+        ch.showFailAddToBookmarksMessage bindTo {
             requireActivity().showSnack(
                 message = getString(R.string.fail_to_add_to_bookmarks_error_text),
                 color = com.litreview.base.R.color.red_error,
                 marginTop = vb.detailToolbar.toolbar.height
             )
+        }
+        ch.openScreen bindTo {
+            findNavControllerSafely()?.open(it)
         }
     }
 

@@ -6,9 +6,13 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.data.domain.Book
 import com.litreview.base.mvi.BaseFragment
+import com.litreview.base.ui.SimpleTextWatcher
 import com.litreview.base.ui.showErrorSnack
+import com.litreview.base.ui.showNormalSnack
 import com.litreview.base.util.Args
 import com.litreview.f_write_review.databinding.FragmentWriteReviewBinding
+import com.litreview.f_write_review.WriteReviewEvent.*
+import com.litreview.i_navigation.findNavControllerSafely
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -29,6 +33,7 @@ class WriteReviewFragmentView :
         super.onViewCreated(view, savedInstanceState)
         viewModel.bindFlow()
         initViews()
+        initListeners()
         bind()
     }
 
@@ -48,7 +53,25 @@ class WriteReviewFragmentView :
         vb.bookRatingTv.text = book.rate.toString()
     }
 
+    private fun initListeners() {
+        with(vb) {
+            sendReviewBtn.emitOnClick(SendReview(book = book))
+            reviewTv.addTextChangedListener(SimpleTextWatcher {
+                emit(ReviewTextChanged(it))
+            })
+            reviewRb.setOnRatingBarChangeListener { _, rate, _ ->
+                emit(ReviewRateChanged(rate.toInt()))
+            }
+        }
+    }
+
     private fun bind() {
+        ch.closeScreen bindTo {
+            findNavControllerSafely()?.popBackStack()
+        }
+        ch.showMessage bindTo {
+            showNormalSnack(it)
+        }
         ch.showErrorMessage bindTo {
             showErrorSnack(it)
         }

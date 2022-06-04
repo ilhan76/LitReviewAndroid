@@ -2,4 +2,9 @@
 <resources>
     <string name="review_hint_text">Начните вводить текст…</string>
     <string name="save_btn_text">Оставить рецензию</string>
+
+    <string name="snack_error_not_valid_text">Текст рецензии должен быть не меньше %s символов</string>
+    <string name="snack_error_not_valid_rating">Поставите оценку книге, чтобы оставить рецензию</string>
+    <string name="snack_error_something_bad">Что-по пошло не так :(</string>
+    <string name="snack_thanks_for_review">Спасибо за вашу рецензию!</string>
 </resources>

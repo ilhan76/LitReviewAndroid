@@ -1,6 +1,6 @@
 package com.litreview.app.di.api
 
-import com.litreview.i_feed.FeedApi
+import com.litreview.i_books.BooksApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,11 +10,11 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-class FeedModule {
+class BooksModule {
 
     @Provides
     @Singleton
-    fun provideFeedApi(retrofit: Retrofit): FeedApi {
-        return retrofit.create(FeedApi::class.java)
+    fun provideFeedApi(retrofit: Retrofit): BooksApi {
+        return retrofit.create(BooksApi::class.java)
     }
 }

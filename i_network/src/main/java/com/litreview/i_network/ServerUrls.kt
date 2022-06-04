@@ -20,7 +20,7 @@ object Urls {
     }
 
     object Books {
-        private const val BOOKS = "books"
+        const val BOOKS = "books"
 
         const val BEST_BOOKS = "$BOOKS?rate=4"
         const val NEW_BOOKS = "$BOOKS/news"

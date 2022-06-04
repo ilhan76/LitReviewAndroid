@@ -5,9 +5,9 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.controller.BookItemController
-import com.litreview.base.data.domain.Book
 import com.litreview.base.mvi.BaseFragment
 import com.litreview.base.util.Args
+import com.litreview.f_books_list.BooksListEvent.*
 import com.litreview.f_books_list.databinding.FragmentBooksListBinding
 import com.litreview.i_navigation.findTopNavControllerSafely
 import com.litreview.i_navigation.open
@@ -36,6 +36,8 @@ class BooksListFragmentView :
         initToolbar()
         initViews()
         bind()
+        observeState { render(it) }
+        emit(GetBooksFromBuffer)
     }
 
     private fun initToolbar() = with(vb.booksToolbar.toolbar) {
@@ -47,17 +49,19 @@ class BooksListFragmentView :
     }
 
     private fun initViews() {
-        val books = arguments?.getParcelableArrayList<Book>(Args.EXTRA_SECOND) as List<Book>
         vb.booksRv.adapter = easyAdapter
-        easyAdapter.setItems(
-            ItemList()
-                .addAll(books, bookItemController)
-        )
     }
 
     private fun bind() {
         ch.openTopScreen bindTo {
             findTopNavControllerSafely()?.open(it)
         }
+    }
+
+    private fun render(state: BooksListState) {
+        easyAdapter.setItems(
+            ItemList()
+                .addAll(state.books, bookItemController)
+        )
     }
 }

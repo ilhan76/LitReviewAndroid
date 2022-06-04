@@ -45,7 +45,7 @@ class WriteReviewFragmentView :
             }
         }
 
-        book = arguments?.getSerializable(Args.EXTRA_FIRST) as Book
+        book = arguments?.getParcelable<Book>(Args.EXTRA_FIRST) as Book
 
         vb.bookNameTv.text = book.title
         vb.authorNameTv.text = book.authorName

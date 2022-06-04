@@ -12,7 +12,7 @@ data class PublicUserDto(
     @SerializedName("secondName")
     val secondName: String,
     @SerializedName("avatar")
-    val avatarUrl: String,
+    val avatarUrl: String?,
     @SerializedName("description")
     val description: String?,
     @SerializedName("rate")

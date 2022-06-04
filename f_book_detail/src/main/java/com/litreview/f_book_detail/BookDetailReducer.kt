@@ -13,6 +13,7 @@ data class BookDetailState(
 @Singleton
 class BookDetailCommandHolder @Inject constructor() {
     val showFailAddToBookmarksMessage = Command<Unit>()
+    val showErrorMassage = Command<String>()
     val openScreen = Command<NavCommand>()
 }
 

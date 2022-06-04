@@ -14,8 +14,8 @@ import com.litreview.f_main.MainFlowEvent
 import com.litreview.f_main.MainFlowMiddleware
 import com.litreview.f_profile.ProfileFragmentEvent
 import com.litreview.f_profile.ProfileFragmentMiddleware
-import com.litreview.f_reviews_list.ReviewsListFragmentEvent
-import com.litreview.f_reviews_list.ReviewsListFragmentMiddleware
+import com.litreview.f_reviews_list.ReviewsListEvent
+import com.litreview.f_reviews_list.ReviewsListMiddleware
 import com.litreview.f_start.main_screen.MainFragmentEvent
 import com.litreview.f_start.main_screen.MainFragmentMiddleware
 import com.litreview.f_start.splash.SplashEvent
@@ -64,8 +64,8 @@ interface MiddlewareBindModule {
 
     @Binds
     fun bindDslFlowMiddlewareToReviewsListMiddleware(
-        reviewsListFragmentMiddleware: ReviewsListFragmentMiddleware
-    ): DslFlowMiddleware<ReviewsListFragmentEvent>
+        reviewsListMiddleware: ReviewsListMiddleware
+    ): DslFlowMiddleware<ReviewsListEvent>
 
     @Binds
     fun bindDslFlowMiddlewareToFeedMiddleware(

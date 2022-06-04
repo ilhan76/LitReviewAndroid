@@ -15,9 +15,9 @@ import com.litreview.f_main.MainFlowState
 import com.litreview.f_profile.ProfileFragmentEvent
 import com.litreview.f_profile.ProfileFragmentReducer
 import com.litreview.f_profile.ProfileFragmentState
-import com.litreview.f_reviews_list.ReviewsListFragmentEvent
-import com.litreview.f_reviews_list.ReviewsListFragmentReducer
-import com.litreview.f_reviews_list.ReviewsListFragmentState
+import com.litreview.f_reviews_list.ReviewsListEvent
+import com.litreview.f_reviews_list.ReviewsListReducer
+import com.litreview.f_reviews_list.ReviewsListState
 import com.litreview.f_start.splash.SplashEvent
 import com.litreview.f_start.splash.SplashReducer
 import com.litreview.f_start.splash.SplashState
@@ -52,8 +52,8 @@ interface ReducerBindModule {
 
     @Binds
     fun bindReducerToReviewsListReducer(
-        reviewsListFragmentReducer: ReviewsListFragmentReducer
-    ) : Reducer<ReviewsListFragmentEvent, ReviewsListFragmentState>
+        reviewsListReducer: ReviewsListReducer
+    ) : Reducer<ReviewsListEvent, ReviewsListState>
 
     @Binds
     fun bindReducerToFeedReducer(

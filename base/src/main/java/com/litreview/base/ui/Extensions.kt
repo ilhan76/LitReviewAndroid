@@ -5,11 +5,37 @@ import android.view.Gravity
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputLayout
 import com.litreview.base.R
 
-fun Activity.showSnack(message: String, color: Int, marginTop: Int) {
+fun Fragment.showErrorSnack(
+    message: String,
+    marginTop: Int = 0
+) {
+    requireActivity().showSnack(
+        message,
+        R.color.red_error,
+        marginTop
+    )
+}
+
+fun Fragment.showNormalSnack(
+    message: String,
+    marginTop: Int = 0
+) {
+    requireActivity().showSnack(
+        message,
+        R.color.green,
+        marginTop
+    )
+}
+
+private fun Activity.showSnack(
+    message: String,
+    color: Int,
+    marginTop: Int = 0
+) {
     val rootView =
         this.findViewById<View>(R.id.coordinator_layout)
     if (rootView != null) {

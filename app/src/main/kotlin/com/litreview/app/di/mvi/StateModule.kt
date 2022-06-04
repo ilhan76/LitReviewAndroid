@@ -9,6 +9,7 @@ import com.litreview.f_main.MainFlowState
 import com.litreview.f_profile.ProfileFragmentState
 import com.litreview.f_reviews_list.ReviewsListFragmentState
 import com.litreview.f_start.splash.SplashState
+import com.litreview.f_write_review.WriteReviewState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -72,5 +73,11 @@ class StateModule {
     @Singleton
     fun provideBookDetailFlowState() : FlowState<BookDetailState> {
         return FlowState(BookDetailState())
+    }
+
+    @Provides
+    @Singleton
+    fun provideWriteReviewFlowState() : FlowState<WriteReviewState> {
+        return FlowState(WriteReviewState())
     }
 }

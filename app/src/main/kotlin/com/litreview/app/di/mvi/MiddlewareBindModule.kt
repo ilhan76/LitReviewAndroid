@@ -20,6 +20,8 @@ import com.litreview.f_start.main_screen.MainFragmentEvent
 import com.litreview.f_start.main_screen.MainFragmentMiddleware
 import com.litreview.f_start.splash.SplashEvent
 import com.litreview.f_start.splash.SplashMiddleware
+import com.litreview.f_write_review.WriteReviewEvent
+import com.litreview.f_write_review.WriteReviewMiddleware
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -79,4 +81,9 @@ interface MiddlewareBindModule {
     fun bindDslFlowMiddlewareToBookDetailMiddleware(
         bookDetailMiddleware: BookDetailMiddleware
     ): DslFlowMiddleware<BookDetailEvent>
+
+    @Binds
+    fun bindDslFlowMiddlewareToWriteReviewMiddleware(
+        writeReviewMiddleware: WriteReviewMiddleware
+    ): DslFlowMiddleware<WriteReviewEvent>
 }

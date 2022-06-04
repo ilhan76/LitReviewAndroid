@@ -21,6 +21,9 @@ import com.litreview.f_reviews_list.ReviewsListFragmentState
 import com.litreview.f_start.splash.SplashEvent
 import com.litreview.f_start.splash.SplashReducer
 import com.litreview.f_start.splash.SplashState
+import com.litreview.f_write_review.WriteReviewEvent
+import com.litreview.f_write_review.WriteReviewReducer
+import com.litreview.f_write_review.WriteReviewState
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -66,4 +69,9 @@ interface ReducerBindModule {
     fun bindReducerToBookDetailReducer(
         bookDetailReducer: BookDetailReducer
     ) : Reducer<BookDetailEvent, BookDetailState>
+
+    @Binds
+    fun bindReducerToWriteReviewReducer(
+        writeReviewReducer: WriteReviewReducer
+    ) : Reducer<WriteReviewEvent, WriteReviewState>
 }

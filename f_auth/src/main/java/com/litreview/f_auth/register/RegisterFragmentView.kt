@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.textfield.TextInputLayout
 import com.litreview.base.ui.SimpleTextWatcher
-import com.litreview.base.ui.showSnack
+import com.litreview.base.ui.showErrorSnack
 import com.litreview.base.validation.getErrorMessageResOrNull
 import com.litreview.f_auth.R
 import com.litreview.f_auth.register.RegisterFragmentEvent.*
@@ -73,9 +73,8 @@ class RegisterFragmentView : Fragment(R.layout.fragment_register),
         }
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             ch.showErrorMessage.flow.collect {
-                requireActivity().showSnack(
+                showErrorSnack(
                     message = it,
-                    color = com.litreview.base.R.color.red_error,
                     marginTop = vb.registerToolbar.toolbar.height
                 )
             }

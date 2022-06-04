@@ -8,7 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.litreview.base.data.domain.Book
 import com.litreview.base.mvi.BaseFragment
-import com.litreview.base.ui.showSnack
+import com.litreview.base.ui.showErrorSnack
 import com.litreview.base.util.Args
 import com.litreview.f_book_detail.databinding.FragmentBookDetailBinding
 import com.litreview.f_book_detail.BookDetailEvent.*
@@ -78,9 +78,8 @@ class BookDetailFragmentView :
 
     private fun bind() {
         ch.showFailAddToBookmarksMessage bindTo {
-            requireActivity().showSnack(
+            showErrorSnack(
                 message = getString(R.string.fail_to_add_to_bookmarks_error_text),
-                color = com.litreview.base.R.color.red_error,
                 marginTop = vb.detailToolbar.toolbar.height
             )
         }

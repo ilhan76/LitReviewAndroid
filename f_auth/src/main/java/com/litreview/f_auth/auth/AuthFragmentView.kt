@@ -3,12 +3,11 @@ package com.litreview.f_auth.auth
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.mvi.BaseFragment
 import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.base.ui.SimpleTextWatcher
-import com.litreview.base.ui.showSnack
+import com.litreview.base.ui.showErrorSnack
 import com.litreview.base.util.Args
 import com.litreview.base.validation.getErrorMessageResOrNull
 import com.litreview.f_auth.R
@@ -53,7 +52,7 @@ class AuthFragmentView : BaseFragment<AuthState, AuthFragmentEvent>(R.layout.fra
     }
 
     private fun initListeners() {
-        with(vb){
+        with(vb) {
             authTietEmail.addTextChangedListener(SimpleTextWatcher {
                 emit(EmailChangedEvent(it))
             })
@@ -69,9 +68,8 @@ class AuthFragmentView : BaseFragment<AuthState, AuthFragmentEvent>(R.layout.fra
             findNavControllerSafely()?.open(navCommand = it)
         }
         ch.showErrorMessage.flow bindTo {
-            requireActivity().showSnack(
+            showErrorSnack(
                 it,
-                com.litreview.base.R.color.red_error,
                 vb.authToolbar.toolbar.height
             )
         }

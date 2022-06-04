@@ -1,4 +1,5 @@
 apply from: 'config.gradle'
+
 include ':app',
         ':base',
         ':f_start',
@@ -16,4 +17,6 @@ include ':app',
         ':i_profile',
         ':f_books_list',
         ':f_reviews_list',
-        ':i_feed'
+        ':i_feed',
+        ':f_write_review',
+        ':i_review'

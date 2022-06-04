@@ -80,7 +80,7 @@ class FeedMiddleware @Inject constructor(
         ch.openTopScreen.accept(
             navCommandProvider.toBookDetail(
                 Bundle().apply {
-                    putSerializable(
+                    putParcelable(
                         Args.EXTRA_FIRST,
                         event.book
                     )

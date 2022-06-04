@@ -15,14 +15,18 @@ object Urls {
     object Profile {
         const val PROFILE = "profile"
 
-        const val GET_BOOKS = "$PROFILE/books"
+        const val MY_BOOKS = "$PROFILE/books"
         const val ADD_BOOK = "$PROFILE/book"
     }
 
     object Books {
-        const val BOOKS = "books"
+        private const val BOOKS = "books"
 
         const val BEST_BOOKS = "$BOOKS?rate=4"
         const val NEW_BOOKS = "$BOOKS/news"
+    }
+
+    object Review {
+        const val REVIEWS = "reviews"
     }
 }

@@ -6,9 +6,10 @@ import retrofit2.Response
 
 //todo - расширить обрабатываемые ошибки
 fun <T> Response<T>.responseCheck(): Response<T> {
-    return when (code()) {
-        200 -> this
-        401 -> throw NotAuthorizedException()
+    val code = code()
+    return when {
+        code / 100 == 2 -> this
+        code == 401 -> throw NotAuthorizedException()
         else -> throw UnexpectedError()
     }
 }

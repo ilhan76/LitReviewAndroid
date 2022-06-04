@@ -1,5 +1,8 @@
 package com.litreview.app.di.mvi
 
+import com.litreview.f_book_detail.BookDetailEvent
+import com.litreview.f_book_detail.BookDetailReducer
+import com.litreview.f_book_detail.BookDetailState
 import com.litreview.f_books_list.BooksListFragmentEvent
 import com.litreview.f_books_list.BooksListFragmentReducer
 import com.litreview.f_books_list.BooksListFragmentState
@@ -12,12 +15,15 @@ import com.litreview.f_main.MainFlowState
 import com.litreview.f_profile.ProfileFragmentEvent
 import com.litreview.f_profile.ProfileFragmentReducer
 import com.litreview.f_profile.ProfileFragmentState
-import com.litreview.f_reviews_list.ReviewsListFragmentEvent
-import com.litreview.f_reviews_list.ReviewsListFragmentReducer
-import com.litreview.f_reviews_list.ReviewsListFragmentState
+import com.litreview.f_reviews_list.ReviewsListEvent
+import com.litreview.f_reviews_list.ReviewsListReducer
+import com.litreview.f_reviews_list.ReviewsListState
 import com.litreview.f_start.splash.SplashEvent
 import com.litreview.f_start.splash.SplashReducer
 import com.litreview.f_start.splash.SplashState
+import com.litreview.f_write_review.WriteReviewEvent
+import com.litreview.f_write_review.WriteReviewReducer
+import com.litreview.f_write_review.WriteReviewState
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -46,8 +52,8 @@ interface ReducerBindModule {
 
     @Binds
     fun bindReducerToReviewsListReducer(
-        reviewsListFragmentReducer: ReviewsListFragmentReducer
-    ) : Reducer<ReviewsListFragmentEvent, ReviewsListFragmentState>
+        reviewsListReducer: ReviewsListReducer
+    ) : Reducer<ReviewsListEvent, ReviewsListState>
 
     @Binds
     fun bindReducerToFeedReducer(
@@ -58,4 +64,14 @@ interface ReducerBindModule {
     fun bindReducerToSplashReducer(
         splashReducer: SplashReducer
     ) : Reducer<SplashEvent, SplashState>
+
+    @Binds
+    fun bindReducerToBookDetailReducer(
+        bookDetailReducer: BookDetailReducer
+    ) : Reducer<BookDetailEvent, BookDetailState>
+
+    @Binds
+    fun bindReducerToWriteReviewReducer(
+        writeReviewReducer: WriteReviewReducer
+    ) : Reducer<WriteReviewEvent, WriteReviewState>
 }

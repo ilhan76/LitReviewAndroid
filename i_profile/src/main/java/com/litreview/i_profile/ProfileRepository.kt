@@ -13,4 +13,8 @@ class ProfileRepository @Inject constructor(
         val response = api.getProfile()
         return response.responseCheck().body()?.transform()!!
     }
+
+    suspend fun addBookToBookmarks(id: String) {
+        api.addBook(id)
+    }
 }

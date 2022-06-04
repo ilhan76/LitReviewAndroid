@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.data.domain.Book
 import com.litreview.base.mvi.BaseFragment
-import com.litreview.base.ui.showSnack
+import com.litreview.base.ui.showErrorSnack
 import com.litreview.f_feed.controllers.HeaderItemController
 import com.litreview.f_feed.controllers.SearchItemController
 import com.litreview.f_feed.databinding.FragmentFeedBinding
@@ -72,9 +72,8 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
 
     private fun bind() {
         ch.showErrorMessage.flow bindTo {
-            requireActivity().showSnack(
+            showErrorSnack(
                 message = it,
-                color = com.litreview.base.R.color.red_error,
                 marginTop = 50
             )
         }
@@ -95,17 +94,17 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
                     .add(searchItemController)
                     .addIf(
                         newBooks.isNotEmpty(),
-                        getString(R.string.feed_books_title_my_books) to newBooks,
+                        getString(R.string.feed_books_title_new_books) to newBooks,
                         newBooksListItemController
                     )
                     .addIf(
                         bestBooks.isNotEmpty(),
-                        getString(R.string.feed_books_title_new_books) to bestBooks,
+                        getString(R.string.feed_books_title_best_books) to bestBooks,
                         bestBooksListItemController
                     )
                     .addIf(
                         myBooks.isNotEmpty(),
-                        getString(R.string.feed_books_title_best_books) to myBooks,
+                        getString(R.string.feed_books_title_my_books) to myBooks,
                         myBooksListItemController
                     )
             )

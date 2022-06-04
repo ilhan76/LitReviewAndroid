@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="fail_to_add_to_bookmarks_error_text">Не получилось добавить в закладки :(</string>
+
+</resources>

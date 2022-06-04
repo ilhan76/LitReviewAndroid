@@ -75,6 +75,7 @@
         android:id="@+id/review_rating"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:numStars="5"
         android:paddingVertical="3dp"
@@ -102,7 +103,8 @@
         tools:text="@string/tools_review_text" />
 
     <androidx.appcompat.widget.AppCompatRatingBar
-        style="?android:attr/ratingBarStyleIndicator"
+        android:id="@+id/review_rb"
+        style="?android:attr/ratingBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"

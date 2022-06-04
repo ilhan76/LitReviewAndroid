@@ -3,7 +3,7 @@ package com.litreview.app.di.mvi
 import com.litreview.f_auth.auth.AuthState
 import com.litreview.f_auth.register.RegisterState
 import com.litreview.f_book_detail.BookDetailState
-import com.litreview.f_books_list.BooksListFragmentState
+import com.litreview.f_books_list.BooksListState
 import com.litreview.f_feed.FeedState
 import com.litreview.f_main.MainFlowState
 import com.litreview.f_profile.ProfileFragmentState
@@ -41,8 +41,8 @@ class StateModule {
 
     @Provides
     @Singleton
-    fun provideBooksListFlowState() : FlowState<BooksListFragmentState> {
-        return FlowState(BooksListFragmentState())
+    fun provideBooksListFlowState() : FlowState<BooksListState> {
+        return FlowState(BooksListState())
     }
 
     @Provides

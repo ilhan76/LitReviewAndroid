@@ -6,8 +6,8 @@ import com.litreview.f_auth.register.RegisterFragmentEvent
 import com.litreview.f_auth.register.RegisterFragmentMiddleware
 import com.litreview.f_book_detail.BookDetailEvent
 import com.litreview.f_book_detail.BookDetailMiddleware
-import com.litreview.f_books_list.BooksListFragmentEvent
-import com.litreview.f_books_list.BooksListFragmentMiddleware
+import com.litreview.f_books_list.BooksListEvent
+import com.litreview.f_books_list.BooksListMiddleware
 import com.litreview.f_feed.FeedEvent
 import com.litreview.f_feed.FeedMiddleware
 import com.litreview.f_main.MainFlowEvent
@@ -54,8 +54,8 @@ interface MiddlewareBindModule {
 
     @Binds
     fun bindDslFlowMiddlewareToBooksListMiddleware(
-        booksListFragmentMiddleware: BooksListFragmentMiddleware
-    ): DslFlowMiddleware<BooksListFragmentEvent>
+        booksListMiddleware: BooksListMiddleware
+    ): DslFlowMiddleware<BooksListEvent>
 
     @Binds
     fun bindDslFlowMiddlewareToMainFlowMiddleware(

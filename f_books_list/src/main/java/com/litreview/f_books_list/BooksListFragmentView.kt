@@ -9,13 +9,19 @@ import com.litreview.base.data.domain.Book
 import com.litreview.base.mvi.BaseFragment
 import com.litreview.base.util.Args
 import com.litreview.f_books_list.databinding.FragmentBooksListBinding
+import com.litreview.i_navigation.findTopNavControllerSafely
+import com.litreview.i_navigation.open
 import dagger.hilt.android.AndroidEntryPoint
 import ru.surfstudio.android.easyadapter.EasyAdapter
 import ru.surfstudio.android.easyadapter.ItemList
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class BooksListFragmentView :
     BaseFragment<BooksListState, BooksListEvent>(R.layout.fragment_books_list) {
+
+    @Inject
+    lateinit var ch: BooksListCommandHolder
 
     override val viewModel by viewModels<BooksListViewModel>()
     private val vb by viewBinding(FragmentBooksListBinding::bind)
@@ -29,6 +35,7 @@ class BooksListFragmentView :
         viewModel.bindFlow()
         initToolbar()
         initViews()
+        bind()
     }
 
     private fun initToolbar() = with(vb.booksToolbar.toolbar) {
@@ -46,5 +53,11 @@ class BooksListFragmentView :
             ItemList()
                 .addAll(books, bookItemController)
         )
+    }
+
+    private fun bind() {
+        ch.openTopScreen bindTo {
+            findTopNavControllerSafely()?.open(it)
+        }
     }
 }

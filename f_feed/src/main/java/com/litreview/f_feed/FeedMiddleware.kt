@@ -7,7 +7,7 @@ import com.litreview.i_navigation.tabsNavigation.BottomTab
 import com.litreview.i_navigation.tabsNavigation.TabsNavigationEventHub
 import com.litreview.f_feed.FeedEvent.*
 import com.litreview.i_books.BooksInteractor
-import com.litreview.i_navigation.providers.FeedNavCommandProvider
+import com.litreview.i_navigation.providers.TabsNavCommandProvider
 import com.litreview.i_profile.ProfileInteractor
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -19,7 +19,7 @@ class FeedMiddleware @Inject constructor(
     private val booksIteractor: BooksInteractor,
     private val profileInteractor: ProfileInteractor,
     private val ch: FeedCommandHolder,
-    private val navCommandProvider: FeedNavCommandProvider
+    private val navCommandProvider: TabsNavCommandProvider
 ) : DslFlowMiddleware<FeedEvent> {
 
     override fun transform(eventStream: Flow<FeedEvent>): Flow<FeedEvent> {

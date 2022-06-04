@@ -32,8 +32,8 @@ class NavigationModule {
     }
 
     @Provides
-    fun provideFeedNavCommandProvider() : FeedNavCommandProvider {
-        return FeedNavCommandProviderImpl()
+    fun provideFeedNavCommandProvider() : TabsNavCommandProvider {
+        return TabsNavCommandProviderImpl()
     }
 
     @Provides

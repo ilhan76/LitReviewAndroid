@@ -3,9 +3,9 @@ package com.litreview.app.navigation
 import android.os.Bundle
 import com.litreview.R
 import com.litreview.i_navigation.NavCommand
-import com.litreview.i_navigation.providers.FeedNavCommandProvider
+import com.litreview.i_navigation.providers.TabsNavCommandProvider
 
-class FeedNavCommandProviderImpl : FeedNavCommandProvider {
+class TabsNavCommandProviderImpl : TabsNavCommandProvider {
 
     private val currentDestination = R.id.mainFlowFragmentView
 

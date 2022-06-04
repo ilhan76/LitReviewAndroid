@@ -1,2 +1,7 @@
 apply from: '../commonFeatureModule.gradle'
 apply from: '../commonKaptModule.gradle'
+
+dependencies {
+    implementation project(":i_books")
+    implementation project(":i_navigation")
+}

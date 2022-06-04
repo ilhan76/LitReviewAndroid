@@ -16,6 +16,8 @@ import com.litreview.f_profile.ProfileFragmentEvent
 import com.litreview.f_profile.ProfileFragmentMiddleware
 import com.litreview.f_reviews_list.ReviewsListEvent
 import com.litreview.f_reviews_list.ReviewsListMiddleware
+import com.litreview.f_search.SearchEvent
+import com.litreview.f_search.SearchMiddleware
 import com.litreview.f_start.main_screen.MainFragmentEvent
 import com.litreview.f_start.main_screen.MainFragmentMiddleware
 import com.litreview.f_start.splash.SplashEvent
@@ -86,4 +88,9 @@ interface MiddlewareBindModule {
     fun bindDslFlowMiddlewareToWriteReviewMiddleware(
         writeReviewMiddleware: WriteReviewMiddleware
     ): DslFlowMiddleware<WriteReviewEvent>
+
+    @Binds
+    fun bindDslFlowMiddlewareToSearchMiddleware(
+        searchMiddleware: SearchMiddleware
+    ): DslFlowMiddleware<SearchEvent>
 }

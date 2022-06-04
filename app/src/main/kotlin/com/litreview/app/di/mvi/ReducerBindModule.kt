@@ -18,6 +18,9 @@ import com.litreview.f_profile.ProfileState
 import com.litreview.f_reviews_list.ReviewsListEvent
 import com.litreview.f_reviews_list.ReviewsListReducer
 import com.litreview.f_reviews_list.ReviewsListState
+import com.litreview.f_search.SearchEvent
+import com.litreview.f_search.SearchReducer
+import com.litreview.f_search.SearchState
 import com.litreview.f_start.splash.SplashEvent
 import com.litreview.f_start.splash.SplashReducer
 import com.litreview.f_start.splash.SplashState
@@ -74,4 +77,9 @@ interface ReducerBindModule {
     fun bindReducerToWriteReviewReducer(
         writeReviewReducer: WriteReviewReducer
     ) : Reducer<WriteReviewEvent, WriteReviewState>
+
+    @Binds
+    fun bindReducerToSearchReducer(
+        searchReducer: SearchReducer
+    ) : Reducer<SearchEvent, SearchState>
 }

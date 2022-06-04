@@ -8,6 +8,7 @@ import com.litreview.f_feed.FeedState
 import com.litreview.f_main.MainFlowState
 import com.litreview.f_profile.ProfileState
 import com.litreview.f_reviews_list.ReviewsListState
+import com.litreview.f_search.SearchState
 import com.litreview.f_start.splash.SplashState
 import com.litreview.f_write_review.WriteReviewState
 import dagger.Module
@@ -79,5 +80,11 @@ class StateModule {
     @Singleton
     fun provideWriteReviewFlowState() : FlowState<WriteReviewState> {
         return FlowState(WriteReviewState())
+    }
+
+    @Provides
+    @Singleton
+    fun provideWriteSearchState() : FlowState<SearchState> {
+        return FlowState(SearchState())
     }
 }

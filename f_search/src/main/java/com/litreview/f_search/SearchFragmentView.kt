@@ -6,7 +6,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.mvi.BaseFragment
-import com.litreview.base.ui.showErrorBottomSnack
+import com.litreview.base.ui.showErrorTopSnack
+import com.litreview.base.util.toPx
 import com.litreview.f_search.databinding.FragmentSearchBinding
 import com.litreview.f_search.SearchEvent.*
 import com.litreview.i_navigation.findTopNavControllerSafely
@@ -50,7 +51,10 @@ class SearchFragmentView : BaseFragment<SearchState, SearchEvent>(R.layout.fragm
             findTopNavControllerSafely()?.open(it)
         }
         ch.showErrorMessage bindTo {
-            showErrorBottomSnack(it)
+            showErrorTopSnack(
+                it,
+                100.toPx()
+            )
         }
     }
 }

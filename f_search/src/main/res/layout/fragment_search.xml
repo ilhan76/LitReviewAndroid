@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
-    android:paddingTop="10dp">
+    android:paddingTop="30dp">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_sv"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:queryBackground="@android:color/transparent"
-        app:queryHint="test"
+        app:queryHint="Введите название книги..."
         app:searchIcon="@drawable/ic_search" />
 
     <androidx.recyclerview.widget.RecyclerView

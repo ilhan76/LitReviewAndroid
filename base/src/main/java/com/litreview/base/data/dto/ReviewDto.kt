@@ -14,9 +14,9 @@ data class ReviewDto(
     @SerializedName("rate")
     val rate: Double,
     @SerializedName("user")
-    val user: PublicUserDto,
+    val user: PublicUserDto?,
     @SerializedName("book")
-    val book: BookDto
+    val book: BookDto?
 ) : Transformable<Review> {
     override fun transform(): Review {
         return Review(
@@ -24,8 +24,8 @@ data class ReviewDto(
             date = date, //todo - добавить форматирование
             text = text,
             rate = rate,
-            book = book.transform(),
-            userInfo = user.transform()
+            book = book?.transform(),
+            userInfo = user?.transform()
         )
     }
 }

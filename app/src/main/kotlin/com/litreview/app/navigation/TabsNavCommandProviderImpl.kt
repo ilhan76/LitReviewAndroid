@@ -20,9 +20,15 @@ class TabsNavCommandProviderImpl : TabsNavCommandProvider {
         currentDestination
     )
 
-    override val toMyReview = NavCommand(
+    override val toReviewsList = NavCommand(
         R.id.action_mainFlowFragmentView_to_reviewsListFragmentView,
         currentDestination
+    )
+
+    override fun toWriteReview(args: Bundle) = NavCommand(
+        action = R.id.action_bookDetailFragmentView_to_writeReviewFragmentView,
+        currentDestination = currentDestination,
+        args = args
     )
 
     override fun toBooksList(args: Bundle) = NavCommand(

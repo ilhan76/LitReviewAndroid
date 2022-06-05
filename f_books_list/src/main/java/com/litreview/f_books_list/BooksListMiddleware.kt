@@ -26,7 +26,7 @@ class BooksListMiddleware @Inject constructor(
     }
 
     private fun getBooksFromBuffer(): BooksListEvent {
-        val books = booksBufferStorage.getBooks()
+        val books = booksBufferStorage.get()
         return UpdateBooksList(books)
     }
 

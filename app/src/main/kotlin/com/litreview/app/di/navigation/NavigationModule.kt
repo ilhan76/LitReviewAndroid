@@ -35,9 +35,4 @@ class NavigationModule {
     fun provideSplashNavCommandProvider() : SplashNavProvider {
         return SplashNavCommandProviderImpl()
     }
-
-    @Provides
-    fun provideBookDetailsNavCommandProvider() : BookDetailNavCommandProvider {
-        return BookDetailNavCommandProviderImpl()
-    }
 }

@@ -15,6 +15,7 @@ class ReviewsListReducer @Inject constructor() : Reducer<ReviewsListEvent, Revie
         event: ReviewsListEvent
     ): ReviewsListState {
         return when (event) {
+            is ReviewsListEvent.UpdateReviewsList -> state.copy(reviews = event.list)
             else -> state
         }
     }

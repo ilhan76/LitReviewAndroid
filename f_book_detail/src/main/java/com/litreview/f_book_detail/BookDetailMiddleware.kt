@@ -1,11 +1,12 @@
 package com.litreview.f_book_detail
 
 import android.os.Bundle
+import com.litreview.base.storage.ReviewsBufferStorage
 import com.litreview.base.util.Args
 import com.litreview.base.util.DEFAULT_ERROR
 import com.litreview.i_profile.ProfileInteractor
 import com.litreview.f_book_detail.BookDetailEvent.*
-import com.litreview.i_navigation.providers.BookDetailNavCommandProvider
+import com.litreview.i_navigation.providers.TabsNavCommandProvider
 import com.litreview.i_review.ReviewInteractor
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -18,7 +19,8 @@ class BookDetailMiddleware @Inject constructor(
     private val reviewInteractor: ReviewInteractor,
     private val flowState: FlowState<BookDetailState>,
     private val ch: BookDetailCommandHolder,
-    private val navCommandProvider: BookDetailNavCommandProvider
+    private val navCommandProvider: TabsNavCommandProvider,
+    private val reviewsBufferStorage: ReviewsBufferStorage
 ) : DslFlowMiddleware<BookDetailEvent> {
 
     private val state get() = flowState.currentState
@@ -70,15 +72,8 @@ class BookDetailMiddleware @Inject constructor(
     ): Flow<BookDetailEvent> = flow {
         try {
             //todo - заменить на id
-           val reviews = reviewInteractor.getReviewsByBook(event.book.title)
-            ch.openScreen.accept(
-                navCommandProvider.toReviews(
-                    Bundle().apply {
-                        //todo - исправить на буфер
-//                        putParcelableArrayList(Args.EXTRA_FIRST, reviews as ArrayList<out Parcelable>)
-                    }
-                )
-            )
+            reviewsBufferStorage.emit(reviewInteractor.getReviewsByBook(event.book.title))
+            ch.openScreen.accept(navCommandProvider.toReviewsList)
         } catch (e: Throwable) {
             ch.showErrorMassage.accept(DEFAULT_ERROR)
         }

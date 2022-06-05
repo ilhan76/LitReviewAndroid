@@ -1,7 +1,8 @@
 package com.litreview.f_profile
 
-import android.os.Bundle
+import androidx.core.os.bundleOf
 import com.litreview.base.storage.BooksBufferStorage
+import com.litreview.base.storage.ReviewsBufferStorage
 import com.litreview.base.util.Args
 import com.litreview.i_profile.ProfileInteractor
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
@@ -16,7 +17,8 @@ class ProfileFragmentMiddleware @Inject constructor(
     private val ch: ProfileFragmentCommandHolder,
     private val profileInteractor: ProfileInteractor,
     private val navCommandProvider: TabsNavCommandProvider,
-    private val booksBufferStorage: BooksBufferStorage
+    private val booksBufferStorage: BooksBufferStorage,
+    private val reviewsBufferStorage: ReviewsBufferStorage
 ) : DslFlowMiddleware<ProfileFragmentEvent> {
 
     private val state get() = flowState.currentState
@@ -33,7 +35,7 @@ class ProfileFragmentMiddleware @Inject constructor(
         }
     }
 
-    private fun subscribeOnUserInfo() : Flow<ProfileFragmentEvent> = flow {
+    private fun subscribeOnUserInfo(): Flow<ProfileFragmentEvent> = flow {
         profileInteractor.subscribeOnUserInfo().collect {
             emit(UpdateProfileInfo(it))
         }
@@ -44,18 +46,15 @@ class ProfileFragmentMiddleware @Inject constructor(
     }
 
     private fun openMyReview(): Flow<ProfileFragmentEvent> = flow {
-        ch.openTopScreen.accept(navCommandProvider.toMyReview)
+        reviewsBufferStorage.emit(profileInteractor.getMyReviews())
+        ch.openTopScreen.accept(navCommandProvider.toReviewsList)
     }
 
     private fun openMyBooks(): Flow<ProfileFragmentEvent> = flow {
         state.userInfo?.let {
+            booksBufferStorage.emit(it.books)
             ch.openTopScreen.accept(
-                navCommandProvider.toBooksList(
-                    Bundle().apply {
-                        putString(Args.EXTRA_FIRST, "Мои книги")
-                        booksBufferStorage.emitBooks(it.books)
-                    }
-                )
+                navCommandProvider.toBooksList(bundleOf(Args.EXTRA_FIRST to "Мои книги"))
             )
         }
     }

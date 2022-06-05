@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.litreview.base.data.domain.Review
 import com.litreview.base.mvi.BaseFragment
-import com.litreview.base.util.Args
+import com.litreview.f_reviews_list.ReviewsListEvent.*
 import com.litreview.f_reviews_list.coltrollers.ReviewItemController
 import com.litreview.f_reviews_list.databinding.FragmentReviewsListBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +27,8 @@ class ReviewsListFragmentView :
         super.onViewCreated(view, savedInstanceState)
         viewModel.bindFlow()
         initView()
+        observeState { render(it) }
+        emit(GetReviewFromBuffer)
         //todo - понять, откуда бирется зацикливание при эмите
 //      emit(UpdateReviewsList(arguments?.getParcelableArrayList<Review>(Args.EXTRA_FIRST) as List<Review>))
 //      emit(UpdateReviewsList(emptyList()))
@@ -45,5 +46,13 @@ class ReviewsListFragmentView :
         easyAdapter.setItems(
             ItemList().addAll(reviews, reviewItemController)
         )*/
+    }
+
+    private fun render(state: ReviewsListState) {
+        easyAdapter.setItems(
+            ItemList().addAll(
+                state.reviews, reviewItemController
+            )
+        )
     }
 }

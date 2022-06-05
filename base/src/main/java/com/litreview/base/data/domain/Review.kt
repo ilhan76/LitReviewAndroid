@@ -7,7 +7,7 @@ data class Review(
     val date: String,
     val text: String,
     val rate: Double,
-    val book: Book,
+    val book: Book?, // todo - костыль, уберу, когда бэк починят
     val userInfo: PublicUser? = null
 ) : Serializable {
     val userName: String

@@ -38,7 +38,7 @@ class SearchMiddleware @Inject constructor(
         try {
             val books = booksInteractor.getBooksByTitle(state.searchText)
             if (books.isNotEmpty()) {
-                booksBufferStorage.emitBooks(books)
+                booksBufferStorage.emit(books)
                 ch.openTopScreen.accept(
                     navCommandProvider.toBooksList(
                         bundleOf(Args.EXTRA_FIRST to state.searchText)

@@ -8,7 +8,9 @@ interface TabsNavCommandProvider {
     val toStart: NavCommand
     val toChangePersonalData: NavCommand
 
-    val toMyReview: NavCommand
+    val toReviewsList: NavCommand
+
+    fun toWriteReview(args: Bundle): NavCommand
 
     fun toBooksList(args: Bundle): NavCommand
     fun toBookDetail(args: Bundle) : NavCommand

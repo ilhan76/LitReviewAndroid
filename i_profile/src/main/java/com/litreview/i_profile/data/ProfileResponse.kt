@@ -18,9 +18,9 @@ data class ProfileResponse(
     @SerializedName("phone")
     val phone: String,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("avatar")
-    val avatar: String,
+    val avatar: String?,
     @SerializedName("rate")
     val rate: Double?,
     @SerializedName("reviews")

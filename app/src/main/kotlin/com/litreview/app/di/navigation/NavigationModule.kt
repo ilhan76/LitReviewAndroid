@@ -27,22 +27,12 @@ class NavigationModule {
     }
 
     @Provides
-    fun provideProfileNavCommandProvider() : ProfileNavCommandProvider {
-        return ProfileNavCommandProviderImpl()
-    }
-
-    @Provides
-    fun provideFeedNavCommandProvider() : FeedNavCommandProvider {
-        return FeedNavCommandProviderImpl()
+    fun provideFeedNavCommandProvider() : TabsNavCommandProvider {
+        return TabsNavCommandProviderImpl()
     }
 
     @Provides
     fun provideSplashNavCommandProvider() : SplashNavProvider {
         return SplashNavCommandProviderImpl()
-    }
-
-    @Provides
-    fun provideBookDetailsNavCommandProvider() : BookDetailNavCommandProvider {
-        return BookDetailNavCommandProviderImpl()
     }
 }

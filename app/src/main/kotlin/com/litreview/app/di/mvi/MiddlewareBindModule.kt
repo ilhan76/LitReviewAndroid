@@ -6,8 +6,8 @@ import com.litreview.f_auth.register.RegisterFragmentEvent
 import com.litreview.f_auth.register.RegisterFragmentMiddleware
 import com.litreview.f_book_detail.BookDetailEvent
 import com.litreview.f_book_detail.BookDetailMiddleware
-import com.litreview.f_books_list.BooksListFragmentEvent
-import com.litreview.f_books_list.BooksListFragmentMiddleware
+import com.litreview.f_books_list.BooksListEvent
+import com.litreview.f_books_list.BooksListMiddleware
 import com.litreview.f_feed.FeedEvent
 import com.litreview.f_feed.FeedMiddleware
 import com.litreview.f_main.MainFlowEvent
@@ -16,6 +16,8 @@ import com.litreview.f_profile.ProfileFragmentEvent
 import com.litreview.f_profile.ProfileFragmentMiddleware
 import com.litreview.f_reviews_list.ReviewsListEvent
 import com.litreview.f_reviews_list.ReviewsListMiddleware
+import com.litreview.f_search.SearchEvent
+import com.litreview.f_search.SearchMiddleware
 import com.litreview.f_start.main_screen.MainFragmentEvent
 import com.litreview.f_start.main_screen.MainFragmentMiddleware
 import com.litreview.f_start.splash.SplashEvent
@@ -54,8 +56,8 @@ interface MiddlewareBindModule {
 
     @Binds
     fun bindDslFlowMiddlewareToBooksListMiddleware(
-        booksListFragmentMiddleware: BooksListFragmentMiddleware
-    ): DslFlowMiddleware<BooksListFragmentEvent>
+        booksListMiddleware: BooksListMiddleware
+    ): DslFlowMiddleware<BooksListEvent>
 
     @Binds
     fun bindDslFlowMiddlewareToMainFlowMiddleware(
@@ -86,4 +88,9 @@ interface MiddlewareBindModule {
     fun bindDslFlowMiddlewareToWriteReviewMiddleware(
         writeReviewMiddleware: WriteReviewMiddleware
     ): DslFlowMiddleware<WriteReviewEvent>
+
+    @Binds
+    fun bindDslFlowMiddlewareToSearchMiddleware(
+        searchMiddleware: SearchMiddleware
+    ): DslFlowMiddleware<SearchEvent>
 }

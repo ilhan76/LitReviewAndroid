@@ -36,16 +36,12 @@ class ProfileInteractor @Inject constructor(
 
     fun subscribeOnUserInfo(): SharedFlow<UserInfo> = userSharedFlow
 
-    suspend fun getMyReviews(): List<Review> {
-        return withContext(Dispatchers.IO) {
-            reviewsSharedFlow.replayCache.first()
-        }
+    fun getMyReviews(): List<Review> {
+        return reviewsSharedFlow.replayCache.first()
     }
 
-    suspend fun getMyBooks(): List<Book> {
-        return withContext(Dispatchers.IO) {
-            booksSharedFlow.replayCache.first()
-        }
+    fun getMyBooks(): List<Book> {
+        return booksSharedFlow.replayCache.first()
     }
 
     fun isMyBook(id: Int): Boolean {

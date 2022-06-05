@@ -6,14 +6,16 @@ import com.litreview.i_auth.data.RegisterRequest
 import com.litreview.i_auth.data.RegisterResponse
 import com.litreview.i_network.Urls.Auth.LOGIN
 import com.litreview.i_network.Urls.Auth.REGISTER
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface AuthApi {
 
     @POST(LOGIN)
-    suspend fun login(@Body loginRequest: LoginRequest) : LoginResponse
+    suspend fun login(@Body loginRequest: LoginRequest) : Response<LoginResponse>
 
     @POST(REGISTER)
-    suspend fun register(@Body registerRequest: RegisterRequest) : RegisterResponse
+    suspend fun register(@Body registerRequest: RegisterRequest) : Response<RegisterResponse>
+
 }

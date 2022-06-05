@@ -9,32 +9,47 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.litreview.base.R
 
-fun Fragment.showErrorSnack(
+fun Fragment.showErrorBottomSnack(
     message: String,
     marginTop: Int = 0
 ) {
     requireActivity().showSnack(
         message,
         R.color.red_error,
-        marginTop
+        marginTop,
+        Gravity.BOTTOM
     )
 }
 
-fun Fragment.showNormalSnack(
+fun Fragment.showErrorTopSnack(
+    message: String,
+    marginTop: Int = 0
+) {
+    requireActivity().showSnack(
+        message,
+        R.color.red_error,
+        marginTop,
+        Gravity.TOP
+    )
+}
+
+fun Fragment.showNormalTopSnack(
     message: String,
     marginTop: Int = 0
 ) {
     requireActivity().showSnack(
         message,
         R.color.green,
-        marginTop
+        marginTop,
+        Gravity.TOP
     )
 }
 
 private fun Activity.showSnack(
     message: String,
     color: Int,
-    marginTop: Int = 0
+    marginTop: Int = 0,
+    gravityRes: Int
 ) {
     val rootView =
         this.findViewById<View>(R.id.coordinator_layout)
@@ -42,7 +57,7 @@ private fun Activity.showSnack(
         Snackbar.make(rootView, message, Snackbar.LENGTH_LONG).apply {
             view.layoutParams =
                 (view.layoutParams as CoordinatorLayout.LayoutParams).apply {
-                    gravity = Gravity.TOP
+                    gravity = gravityRes
                     setMargins(
                         leftMargin,
                         marginTop,

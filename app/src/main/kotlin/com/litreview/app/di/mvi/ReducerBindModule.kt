@@ -3,9 +3,9 @@ package com.litreview.app.di.mvi
 import com.litreview.f_book_detail.BookDetailEvent
 import com.litreview.f_book_detail.BookDetailReducer
 import com.litreview.f_book_detail.BookDetailState
-import com.litreview.f_books_list.BooksListFragmentEvent
-import com.litreview.f_books_list.BooksListFragmentReducer
-import com.litreview.f_books_list.BooksListFragmentState
+import com.litreview.f_books_list.BooksListEvent
+import com.litreview.f_books_list.BooksListReducer
+import com.litreview.f_books_list.BooksListState
 import com.litreview.f_feed.FeedEvent
 import com.litreview.f_feed.FeedReducer
 import com.litreview.f_feed.FeedState
@@ -14,10 +14,13 @@ import com.litreview.f_main.MainFlowReducer
 import com.litreview.f_main.MainFlowState
 import com.litreview.f_profile.ProfileFragmentEvent
 import com.litreview.f_profile.ProfileFragmentReducer
-import com.litreview.f_profile.ProfileFragmentState
+import com.litreview.f_profile.ProfileState
 import com.litreview.f_reviews_list.ReviewsListEvent
 import com.litreview.f_reviews_list.ReviewsListReducer
 import com.litreview.f_reviews_list.ReviewsListState
+import com.litreview.f_search.SearchEvent
+import com.litreview.f_search.SearchReducer
+import com.litreview.f_search.SearchState
 import com.litreview.f_start.splash.SplashEvent
 import com.litreview.f_start.splash.SplashReducer
 import com.litreview.f_start.splash.SplashState
@@ -38,12 +41,12 @@ interface ReducerBindModule {
     @Binds
     fun bindReducerToProfileReducer(
         profileFragmentReducer: ProfileFragmentReducer
-    ) : Reducer<ProfileFragmentEvent, ProfileFragmentState>
+    ) : Reducer<ProfileFragmentEvent, ProfileState>
 
     @Binds
     fun bindReducerToBooksListReducer(
-        booksListFragmentReducer: BooksListFragmentReducer
-    ) : Reducer<BooksListFragmentEvent, BooksListFragmentState>
+        booksListReducer: BooksListReducer
+    ) : Reducer<BooksListEvent, BooksListState>
 
     @Binds
     fun bindReducerToMainFlowReducer(
@@ -74,4 +77,9 @@ interface ReducerBindModule {
     fun bindReducerToWriteReviewReducer(
         writeReviewReducer: WriteReviewReducer
     ) : Reducer<WriteReviewEvent, WriteReviewState>
+
+    @Binds
+    fun bindReducerToSearchReducer(
+        searchReducer: SearchReducer
+    ) : Reducer<SearchEvent, SearchState>
 }

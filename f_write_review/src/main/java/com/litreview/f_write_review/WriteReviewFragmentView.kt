@@ -7,8 +7,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.data.domain.Book
 import com.litreview.base.mvi.BaseFragment
 import com.litreview.base.ui.SimpleTextWatcher
-import com.litreview.base.ui.showErrorSnack
-import com.litreview.base.ui.showNormalSnack
+import com.litreview.base.ui.showErrorTopSnack
+import com.litreview.base.ui.showNormalTopSnack
 import com.litreview.base.util.Args
 import com.litreview.f_write_review.databinding.FragmentWriteReviewBinding
 import com.litreview.f_write_review.WriteReviewEvent.*
@@ -45,7 +45,7 @@ class WriteReviewFragmentView :
             }
         }
 
-        book = arguments?.getParcelable<Book>(Args.EXTRA_FIRST) as Book
+        book = arguments?.getSerializable(Args.EXTRA_FIRST) as Book
 
         vb.bookNameTv.text = book.title
         vb.authorNameTv.text = book.authorName
@@ -70,10 +70,10 @@ class WriteReviewFragmentView :
             findNavControllerSafely()?.popBackStack()
         }
         ch.showMessage bindTo {
-            showNormalSnack(it)
+            showNormalTopSnack(it)
         }
         ch.showErrorMessage bindTo {
-            showErrorSnack(it)
+            showErrorTopSnack(it)
         }
     }
 }

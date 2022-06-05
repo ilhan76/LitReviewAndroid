@@ -1,7 +1,6 @@
 package com.litreview.f_auth.register
 
-import android.os.Bundle
-import com.litreview.base.mvi.Request
+import androidx.core.os.bundleOf
 import com.litreview.base.util.Args
 import com.litreview.base.util.DEFAULT_ERROR
 import com.litreview.base.validation.FieldValidator
@@ -11,9 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import com.litreview.f_auth.register.RegisterFragmentEvent.*
 import com.litreview.i_auth.AuthInteractor
 import com.litreview.i_navigation.providers.RegisterNavCommandProvider
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.flow
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
 import ru.surfstudio.mvi.flow.FlowState
 import javax.inject.Inject
@@ -35,7 +32,7 @@ class RegisterFragmentMiddleware @Inject constructor(
                 ValidationEvent.Request::class eventToEvent ::handleValidationRequest,
                 ValidationEvent.Result::class.filter {
                     it.isSuccessful
-                } react { register() }
+                } eventToStream { register() }
             )
         }
     }
@@ -60,35 +57,20 @@ class RegisterFragmentMiddleware @Inject constructor(
         )
     }
 
-    private fun register() {
-        GlobalScope.launch {
-            authInteractor.register(
+    private fun register(): Flow<RegisterFragmentEvent> = flow {
+        try {
+            val email = authInteractor.register(
                 name = currentState.name,
                 secondName = currentState.secondName,
                 email = currentState.email,
                 password = currentState.password,
                 phone = currentState.phone
-            ).catch { e ->
-                ch.showErrorMessage.accept(e.message ?: DEFAULT_ERROR)
-            }.collect {
-                //todo - придумать как здесь сделать через RequestEvent
-                when (it) {
-                    is Request.Loading -> {
-                        // todo Будет сделано, как продумаю RequestEvent
-                    }
-                    is Request.Error -> {
-                        ch.showErrorMessage.accept(it.getErrorOrNull()?.message ?: DEFAULT_ERROR)
-                    }
-                    is Request.Success -> {
-                        ch.openScreen.accept(navCommandProvider.toAuth(Bundle().apply {
-                            putString(
-                                Args.EXTRA_FIRST,
-                                it.getData()
-                            )
-                        }))
-                    }
-                }
-            }
+            )
+            ch.openScreen.accept(
+                navCommandProvider.toAuth(bundleOf(Args.EXTRA_FIRST to email))
+            )
+        } catch (e: Throwable) {
+            ch.showErrorMessage.accept(e.message ?: DEFAULT_ERROR)
         }
     }
 }

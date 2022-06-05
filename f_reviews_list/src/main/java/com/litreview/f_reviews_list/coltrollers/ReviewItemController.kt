@@ -23,7 +23,7 @@ class ReviewItemController : BindableItemController<Review, ReviewItemController
             with(binding) {
                 Glide.with(root)
                     .load(
-                        data.userInfo!!.avatarUrl.takeIf {
+                        data.userInfo?.avatarUrl.takeIf {
                             it?.isNotEmpty() == true
                         } ?: com.litreview.base.R.drawable.book_cover
                     ).into(reviewerAvatar)

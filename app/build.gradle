@@ -47,7 +47,7 @@ dependencies {
     implementation project(':i_auth')
     implementation project(':i_profile')
     implementation project(':i_review')
-    implementation project(':i_feed')
+    implementation project(':i_books')
 
     implementation lang.kotlinStdLib
     implementation lang.jetbrainsAnnotations

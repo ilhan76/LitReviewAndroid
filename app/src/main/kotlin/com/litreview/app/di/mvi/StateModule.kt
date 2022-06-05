@@ -3,11 +3,12 @@ package com.litreview.app.di.mvi
 import com.litreview.f_auth.auth.AuthState
 import com.litreview.f_auth.register.RegisterState
 import com.litreview.f_book_detail.BookDetailState
-import com.litreview.f_books_list.BooksListFragmentState
+import com.litreview.f_books_list.BooksListState
 import com.litreview.f_feed.FeedState
 import com.litreview.f_main.MainFlowState
-import com.litreview.f_profile.ProfileFragmentState
+import com.litreview.f_profile.ProfileState
 import com.litreview.f_reviews_list.ReviewsListState
+import com.litreview.f_search.SearchState
 import com.litreview.f_start.splash.SplashState
 import com.litreview.f_write_review.WriteReviewState
 import dagger.Module
@@ -35,14 +36,14 @@ class StateModule {
 
     @Provides
     @Singleton
-    fun provideProfileFlowState(): FlowState<ProfileFragmentState> {
-        return FlowState(ProfileFragmentState())
+    fun provideProfileFlowState(): FlowState<ProfileState> {
+        return FlowState(ProfileState())
     }
 
     @Provides
     @Singleton
-    fun provideBooksListFlowState() : FlowState<BooksListFragmentState> {
-        return FlowState(BooksListFragmentState())
+    fun provideBooksListFlowState() : FlowState<BooksListState> {
+        return FlowState(BooksListState())
     }
 
     @Provides
@@ -79,5 +80,11 @@ class StateModule {
     @Singleton
     fun provideWriteReviewFlowState() : FlowState<WriteReviewState> {
         return FlowState(WriteReviewState())
+    }
+
+    @Provides
+    @Singleton
+    fun provideWriteSearchState() : FlowState<SearchState> {
+        return FlowState(SearchState())
     }
 }

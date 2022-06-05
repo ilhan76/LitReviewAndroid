@@ -1,10 +1,8 @@
-package com.litreview.i_review.data
+package com.litreview.base.data.dto
 
 import com.google.gson.annotations.SerializedName
 import com.litreview.base.data.Transformable
 import com.litreview.base.data.domain.Review
-import com.litreview.base.data.dto.BookDto
-import com.litreview.base.data.dto.PublicUserDto
 
 data class ReviewDto(
     @SerializedName("id")
@@ -16,9 +14,9 @@ data class ReviewDto(
     @SerializedName("rate")
     val rate: Double,
     @SerializedName("user")
-    val user: PublicUserDto,
+    val user: PublicUserDto?,
     @SerializedName("book")
-    val book: BookDto
+    val book: BookDto?
 ) : Transformable<Review> {
     override fun transform(): Review {
         return Review(
@@ -26,8 +24,8 @@ data class ReviewDto(
             date = date, //todo - добавить форматирование
             text = text,
             rate = rate,
-            book = book.transform(),
-            userInfo = user.transform()
+            book = book?.transform(),
+            userInfo = user?.transform()
         )
     }
 }

@@ -8,7 +8,7 @@ import ru.surfstudio.mvi.core.reducer.Reducer
 import javax.inject.Inject
 import javax.inject.Singleton
 
-data class ProfileFragmentState(
+data class ProfileState(
     val userInfo: UserInfo? = null
 )
 
@@ -16,16 +16,16 @@ data class ProfileFragmentState(
 class ProfileFragmentCommandHolder @Inject constructor() {
     val openScreen = Command<NavCommand>()
     val openTopScreen = Command<NavCommand>()
-    val showErrorMessage = Command<String>()
+    val showErrorMassage = Command<String>()
 }
 
 class ProfileFragmentReducer @Inject constructor() :
-    Reducer<ProfileFragmentEvent, ProfileFragmentState> {
+    Reducer<ProfileFragmentEvent, ProfileState> {
 
     override fun reduce(
-        state: ProfileFragmentState,
+        state: ProfileState,
         event: ProfileFragmentEvent
-    ): ProfileFragmentState {
+    ): ProfileState {
         return when (event) {
             is UpdateProfileInfo -> state.copy(userInfo = event.userInfo)
             else -> state

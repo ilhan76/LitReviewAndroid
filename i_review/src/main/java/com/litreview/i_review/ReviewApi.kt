@@ -2,7 +2,7 @@ package com.litreview.i_review
 
 import com.litreview.i_review.data.CreateReviewRequest
 import com.litreview.i_network.Urls.Review.REVIEWS
-import com.litreview.i_review.data.ReviewDto
+import com.litreview.base.data.dto.ReviewDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.litreview.base.mvi.BaseFragment
-import com.litreview.base.ui.showErrorSnack
+import com.litreview.base.ui.showErrorTopSnack
 import com.litreview.base.util.EMPTY_STRING
 import com.litreview.f_profile.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -70,7 +70,7 @@ class ProfileFragmentView :
             findTopNavControllerSafely()?.open(it)
         }
         ch.showErrorMassage bindTo {
-            showErrorSnack(it)
+            showErrorTopSnack(it)
         }
     }
 }

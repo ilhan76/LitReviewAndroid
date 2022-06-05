@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.litreview.base.data.domain.Book
 import com.litreview.base.mvi.BaseFragment
-import com.litreview.base.ui.showErrorSnack
+import com.litreview.base.ui.showErrorTopSnack
 import com.litreview.f_feed.controllers.HeaderItemController
 import com.litreview.f_feed.controllers.SearchItemController
 import com.litreview.f_feed.databinding.FragmentFeedBinding
@@ -72,7 +72,7 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
 
     private fun bind() {
         ch.showErrorMessage.flow bindTo {
-            showErrorSnack(
+            showErrorTopSnack(
                 message = it,
                 marginTop = 50
             )

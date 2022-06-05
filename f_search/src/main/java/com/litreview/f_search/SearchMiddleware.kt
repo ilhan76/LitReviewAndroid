@@ -28,7 +28,9 @@ class SearchMiddleware @Inject constructor(
 
     override fun transform(eventStream: Flow<SearchEvent>): Flow<SearchEvent> {
         return eventStream.transformations {
-            StartSearch::class eventToStream { search() }
+            addAll(
+                StartSearch::class eventToStream { search() }
+            )
         }
     }
 
@@ -38,7 +40,7 @@ class SearchMiddleware @Inject constructor(
             if (books.isNotEmpty()) {
                 booksBufferStorage.emitBooks(books)
                 ch.openTopScreen.accept(
-                    navCommandProvider.toBookDetail(
+                    navCommandProvider.toBooksList(
                         bundleOf(Args.EXTRA_FIRST to state.searchText)
                     )
                 )

@@ -7,7 +7,7 @@ import com.litreview.i_profile.ProfileInteractor
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
 import ru.surfstudio.mvi.flow.FlowState
 import com.litreview.f_profile.ProfileFragmentEvent.*
-import com.litreview.i_navigation.providers.ProfileNavCommandProvider
+import com.litreview.i_navigation.providers.TabsNavCommandProvider
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ class ProfileFragmentMiddleware @Inject constructor(
     private val flowState: FlowState<ProfileState>,
     private val ch: ProfileFragmentCommandHolder,
     private val profileInteractor: ProfileInteractor,
-    private val navCommandProvider: ProfileNavCommandProvider,
+    private val navCommandProvider: TabsNavCommandProvider,
     private val booksBufferStorage: BooksBufferStorage
 ) : DslFlowMiddleware<ProfileFragmentEvent> {
 
@@ -50,7 +50,7 @@ class ProfileFragmentMiddleware @Inject constructor(
     private fun openMyBooks(): Flow<ProfileFragmentEvent> = flow {
         state.userInfo?.let {
             ch.openTopScreen.accept(
-                navCommandProvider.toMyBooks(
+                navCommandProvider.toBooksList(
                     Bundle().apply {
                         putString(Args.EXTRA_FIRST, "Мои книги")
                         booksBufferStorage.emitBooks(it.books)

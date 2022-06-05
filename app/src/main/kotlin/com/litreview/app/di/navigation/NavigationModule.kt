@@ -27,11 +27,6 @@ class NavigationModule {
     }
 
     @Provides
-    fun provideProfileNavCommandProvider() : ProfileNavCommandProvider {
-        return ProfileNavCommandProviderImpl()
-    }
-
-    @Provides
     fun provideFeedNavCommandProvider() : TabsNavCommandProvider {
         return TabsNavCommandProviderImpl()
     }

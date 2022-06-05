@@ -1,10 +1,8 @@
-package com.litreview.i_review.data
+package com.litreview.base.data.dto
 
 import com.google.gson.annotations.SerializedName
 import com.litreview.base.data.Transformable
 import com.litreview.base.data.domain.Review
-import com.litreview.base.data.dto.BookDto
-import com.litreview.base.data.dto.PublicUserDto
 
 data class ReviewDto(
     @SerializedName("id")

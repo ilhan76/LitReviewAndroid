@@ -5,23 +5,23 @@ import ru.surfstudio.mvi.core.event.Event
 
 sealed class BookDetailEvent : Event {
 
-    data class OpenWriteReviewScreen(
-        val book: Book
-    ) : BookDetailEvent()
+    object OnCreateEvent : BookDetailEvent()
 
-    data class OpenReviewsScreen(
-        val book: Book
-    ) : BookDetailEvent()
+    object OpenWriteReviewScreen : BookDetailEvent()
 
-    data class CheckIsBookAdded(
-        val id: Int
-    ) : BookDetailEvent()
+    object OpenReviewsScreen : BookDetailEvent()
 
-    data class BookmarkClickEvent(
-        val book: Book
-    ) : BookDetailEvent()
+    object BookmarkClickEvent : BookDetailEvent()
 
     data class UpdateIsAddedToBookmarksStatus(
         val isAdded: Boolean
+    ) : BookDetailEvent()
+
+    data class UpdateAuthStatus(
+        val isAuthorized: Boolean
+    ) : BookDetailEvent()
+
+    data class UpdateBookEvent(
+        val book: Book
     ) : BookDetailEvent()
 }

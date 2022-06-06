@@ -6,12 +6,12 @@ import com.litreview.base.data.domain.Review
 import com.litreview.base.data.domain.toPublicUserInfo
 import com.litreview.i_token.TokenStorage
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.withContext
-import java.util.Collections.addAll
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,9 +23,9 @@ class ProfileInteractor @Inject constructor(
 
     private val userSharedFlow =
         MutableSharedFlow<UserInfo>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
-    private val reviewsSharedFlow =
+    private val reviewsStateFlow =
         MutableStateFlow<List<Review>>(emptyList())
-    private val booksSharedFlow =
+    private val booksStateFlow =
         MutableStateFlow<List<Book>>(emptyList())
 
     val isAuthorized: Boolean get() = userSharedFlow.replayCache.isNotEmpty()
@@ -34,29 +34,29 @@ class ProfileInteractor @Inject constructor(
         return withContext(Dispatchers.IO) {
             val user = repository.getUser()
             userSharedFlow.emit(user)
-            reviewsSharedFlow.emit(
+            reviewsStateFlow.emit(
                 user.reviews.map {
                     it.copy(
                         userInfo = user.toPublicUserInfo()
                     )
                 }
             )
-            booksSharedFlow.emit(user.books)
+            booksStateFlow.emit(user.books)
         }
     }
 
     fun subscribeOnUserInfo(): SharedFlow<UserInfo> = userSharedFlow
 
     fun getMyReviews(): List<Review> {
-        return reviewsSharedFlow.replayCache.first()
+        return reviewsStateFlow.replayCache.first()
     }
 
     fun getMyBooks(): List<Book> {
-        return booksSharedFlow.replayCache.first()
+        return booksStateFlow.replayCache.first()
     }
 
     fun isMyBook(id: Int): Boolean {
-        return booksSharedFlow.replayCache.first().any {
+        return booksStateFlow.replayCache.first().any {
             it.id == id
         }
     }
@@ -64,8 +64,8 @@ class ProfileInteractor @Inject constructor(
     suspend fun addBookToBookmarks(book: Book) {
         withContext(Dispatchers.IO) {
             repository.addBookToBookmarks(book.id.toString())
-            booksSharedFlow.emit(
-                booksSharedFlow.replayCache.first().plus(book)
+            booksStateFlow.emit(
+                booksStateFlow.replayCache.first().plus(book)
             )
         }
     }
@@ -73,13 +73,17 @@ class ProfileInteractor @Inject constructor(
     suspend fun deleteBookToBookmarks(book: Book) {
         withContext(Dispatchers.IO) {
             repository.deleteBookToBookmarks(book.id.toString())
-            booksSharedFlow.emit(
-                booksSharedFlow.replayCache.first().minus(book)
+            booksStateFlow.emit(
+                booksStateFlow.replayCache.first().minus(book)
             )
         }
     }
 
-    fun logout() {
+    @ExperimentalCoroutinesApi
+    suspend fun logout() {
         tokenStorage.clearTokens()
+        userSharedFlow.resetReplayCache()
+        reviewsStateFlow.emit(emptyList())
+        booksStateFlow.emit(emptyList())
     }
 }

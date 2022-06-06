@@ -6,6 +6,7 @@ import com.litreview.base.util.Args
 import com.litreview.base.util.DEFAULT_ERROR
 import com.litreview.i_profile.ProfileInteractor
 import com.litreview.f_book_detail.BookDetailEvent.*
+import com.litreview.i_navigation.providers.BookDetailNavCommandProvider
 import com.litreview.i_navigation.providers.TabsNavCommandProvider
 import com.litreview.i_review.ReviewInteractor
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +20,7 @@ class BookDetailMiddleware @Inject constructor(
     private val reviewInteractor: ReviewInteractor,
     private val flowState: FlowState<BookDetailState>,
     private val ch: BookDetailCommandHolder,
-    private val navCommandProvider: TabsNavCommandProvider,
+    private val navCommandProvider: BookDetailNavCommandProvider,
     private val reviewsBufferStorage: ReviewsBufferStorage
 ) : DslFlowMiddleware<BookDetailEvent> {
 
@@ -28,7 +29,8 @@ class BookDetailMiddleware @Inject constructor(
     override fun transform(eventStream: Flow<BookDetailEvent>): Flow<BookDetailEvent> {
         return eventStream.transformations {
             addAll(
-                CheckIsBookAdded::class eventToEvent ::checkIsBookAdded,
+                OnCreateEvent::class eventToStream { checkAuthStatus() },
+                UpdateBookEvent::class eventToEvent ::checkIsBookAdded,
                 BookmarkClickEvent::class eventToStream ::handleBookmarkClick,
                 OpenWriteReviewScreen::class eventToStream ::openWriteReviewScreen,
                 OpenReviewsScreen::class eventToStream ::openReviewsScreen
@@ -36,18 +38,24 @@ class BookDetailMiddleware @Inject constructor(
         }
     }
 
-    private fun checkIsBookAdded(event: CheckIsBookAdded): BookDetailEvent {
+    private fun checkAuthStatus() = flow<BookDetailEvent> {
+        emit(UpdateAuthStatus(profileInteractor.isAuthorized))
+    }
+
+    private fun checkIsBookAdded(event: UpdateBookEvent): BookDetailEvent {
         return UpdateIsAddedToBookmarksStatus(
-            profileInteractor.isMyBook(event.id)
+            profileInteractor.isMyBook(event.book.id)
         )
     }
 
     private fun handleBookmarkClick(event: BookmarkClickEvent): Flow<BookDetailEvent> = flow {
         try {
-            if (state.isAdded) {
-                profileInteractor.deleteBookToBookmarks(event.book)
-            } else {
-                profileInteractor.addBookToBookmarks(event.book)
+            state.book?.let { book ->
+                if (state.isAdded) {
+                    profileInteractor.deleteBookToBookmarks(book)
+                } else {
+                    profileInteractor.addBookToBookmarks(book)
+                }
             }
             emit(UpdateIsAddedToBookmarksStatus(!state.isAdded))
         } catch (e: Throwable) {
@@ -58,24 +66,28 @@ class BookDetailMiddleware @Inject constructor(
     private fun openWriteReviewScreen(
         event: OpenWriteReviewScreen
     ): Flow<BookDetailEvent> = flow {
-        ch.openScreen.accept(
-            navCommandProvider.toWriteReview(
-                Bundle().apply {
-                    putSerializable(Args.EXTRA_FIRST, event.book)
-                }
+        state.book?.let { book ->
+            ch.openScreen.accept(
+                navCommandProvider.toWriteReview(
+                    Bundle().apply {
+                        putSerializable(Args.EXTRA_FIRST, book)
+                    }
+                )
             )
-        )
+        }
     }
 
     private fun openReviewsScreen(
         event: OpenReviewsScreen
     ): Flow<BookDetailEvent> = flow {
-        try {
-            //todo - заменить на id
-            reviewsBufferStorage.emit(reviewInteractor.getReviewsByBook(event.book.title))
-            ch.openScreen.accept(navCommandProvider.toReviewsList)
-        } catch (e: Throwable) {
-            ch.showErrorMassage.accept(DEFAULT_ERROR)
+        state.book?.let { book ->
+            try {
+                //todo - заменить на id
+                reviewsBufferStorage.emit(reviewInteractor.getReviewsByBook(book.title))
+                ch.openScreen.accept(navCommandProvider.toReviewsList)
+            } catch (e: Throwable) {
+                ch.showErrorMassage.accept(DEFAULT_ERROR)
+            }
         }
     }
 }

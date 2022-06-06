@@ -14,4 +14,7 @@ class MainNavCommandProviderImpl @Inject constructor() : MainNavCommandProvider 
 
     override val toRegister: NavCommand
         get() = NavCommand(R.id.action_mainFlowFragment_to_registerFragmentView, currentDestination)
+
+    override val toFeed: NavCommand
+        get() = NavCommand(R.id.action_mainFragment_to_mainFlowFragmentView, currentDestination)
 }

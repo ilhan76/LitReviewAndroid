@@ -16,6 +16,9 @@
             android:id="@+id/action_mainFlowFragment_to_registerFragmentView"
             app:destination="@id/registerFragmentView"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_mainFlowFragmentView"
+            app:destination="@id/mainFlowFragmentView" />
     </fragment>
     <fragment
         android:id="@+id/authFragmentView"

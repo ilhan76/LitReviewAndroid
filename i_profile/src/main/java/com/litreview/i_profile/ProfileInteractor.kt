@@ -8,6 +8,7 @@ import com.litreview.i_token.TokenStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.withContext
 import java.util.Collections.addAll
@@ -23,9 +24,11 @@ class ProfileInteractor @Inject constructor(
     private val userSharedFlow =
         MutableSharedFlow<UserInfo>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
     private val reviewsSharedFlow =
-        MutableSharedFlow<List<Review>>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+        MutableStateFlow<List<Review>>(emptyList())
     private val booksSharedFlow =
-        MutableSharedFlow<List<Book>>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+        MutableStateFlow<List<Book>>(emptyList())
+
+    val isAuthorized: Boolean get() = userSharedFlow.replayCache.isNotEmpty()
 
     suspend fun getAndSaveUserInfo() {
         return withContext(Dispatchers.IO) {

@@ -86,9 +86,8 @@ class FeedFragmentView : BaseFragment<FeedState, FeedEvent>(R.layout.fragment_fe
         with(state) {
             feedAdapter.setItems(
                 ItemList.create()
-                    .addIf(
-                        userInfo != null,
-                        userInfo?.firstName,
+                    .add(
+                        userInfo?.firstName ?: "Гость",
                         headerItemController
                     )
                     .add(searchItemController)

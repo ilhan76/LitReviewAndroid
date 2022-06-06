@@ -43,10 +43,12 @@ class FeedMiddleware @Inject constructor(
     }
 
     private fun loadMyBooks(): Flow<FeedEvent> = flow {
-        try {
-            emit(UpdateMyBooks(booksIteractor.getMyBooks()))
-        } catch (e: Throwable) {
-            ch.showErrorMessage.accept(e.message ?: DEFAULT_ERROR)
+        if (profileInteractor.isAuthorized) {
+            try {
+                emit(UpdateMyBooks(booksIteractor.getMyBooks()))
+            } catch (e: Throwable) {
+                ch.showErrorMessage.accept(e.message ?: DEFAULT_ERROR)
+            }
         }
     }
 

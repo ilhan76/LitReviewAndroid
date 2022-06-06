@@ -52,7 +52,7 @@ class ProfileFragmentMiddleware @Inject constructor(
 
     private fun openMyBooks(): Flow<ProfileFragmentEvent> = flow {
         state.userInfo?.let {
-            booksBufferStorage.emit(it.books)
+            booksBufferStorage.emit(profileInteractor.getMyBooks())
             ch.openTopScreen.accept(
                 navCommandProvider.toBooksList(bundleOf(Args.EXTRA_FIRST to "Мои книги"))
             )

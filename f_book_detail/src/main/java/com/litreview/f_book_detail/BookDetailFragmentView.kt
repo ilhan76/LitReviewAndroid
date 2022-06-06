@@ -71,7 +71,7 @@ class BookDetailFragmentView :
     }
 
     private fun initListeners() {
-        vb.bookmarkBtn.emitOnClick(BookmarkClickEvent(book.id.toString()))
+        vb.bookmarkBtn.emitOnClick(BookmarkClickEvent(book))
         vb.detailReadReviewBtn.emitOnClick(OpenReviewsScreen(book))
         vb.detailWriteReviewBtn.emitOnClick(OpenWriteReviewScreen(book))
     }

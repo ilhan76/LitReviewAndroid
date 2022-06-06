@@ -47,7 +47,7 @@ class BookDetailMiddleware @Inject constructor(
             // todo - когда будет запрос
         } else {
             try {
-                profileInteractor.addBookToBookmarks(event.id)
+                profileInteractor.addBookToBookmarks(event.book)
                 emit(UpdateIsAddedToBookmarksStatus(!state.isAdded))
             } catch (e: Throwable) {
                 ch.showFailAddToBookmarksMessage.accept(Unit)

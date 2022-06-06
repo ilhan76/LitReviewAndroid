@@ -18,7 +18,7 @@ sealed class BookDetailEvent : Event {
     ) : BookDetailEvent()
 
     data class BookmarkClickEvent(
-        val id: String
+        val book: Book
     ) : BookDetailEvent()
 
     data class UpdateIsAddedToBookmarksStatus(

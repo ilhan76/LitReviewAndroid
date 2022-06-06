@@ -3,12 +3,14 @@ package com.litreview.i_profile
 import com.litreview.base.data.domain.Book
 import com.litreview.base.data.domain.UserInfo
 import com.litreview.base.data.domain.Review
+import com.litreview.base.data.domain.toPublicUserInfo
 import com.litreview.i_token.TokenStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.withContext
+import java.util.Collections.addAll
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -29,7 +31,13 @@ class ProfileInteractor @Inject constructor(
         return withContext(Dispatchers.IO) {
             val user = repository.getUser()
             userSharedFlow.emit(user)
-            reviewsSharedFlow.emit(user.reviews)
+            reviewsSharedFlow.emit(
+                user.reviews.map {
+                    it.copy(
+                        userInfo = user.toPublicUserInfo()
+                    )
+                }
+            )
             booksSharedFlow.emit(user.books)
         }
     }
@@ -50,9 +58,12 @@ class ProfileInteractor @Inject constructor(
         }
     }
 
-    suspend fun addBookToBookmarks(id: String) {
+    suspend fun addBookToBookmarks(book: Book) {
         withContext(Dispatchers.IO) {
-            repository.addBookToBookmarks(id)
+            repository.addBookToBookmarks(book.id.toString())
+            booksSharedFlow.emit(
+                booksSharedFlow.replayCache.first().plus(book)
+            )
         }
     }
 

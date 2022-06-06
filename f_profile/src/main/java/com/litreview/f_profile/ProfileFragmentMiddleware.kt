@@ -9,6 +9,7 @@ import ru.surfstudio.mvi.flow.DslFlowMiddleware
 import ru.surfstudio.mvi.flow.FlowState
 import com.litreview.f_profile.ProfileFragmentEvent.*
 import com.litreview.i_navigation.providers.TabsNavCommandProvider
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
@@ -59,6 +60,7 @@ class ProfileFragmentMiddleware @Inject constructor(
         }
     }
 
+    @ExperimentalCoroutinesApi
     private fun logout(): Flow<ProfileFragmentEvent> = flow {
         profileInteractor.logout()
         ch.openTopScreen.accept(navCommandProvider.toStart)

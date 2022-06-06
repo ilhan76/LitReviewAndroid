@@ -13,9 +13,9 @@ data class Book(
 
     val authorName: String
         get() {
-            return author?.firstName + if (!author?.firstName.isNullOrEmpty()) " " else "" +
-                    author?.lastName + if (!author?.lastName.isNullOrEmpty()) " " else "" +
-                    author?.middleName
+            return author?.firstName + /*if (!author?.firstName.isNullOrEmpty()) " " else ""*/ " " +
+                    author?.middleName + /*if (!author?.middleName.isNullOrEmpty()) " " else ""*/ " " +
+                    author?.lastName
         }
 
 }

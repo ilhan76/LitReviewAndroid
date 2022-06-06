@@ -10,7 +10,7 @@ data class AuthorDto(
     @SerializedName("firstName")
     val firstName: String,
     @SerializedName("middleName")
-    val middleName: String,
+    val middleName: String?,
     @SerializedName("lastName")
     val lastName: String,
     @SerializedName("dateOfBirth")

@@ -67,6 +67,15 @@ class ProfileInteractor @Inject constructor(
         }
     }
 
+    suspend fun deleteBookToBookmarks(book: Book) {
+        withContext(Dispatchers.IO) {
+            repository.deleteBookToBookmarks(book.id.toString())
+            booksSharedFlow.emit(
+                booksSharedFlow.replayCache.first().minus(book)
+            )
+        }
+    }
+
     fun logout() {
         tokenStorage.clearTokens()
     }

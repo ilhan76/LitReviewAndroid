@@ -43,15 +43,15 @@ class BookDetailMiddleware @Inject constructor(
     }
 
     private fun handleBookmarkClick(event: BookmarkClickEvent): Flow<BookDetailEvent> = flow {
-        if (state.isAdded) {
-            // todo - когда будет запрос
-        } else {
-            try {
+        try {
+            if (state.isAdded) {
+                profileInteractor.deleteBookToBookmarks(event.book)
+            } else {
                 profileInteractor.addBookToBookmarks(event.book)
-                emit(UpdateIsAddedToBookmarksStatus(!state.isAdded))
-            } catch (e: Throwable) {
-                ch.showFailAddToBookmarksMessage.accept(Unit)
             }
+            emit(UpdateIsAddedToBookmarksStatus(!state.isAdded))
+        } catch (e: Throwable) {
+            ch.showFailAddToBookmarksMessage.accept(Unit)
         }
     }
 

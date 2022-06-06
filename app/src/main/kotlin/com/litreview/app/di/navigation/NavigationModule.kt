@@ -2,6 +2,7 @@ package com.litreview.app.di.navigation
 
 import com.litreview.app.navigation.*
 import com.litreview.i_navigation.providers.*
+import com.litreview.i_navigation.providers.BooksListNavCommandProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,5 +35,10 @@ class NavigationModule {
     @Provides
     fun provideSplashNavCommandProvider() : SplashNavProvider {
         return SplashNavCommandProviderImpl()
+    }
+
+    @Provides
+    fun provideBooksListNavCommandProvider() : BooksListNavCommandProvider {
+        return BooksListNavCommandProviderImpl()
     }
 }

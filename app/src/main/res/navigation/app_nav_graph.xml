@@ -67,7 +67,11 @@
     <fragment
         android:id="@+id/booksListFragmentView"
         android:name="com.litreview.f_books_list.BooksListFragmentView"
-        android:label="BooksListFragmentView" />
+        android:label="BooksListFragmentView" >
+        <action
+            android:id="@+id/action_booksListFragmentView_to_bookDetailFragmentView"
+            app:destination="@id/bookDetailFragmentView" />
+    </fragment>
     <fragment
         android:id="@+id/reviewsListFragmentView"
         android:name="com.litreview.f_reviews_list.ReviewsListFragmentView"

@@ -9,6 +9,7 @@ import com.litreview.base.mvi.BaseFragment
 import com.litreview.base.util.Args
 import com.litreview.f_books_list.BooksListEvent.*
 import com.litreview.f_books_list.databinding.FragmentBooksListBinding
+import com.litreview.i_navigation.findNavControllerSafely
 import com.litreview.i_navigation.findTopNavControllerSafely
 import com.litreview.i_navigation.open
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +29,7 @@ class BooksListFragmentView :
 
     private val easyAdapter = EasyAdapter()
     private val bookItemController = BookItemController {
+        emit(OpenBookDetailsScreen(it))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,8 +55,8 @@ class BooksListFragmentView :
     }
 
     private fun bind() {
-        ch.openTopScreen bindTo {
-            findTopNavControllerSafely()?.open(it)
+        ch.openScreen bindTo {
+            findNavControllerSafely()?.open(it)
         }
     }
 

@@ -21,14 +21,13 @@ class ProfileInteractor @Inject constructor(
     private val tokenStorage: TokenStorage,
 ) {
 
-    private val userSharedFlow =
-        MutableSharedFlow<UserInfo>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
-    private val reviewsStateFlow =
-        MutableStateFlow<List<Review>>(emptyList())
-    private val booksStateFlow =
-        MutableStateFlow<List<Book>>(emptyList())
+    private val userSharedFlow = MutableStateFlow<UserInfo?>(null)
+    private val reviewsStateFlow = MutableStateFlow<List<Review>>(emptyList())
+    private val booksStateFlow = MutableStateFlow<List<Book>>(emptyList())
 
-    val isAuthorized: Boolean get() = userSharedFlow.replayCache.isNotEmpty()
+    val isAuthorized: Boolean
+    get() = userSharedFlow.replayCache.isNotEmpty() &&
+            userSharedFlow.replayCache.first() != null
 
     suspend fun getAndSaveUserInfo() {
         return withContext(Dispatchers.IO) {
@@ -45,7 +44,7 @@ class ProfileInteractor @Inject constructor(
         }
     }
 
-    fun subscribeOnUserInfo(): SharedFlow<UserInfo> = userSharedFlow
+    fun subscribeOnUserInfo(): SharedFlow<UserInfo?> = userSharedFlow
 
     fun getMyReviews(): List<Review> {
         return reviewsStateFlow.replayCache.first()
@@ -82,7 +81,7 @@ class ProfileInteractor @Inject constructor(
     @ExperimentalCoroutinesApi
     suspend fun logout() {
         tokenStorage.clearTokens()
-        userSharedFlow.resetReplayCache()
+        userSharedFlow.emit(null)
         reviewsStateFlow.emit(emptyList())
         booksStateFlow.emit(emptyList())
     }

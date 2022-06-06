@@ -13,7 +13,7 @@ sealed class FeedEvent : Event {
     object LoadBestBook : FeedEvent()
 
     data class UpdateProfile(
-        val userInfo: UserInfo
+        val userInfo: UserInfo?
     ) : FeedEvent()
 
     data class UpdateMyBooks(

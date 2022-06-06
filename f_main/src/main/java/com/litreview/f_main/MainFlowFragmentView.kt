@@ -6,7 +6,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.litreview.base.di.AuthNavGraph
+import com.litreview.base.di.NavGraph
+import com.litreview.base.di.NotAuthNavGraph
 import com.litreview.base.mvi.BaseFragment
+import com.litreview.base.util.Args
 import com.litreview.f_main.databinding.FlowFragmentMainBinding
 import com.litreview.i_navigation.tabsNavigation.BottomTab
 import com.litreview.i_navigation.tabsNavigation.TabsNavigationEventHub
@@ -28,13 +32,20 @@ class MainFlowFragmentView :
     @Inject
     lateinit var tabsNavigationEventHub: TabsNavigationEventHub
 
+    @Inject
+    @AuthNavGraph
+    lateinit var authNavGraph: NavGraph
+
+    @Inject
+    @NotAuthNavGraph
+    lateinit var notAuthNavGraph: NavGraph
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navController =
-            (childFragmentManager.findFragmentById(R.id.main_container_view) as NavHostFragment).navController
-        NavigationUI.setupWithNavController(vb.bottomNavBar, navController)
         viewModel.bindFlow()
         bind()
+        observeState { render(it) }
+        emit(MainFlowEvent.CheckAuthStatus)
     }
 
     private fun bind() {
@@ -49,5 +60,28 @@ class MainFlowFragmentView :
                 BottomTab.PROFILE -> R.id.profileFragmentView
             }
         }
+    }
+
+    private fun render(state: MainFlowState) {
+        val navController =
+            (childFragmentManager.findFragmentById(R.id.main_container_view) as NavHostFragment)
+                .navController
+
+        navController.setGraph(
+            if (state.isAuth) {
+                authNavGraph.id
+            } else {
+                notAuthNavGraph.id
+            }
+        )
+
+        vb.bottomNavBar.inflateMenu(
+            if (state.isAuth) {
+                R.menu.bottom_bar_menu
+            } else {
+                R.menu.bottom_bar_menu_not_auth
+            }
+        )
+        NavigationUI.setupWithNavController(vb.bottomNavBar, navController)
     }
 }

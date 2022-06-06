@@ -2,5 +2,5 @@ apply from: '../commonFeatureModule.gradle'
 apply from: '../commonKaptModule.gradle'
 
 dependencies {
-    implementation project(":f_feed")
+    implementation project(":i_profile")
 }

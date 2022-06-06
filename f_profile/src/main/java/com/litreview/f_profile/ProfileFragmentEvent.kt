@@ -11,6 +11,6 @@ sealed class ProfileFragmentEvent : Event {
     object LogoutEvent : ProfileFragmentEvent()
 
     data class UpdateProfileInfo(
-        val userInfo: UserInfo
+        val userInfo: UserInfo?
     ) : ProfileFragmentEvent()
 }

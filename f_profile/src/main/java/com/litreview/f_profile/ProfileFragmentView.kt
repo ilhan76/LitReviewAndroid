@@ -2,6 +2,7 @@ package com.litreview.f_profile
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
@@ -47,6 +48,7 @@ class ProfileFragmentView :
                 .load(it.avatarUrl ?: R.drawable.avatar_stub)
                 .into(vb.profileAvatar)
         }
+        vb.notAuthPlaceholder.isVisible = state.userInfo == null
     }
 
     private fun initToolbar() = with(vb.profileToolbar.toolbar) {

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="not_auth_palaceholder_text">Данный раздел приложения доступен только авторизованным пользователям</string>
+
     <!--region Common-->
     <string name="stub_content_description">stubContentDescription</string>
     <string name="pattern_name">%s %s</string>

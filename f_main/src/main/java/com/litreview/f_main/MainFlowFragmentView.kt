@@ -44,8 +44,17 @@ class MainFlowFragmentView :
         super.onViewCreated(view, savedInstanceState)
         viewModel.bindFlow()
         bind()
-        observeState { render(it) }
+        initView()
         emit(MainFlowEvent.CheckAuthStatus)
+    }
+
+    private fun initView() {
+        val navController =
+            (childFragmentManager.findFragmentById(R.id.main_container_view) as NavHostFragment)
+                .navController
+        navController.setGraph(authNavGraph.id)
+        vb.bottomNavBar.inflateMenu(R.menu.bottom_bar_menu)
+        NavigationUI.setupWithNavController(vb.bottomNavBar, navController)
     }
 
     private fun bind() {
@@ -60,28 +69,5 @@ class MainFlowFragmentView :
                 BottomTab.PROFILE -> R.id.profileFragmentView
             }
         }
-    }
-
-    private fun render(state: MainFlowState) {
-        val navController =
-            (childFragmentManager.findFragmentById(R.id.main_container_view) as NavHostFragment)
-                .navController
-
-        navController.setGraph(
-            if (state.isAuth) {
-                authNavGraph.id
-            } else {
-                notAuthNavGraph.id
-            }
-        )
-
-        vb.bottomNavBar.inflateMenu(
-            if (state.isAuth) {
-                R.menu.bottom_bar_menu
-            } else {
-                R.menu.bottom_bar_menu_not_auth
-            }
-        )
-        NavigationUI.setupWithNavController(vb.bottomNavBar, navController)
     }
 }

@@ -63,18 +63,14 @@ class ProfileInteractor @Inject constructor(
     suspend fun addBookToBookmarks(book: Book) {
         withContext(Dispatchers.IO) {
             repository.addBookToBookmarks(book.id.toString())
-            booksStateFlow.emit(
-                booksStateFlow.replayCache.first().plus(book)
-            )
+            getAndSaveUserInfo()
         }
     }
 
     suspend fun deleteBookToBookmarks(book: Book) {
         withContext(Dispatchers.IO) {
             repository.deleteBookToBookmarks(book.id.toString())
-            booksStateFlow.emit(
-                booksStateFlow.replayCache.first().minus(book)
-            )
+            getAndSaveUserInfo()
         }
     }
 

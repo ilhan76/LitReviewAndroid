@@ -56,8 +56,8 @@ class BookDetailMiddleware @Inject constructor(
                 } else {
                     profileInteractor.addBookToBookmarks(book)
                 }
+                emit(UpdateIsAddedToBookmarksStatus(!state.isAdded))
             }
-            emit(UpdateIsAddedToBookmarksStatus(!state.isAdded))
         } catch (e: Throwable) {
             ch.showFailAddToBookmarksMessage.accept(Unit)
         }

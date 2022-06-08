@@ -19,6 +19,7 @@ object Urls {
 
         const val MY_BOOKS = "$PROFILE/books"
         const val ADD_BOOK = "$PROFILE/book"
+        const val DELETE_BOOK = "$PROFILE/drop-book"
     }
 
     object Books {

@@ -79,6 +79,7 @@
         android:layout_marginStart="16dp"
         android:numStars="5"
         android:paddingVertical="3dp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/book_rating"
         tools:rating="4" />
@@ -89,6 +90,7 @@
         android:layout_marginStart="5dp"
         android:text="Рейтинг рецензии"
         android:textAppearance="@style/Base.10.Medium.Steel_Gray_400"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/review_rating"
         app:layout_constraintStart_toEndOf="@+id/review_rating"
         app:layout_constraintTop_toTopOf="@+id/review_rating" />
@@ -98,20 +100,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="20dp"
         android:textAppearance="@style/Base.14.Regular"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/review_rating"
         tools:text="@string/tools_review_text" />
-
-    <androidx.appcompat.widget.AppCompatRatingBar
-        android:id="@+id/review_rb"
-        style="?android:attr/ratingBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:numStars="5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/review_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

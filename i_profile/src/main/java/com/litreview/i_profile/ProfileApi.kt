@@ -2,6 +2,7 @@ package com.litreview.i_profile
 
 import com.litreview.i_network.Urls.Profile.PROFILE
 import com.litreview.i_network.Urls.Profile.ADD_BOOK
+import com.litreview.i_network.Urls.Profile.DELETE_BOOK
 import com.litreview.i_profile.data.ProfileResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -15,4 +16,7 @@ interface ProfileApi {
 
     @PUT("$ADD_BOOK/{id}")
     suspend fun addBook(@Path("id") id: String)
+
+    @PUT("$DELETE_BOOK/{id}")
+    suspend fun deleteBook(@Path("id") id: String)
 }

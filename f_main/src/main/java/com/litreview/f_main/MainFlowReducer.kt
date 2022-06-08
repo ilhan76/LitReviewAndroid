@@ -6,7 +6,9 @@ import ru.surfstudio.mvi.core.reducer.Reducer
 import javax.inject.Inject
 import javax.inject.Singleton
 
-class MainFlowState
+data class MainFlowState(
+    val isAuth: Boolean = false
+)
 
 @Singleton
 class MainFlowCommandHolder @Inject constructor() {
@@ -17,6 +19,7 @@ class MainFlowReducer @Inject constructor() : Reducer<MainFlowEvent, MainFlowSta
 
     override fun reduce(state: MainFlowState, event: MainFlowEvent): MainFlowState {
         return when (event) {
+            is MainFlowEvent.UpdateAuthState -> state.copy(isAuth = event.isAuth)
             else -> state
         }
     }

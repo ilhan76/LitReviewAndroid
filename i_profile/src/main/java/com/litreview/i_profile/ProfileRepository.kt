@@ -17,4 +17,8 @@ class ProfileRepository @Inject constructor(
     suspend fun addBookToBookmarks(id: String) {
         api.addBook(id)
     }
+
+    suspend fun deleteBookToBookmarks(id: String) {
+        api.deleteBook(id)
+    }
 }

@@ -16,6 +16,9 @@
             android:id="@+id/action_mainFlowFragment_to_registerFragmentView"
             app:destination="@id/registerFragmentView"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_mainFlowFragmentView"
+            app:destination="@id/mainFlowFragmentView" />
     </fragment>
     <fragment
         android:id="@+id/authFragmentView"
@@ -59,7 +62,9 @@
             app:destination="@id/changePersonalDataView" />
         <action
             android:id="@+id/action_mainFlowFragmentView_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFlowFragmentView"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_mainFlowFragmentView_to_bookDetailFragmentView"
             app:destination="@id/bookDetailFragmentView" />
@@ -67,7 +72,11 @@
     <fragment
         android:id="@+id/booksListFragmentView"
         android:name="com.litreview.f_books_list.BooksListFragmentView"
-        android:label="BooksListFragmentView" />
+        android:label="BooksListFragmentView" >
+        <action
+            android:id="@+id/action_booksListFragmentView_to_bookDetailFragmentView"
+            app:destination="@id/bookDetailFragmentView" />
+    </fragment>
     <fragment
         android:id="@+id/reviewsListFragmentView"
         android:name="com.litreview.f_reviews_list.ReviewsListFragmentView"

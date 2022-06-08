@@ -13,7 +13,7 @@ data class BooksListState(
 
 @Singleton
 class BooksListCommandHolder @Inject constructor() {
-    val openTopScreen = Command<NavCommand>()
+    val openScreen = Command<NavCommand>()
 }
 
 class BooksListReducer @Inject constructor() :

@@ -3,6 +3,7 @@ package com.litreview.f_book_detail
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
@@ -28,8 +29,6 @@ class BookDetailFragmentView :
 
     private val vb by viewBinding<FragmentBookDetailBinding>()
 
-    private lateinit var book: Book
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.bindFlow()
@@ -37,6 +36,8 @@ class BookDetailFragmentView :
         initListeners()
         bind()
         observeState { render(it) }
+        emit(OnCreateEvent)
+        emit(UpdateBookEvent(arguments?.getSerializable(Args.EXTRA_FIRST) as Book))
     }
 
     private fun initViews() {
@@ -44,36 +45,12 @@ class BookDetailFragmentView :
             setNavigationOnClickListener { requireActivity().onBackPressed() }
             setNavigationIcon(com.litreview.base.R.drawable.ic_back)
         }
-
-        book = arguments?.getSerializable(Args.EXTRA_FIRST) as Book
-        emit(CheckIsBookAdded(book.id))
-
-        with(vb) {
-            Glide.with(requireActivity())
-                .load(
-                    book.imageUrl.takeIf {
-                        it.isNotEmpty()
-                    } ?: com.litreview.base.R.drawable.book_cover
-                ).into(vb.detailBookPoster)
-            bookName.text = book.title
-
-            itemBookAuthor.text = getString(
-                com.litreview.base.R.string.pattern_author_name,
-                book.author?.firstName,
-                book.author?.middleName,
-                book.author?.lastName
-            )
-            ratingBar.rating = book.rate.toFloat()
-            ratingTv.text = book.rate.toString()
-            detailAboutAuthor.text = book.author?.description
-            detailDescription.text = book.description
-        }
     }
 
     private fun initListeners() {
-        vb.bookmarkBtn.emitOnClick(BookmarkClickEvent(book.id.toString()))
-        vb.detailReadReviewBtn.emitOnClick(OpenReviewsScreen(book))
-        vb.detailWriteReviewBtn.emitOnClick(OpenWriteReviewScreen(book))
+        vb.bookmarkBtn.emitOnClick(BookmarkClickEvent)
+        vb.detailReadReviewBtn.emitOnClick(OpenReviewsScreen)
+        vb.detailWriteReviewBtn.emitOnClick(OpenWriteReviewScreen)
     }
 
     private fun bind() {
@@ -89,18 +66,44 @@ class BookDetailFragmentView :
     }
 
     private fun render(state: BookDetailState) {
-        vb.bookmarkBtn.setImageDrawable(
-            if (state.isAdded) {
-                AppCompatResources.getDrawable(
-                    requireContext(),
-                    com.litreview.base.R.drawable.ic_bookmark_filled
+        with(vb) {
+            state.book?.let { book ->
+                Glide.with(requireActivity())
+                    .load(
+                        book.imageUrl.takeIf {
+                            it.isNotEmpty()
+                        } ?: com.litreview.base.R.drawable.book_cover
+                    ).into(vb.detailBookPoster)
+
+                bookName.text = book.title
+                itemBookAuthor.text = getString(
+                    com.litreview.base.R.string.pattern_author_name,
+                    book.author?.firstName,
+                    book.author?.middleName,
+                    book.author?.lastName
                 )
-            } else {
-                AppCompatResources.getDrawable(
-                    requireContext(),
-                    com.litreview.base.R.drawable.ic_bookmark
+                ratingBar.rating = book.rate.toFloat()
+                ratingTv.text = book.rate.toString()
+                detailAboutAuthor.text = book.author?.description
+                detailDescription.text = book.description
+
+                detailWriteReviewBtn.isVisible = state.isAuthorized
+                bookmarkBtn.isVisible = state.isAuthorized
+                bookmarkBtn.setImageDrawable(
+                    if (state.isAdded) {
+                        AppCompatResources.getDrawable(
+                            requireContext(),
+                            com.litreview.base.R.drawable.ic_bookmark_filled
+                        )
+                    } else {
+                        AppCompatResources.getDrawable(
+                            requireContext(),
+                            com.litreview.base.R.drawable.ic_bookmark
+                        )
+                    }
                 )
             }
-        )
+
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.litreview.app.di.navigation
 
 import com.litreview.app.navigation.*
 import com.litreview.i_navigation.providers.*
+import com.litreview.i_navigation.providers.BooksListNavCommandProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,27 +13,37 @@ import dagger.hilt.components.SingletonComponent
 class NavigationModule {
 
     @Provides
-    fun provideAuthNavCommandProvider() : AuthNavCommandProvider {
+    fun provideAuthNavCommandProvider(): AuthNavCommandProvider {
         return AuthNavCommandProviderImpl()
     }
 
     @Provides
-    fun provideMainNavCommandProvider() : MainNavCommandProvider {
+    fun provideMainNavCommandProvider(): MainNavCommandProvider {
         return MainNavCommandProviderImpl()
     }
 
     @Provides
-    fun provideRegisterNavCommandProvider() : RegisterNavCommandProvider {
+    fun provideRegisterNavCommandProvider(): RegisterNavCommandProvider {
         return RegisterNavCommandProviderImpl()
     }
 
     @Provides
-    fun provideFeedNavCommandProvider() : TabsNavCommandProvider {
+    fun provideFeedNavCommandProvider(): TabsNavCommandProvider {
         return TabsNavCommandProviderImpl()
     }
 
     @Provides
-    fun provideSplashNavCommandProvider() : SplashNavProvider {
+    fun provideSplashNavCommandProvider(): SplashNavProvider {
         return SplashNavCommandProviderImpl()
+    }
+
+    @Provides
+    fun provideBooksListNavCommandProvider(): BooksListNavCommandProvider {
+        return BooksListNavCommandProviderImpl()
+    }
+
+    @Provides
+    fun provideBookDetailNavCommandProvider(): BookDetailNavCommandProvider {
+        return BookDetailNavCommandProviderImpl()
     }
 }

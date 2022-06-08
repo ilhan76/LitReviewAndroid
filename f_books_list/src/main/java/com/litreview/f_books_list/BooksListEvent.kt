@@ -12,6 +12,6 @@ sealed class BooksListEvent : Event {
     ) : BooksListEvent()
 
     data class OpenBookDetailsScreen(
-        val book: Book
+        val book: Book?
     ) : BooksListEvent()
 }

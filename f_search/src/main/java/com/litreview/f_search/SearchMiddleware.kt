@@ -2,11 +2,13 @@ package com.litreview.f_search
 
 import android.content.Context
 import androidx.core.os.bundleOf
+import com.litreview.base.analytics.APP_METRICA_SEARCH
 import com.litreview.base.storage.BooksBufferStorage
 import com.litreview.base.util.Args
 import com.litreview.i_books.BooksInteractor
 import com.litreview.f_search.SearchEvent.*
 import com.litreview.i_navigation.providers.TabsNavCommandProvider
+import com.yandex.metrica.YandexMetrica
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -44,6 +46,7 @@ class SearchMiddleware @Inject constructor(
                         bundleOf(Args.EXTRA_FIRST to state.searchText)
                     )
                 )
+                YandexMetrica.reportEvent(APP_METRICA_SEARCH)
             } else {
                 ch.showErrorMessage.accept(context.getString(R.string.not_found_search))
             }

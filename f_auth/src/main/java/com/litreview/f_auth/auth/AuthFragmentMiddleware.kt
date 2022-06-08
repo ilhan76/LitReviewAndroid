@@ -1,11 +1,13 @@
 package com.litreview.f_auth.auth
 
+import com.litreview.base.analytics.APP_METRICA_AUTH
 import com.litreview.base.util.DEFAULT_ERROR
 import com.litreview.base.validation.*
 import com.litreview.i_navigation.providers.AuthNavCommandProvider
 import com.litreview.f_auth.auth.AuthFragmentEvent.*
 import com.litreview.i_auth.AuthInteractor
 import com.litreview.i_profile.ProfileInteractor
+import com.yandex.metrica.YandexMetrica
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
@@ -60,6 +62,7 @@ class AuthFragmentMiddleware @Inject constructor(
             authInteractor.login(currentState.email, currentState.password)
             profileInteractor.getAndSaveUserInfo()
             ch.openScreen.accept(authNavCommandProvider.toFeed)
+            YandexMetrica.reportEvent(APP_METRICA_AUTH)
         } catch (e: Throwable) {
             //todo - нормальная обработка
             ch.showErrorMessage.accept(e.message ?: DEFAULT_ERROR)

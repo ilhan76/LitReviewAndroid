@@ -1,14 +1,16 @@
 package com.litreview.f_book_detail
 
 import android.os.Bundle
+import com.litreview.base.analytics.APP_METRICA_ADD_BOOKMARK
+import com.litreview.base.analytics.APP_METRICA_DELETE_BOOKMARK
 import com.litreview.base.storage.ReviewsBufferStorage
 import com.litreview.base.util.Args
 import com.litreview.base.util.DEFAULT_ERROR
 import com.litreview.i_profile.ProfileInteractor
 import com.litreview.f_book_detail.BookDetailEvent.*
 import com.litreview.i_navigation.providers.BookDetailNavCommandProvider
-import com.litreview.i_navigation.providers.TabsNavCommandProvider
 import com.litreview.i_review.ReviewInteractor
+import com.yandex.metrica.YandexMetrica
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import ru.surfstudio.mvi.flow.DslFlowMiddleware
@@ -53,8 +55,10 @@ class BookDetailMiddleware @Inject constructor(
             state.book?.let { book ->
                 if (state.isAdded) {
                     profileInteractor.deleteBookToBookmarks(book)
+                    YandexMetrica.reportEvent(APP_METRICA_ADD_BOOKMARK, book.id.toString())
                 } else {
                     profileInteractor.addBookToBookmarks(book)
+                    YandexMetrica.reportEvent(APP_METRICA_DELETE_BOOKMARK)
                 }
                 emit(UpdateIsAddedToBookmarksStatus(!state.isAdded))
             }
